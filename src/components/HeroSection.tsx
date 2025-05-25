@@ -128,7 +128,7 @@ const HeroSection = () => {
           className="w-full h-full object-cover"
           style={{ filter: 'brightness(0.8)' }}
         >
-          <source src="/dx1.mp4" type="video/mp4" />
+          <source src="/videos/dx1.mp4" type="video/mp4" />
         </video>
       </div>
 
