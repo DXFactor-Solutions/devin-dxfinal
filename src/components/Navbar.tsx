@@ -1,56 +1,54 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button } from './ui/button';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-company-dark/95 backdrop-blur-sm shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full bg-white shadow-md`}
     >
-      <nav className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
+      <nav className="w-full max-w-[2000px] mx-auto px-5 sm:px-8 lg:px-12 py-4">
+        <div className="flex items-center justify-between w-full">
           <div className="flex items-center">
-            <a href="/" className="text-white font-bold text-2xl">AICompany</a>
+            <a href="/" className="flex items-center">
+              <img src="/factor.svg" alt="DX FACTOR Logo" className="h-8" /> 
+            </a>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <a href="#assistants" className="text-gray-300 hover:text-white transition-colors">AI Assistants</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Solutions</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Pricing</a>
-            <a href="#" className="text-gray-300 hover:text-white transition-colors">Resources</a>
+          <div className="hidden md:flex items-center justify-center flex-1 mx-10 space-x-8">
+            <a href="#platform" className="text-gray-700 hover:text-black transition-colors relative group">
+              Platform
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#agents" className="text-gray-700 hover:text-black transition-colors relative group">
+              Agents
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#results" className="text-gray-700 hover:text-black transition-colors relative group">
+              Results
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#services" className="text-gray-700 hover:text-black transition-colors relative group">
+              Services
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="#about" className="text-gray-700 hover:text-black transition-colors relative group">
+              About
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
+            </a>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" className="border-gray-700 text-gray-300 hover:text-white hover:border-gray-600">
-              Log In
-            </Button>
-            <Button className="bg-company-purple hover:bg-company-purple/90">
-              Get Started
+            <Button className="bg-black hover:bg-gray-800 text-white border-none shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2">
+              Book Demo
             </Button>
           </div>
 
           <button
-            className="md:hidden text-gray-300 hover:text-white"
+            className="md:hidden text-gray-700 hover:text-black"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -64,43 +62,47 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4"
+              className="md:hidden mt-4 w-full"
             >
-              <div className="flex flex-col space-y-4 pt-4 pb-6">
+              <div className="flex flex-col space-y-4 pt-4 pb-6 bg-white rounded-lg p-4 w-full shadow-lg">
                 <a
-                  href="#assistants"
-                  className="text-gray-300 hover:text-white transition-colors py-2"
+                  href="#platform"
+                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  AI Assistants
+                  Platform
                 </a>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors py-2"
+                  href="#agents"
+                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Solutions
+                  Agents
                 </a>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors py-2"
+                  href="#results"
+                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Pricing
+                  Results
                 </a>
                 <a
-                  href="#"
-                  className="text-gray-300 hover:text-white transition-colors py-2"
+                  href="#services"
+                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Resources
+                  Services
+                </a>
+                <a
+                  href="#about"
+                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  About
                 </a>
                 <div className="pt-2 flex flex-col space-y-3">
-                  <Button variant="outline" className="border-gray-700 text-gray-300 w-full">
-                    Log In
-                  </Button>
-                  <Button className="bg-company-purple hover:bg-company-purple/90 w-full">
-                    Get Started
+                  <Button className="bg-black hover:bg-gray-800 text-white border-none shadow-md hover:shadow-lg transition-all duration-300 w-full py-2">
+                    Book Demo
                   </Button>
                 </div>
               </div>
