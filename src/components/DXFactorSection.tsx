@@ -1,5 +1,58 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Brain, Database, Smartphone, Link2, Users, BarChart3, ChevronRight, Quote, TrendingUp, Zap, Star, ArrowRight } from 'lucide-react';
+import { motion, useAnimation, useInView } from 'framer-motion';
+
+// Animation component for spiral effect - same as AboutUs.tsx
+const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  
+  // Calculate spiral position based on index
+  const angle = index * 30; // Degrees between each element
+  const radius = index * 5; // Spiral radius increases with index
+  const startX = Math.cos(angle * Math.PI / 180) * radius;
+  const startY = Math.sin(angle * Math.PI / 180) * radius;
+  
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [controls, isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { 
+          opacity: 0,
+          x: startX,
+          y: startY,
+          scale: 0.8,
+          rotate: -5 + (index % 3) * 5 // Slight varied rotation
+        },
+        visible: { 
+          opacity: 1, 
+          x: 0, 
+          y: 0, 
+          scale: 1,
+          rotate: 0,
+          transition: { 
+            duration: 0.8, 
+            delay: delay + index * 0.1,
+            type: "spring",
+            stiffness: 100,
+            damping: 15
+          }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const DXFactorSection = () => {
   const [selectedService, setSelectedService] = useState(0);
@@ -83,61 +136,57 @@ const DXFactorSection = () => {
     <div className="min-h-screen bg-white py-16 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-black text-black mb-4 animate-on-scroll fade-up">
-           Beyond Agents: 
-            <span className="block bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-             Your AI-First Partner
-            </span>
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll fade-up delay-100">
-            Think beyond chatbots. With AI woven into our DNA, we deliver transformative solutions that are faster, smarter, and more efficient than traditional approaches.
-          </p>
-        </div>
+        <SpiralReveal delay={0.1} index={0}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-black text-black mb-4 animate-on-scroll fade-up">
+            Built on Proven Foundations. 
+              <span className="block bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
+              Transformed by AI.
+              </span>
+            </h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll fade-up delay-100">
+            The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for $2B+ in outcomes. Now with AI making everything faster, smarter, and more affordable.
+            </p>
+          </div>
+        </SpiralReveal>
 
         {/* Service Cards Grid */}
-        <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 animate-on-scroll fade-up delay-200">
-          {services.map((service, index) => (
-            <button
-              key={index}
-              onClick={() => setSelectedService(index)}
-              className={`group relative p-4 rounded-xl border-2 transition-all duration-300 ${
-                selectedService === index
-                  ? 'border-green-500 bg-green-50 scale-105 shadow-xl'
-                  : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg'
-              }`}
-            >
-              {/* Icon */}
-              <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 transition-all duration-300 ${
-                selectedService === index 
-                  ? 'bg-green-600 text-white' 
-                  : 'bg-gray-100 text-gray-700 group-hover:bg-gray-200'
-              }`}>
-                {service.icon}
-              </div>
-              
-              {/* Title */}
-              <h3 className={`font-bold text-base mb-1 transition-colors duration-300 ${
-                selectedService === index ? 'text-black' : 'text-gray-800'
-              }`}>
-                {service.title}
-              </h3>
-              
-              {/* Impact Metric */}
-              <div className={`flex items-center justify-center gap-1 text-sm font-semibold ${
-                selectedService === index ? 'text-green-700' : 'text-gray-500'
-              }`}>
-                <TrendingUp className="w-3 h-3" />
-                {service.impact}
-              </div>
+        <SpiralReveal delay={0.3} index={1}>
+          <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 animate-on-scroll fade-up delay-200">
+            {services.map((service, index) => (
+              <button
+                key={index}
+                onClick={() => setSelectedService(index)}
+                className={`group relative p-4 rounded-xl border-2 transition-all duration-300 ${
+                  selectedService === index
+                    ? 'border-green-500 bg-green-50 scale-105 shadow-xl'
+                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg'
+                }`}
+              >
+                {/* Icon */}
+                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 transition-all duration-300 ${
+                  selectedService === index 
+                    ? 'bg-green-600 text-white' 
+                    : 'bg-gray-100 text-gray-700 group-hover:bg-gray-200'
+                }`}>
+                  {service.icon}
+                </div>
+          
+                {/* Title */}
+                <h3 className={`font-bold text-base mb-1 transition-colors duration-300 ${
+                  selectedService === index ? 'text-black' : 'text-gray-800'
+                }`}>
+                  {service.title}
+                </h3>
 
-              {/* Active Indicator */}
-              {selectedService === index && (
-                <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-green-500 rounded-full"></div>
-              )}
-            </button>
-          ))}
-        </div>
+                {/* Active Indicator */}
+                {selectedService === index && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-green-500 rounded-full"></div>
+                )}
+              </button>
+            ))}
+          </div>
+        </SpiralReveal>
 
         {/* Service & Testimonial Display */}
         <div className="bg-gray-50 rounded-3xl p-2 animate-on-scroll scale-in delay-300 mb-10">

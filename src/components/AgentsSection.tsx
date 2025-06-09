@@ -1,11 +1,63 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { 
   ShieldAlert, Bot, Target, PieChart, Activity, Settings,
-  Calculator, ArrowRight
+  Calculator, ArrowRight, Brain, Database, Smartphone, Link2, Users, BarChart3, Play
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
-import DXFactorBackground from './DXFactorBackground';
+import { motion, useAnimation, useInView } from 'framer-motion';
+
+// Animation component for spiral effect - same as AboutUs.tsx
+const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
+  const controls = useAnimation();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+  
+  // Calculate spiral position based on index
+  const angle = index * 30; // Degrees between each element
+  const radius = index * 5; // Spiral radius increases with index
+  const startX = Math.cos(angle * Math.PI / 180) * radius;
+  const startY = Math.sin(angle * Math.PI / 180) * radius;
+  
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [controls, isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial="hidden"
+      animate={controls}
+      variants={{
+        hidden: { 
+          opacity: 0,
+          x: startX,
+          y: startY,
+          scale: 0.8,
+          rotate: -5 + (index % 3) * 5 // Slight varied rotation
+        },
+        visible: { 
+          opacity: 1, 
+          x: 0, 
+          y: 0, 
+          scale: 1,
+          rotate: 0,
+          transition: { 
+            duration: 0.8, 
+            delay: delay + index * 0.1,
+            type: "spring",
+            stiffness: 100,
+            damping: 15
+          }
+        }
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const AgentsSection: React.FC = () => {
   // Agent data structure with unified green aesthetic
@@ -13,332 +65,209 @@ const AgentsSection: React.FC = () => {
     {
       id: 'click2save',
       name: 'Click2Save',
-      shortName: 'C2S',
-      description: 'Save Thousands of Dollars Click2Save helps you stop cancellations from walking out the door.',
-      category: 'Retention',
+      description: 'Save Thousands of Dollars. Click2Save helps you stop cancellations from walking out the door.',
+      category: 'RETENTION',
       icon: ShieldAlert,
       stats: {
         value: '15%',
-        label: 'Higher Retention'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'HIGHER RETENTION'
+      }
     },
     {
       id: 'member-concierge',
       name: 'Member Concierge',
-      shortName: 'MC',
       description: '24/7 AI-powered member support that handles inquiries, bookings, and personalized recommendations.',
-      category: 'Experience',
+      category: 'EXPERIENCE',
       icon: Bot,
       stats: {
         value: '90%',
-        label: 'Resolution Rate'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'QUERY RESOLUTION RATE'
+      }
     },
     {
       id: 'lead-converter',
       name: 'Lead Converter',
-      shortName: 'LC',
       description: 'Intelligently nurtures prospects through personalized journeys, optimizing conversion at every touchpoint.',
-      category: 'Growth',
+      category: 'GROWTH',
       icon: Target,
       stats: {
         value: '40%',
-        label: 'Lead Conversion'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'INCREASE IN LEAD CONVERSION'
+      }
     },
     {
       id: 'revenue-optimizer',
       name: 'Revenue Optimizer',
-      shortName: 'RO',
       description: 'Analyzes member behavior and market trends to identify upselling and cross-selling opportunities.',
-      category: 'Growth',
+      category: 'GROWTH',
       icon: PieChart,
       stats: {
         value: '25%',
-        label: 'Revenue Boost'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'BOOST IN REVENUE PER MEMBER'
+      }
     },
     {
       id: 'fitness-coach',
       name: 'Fitness Coach AI',
-      shortName: 'FC',
       description: 'Delivers personalized workout plans and nutrition guidance based on individual goals and progress.',
-      category: 'Experience',
+      category: 'EXPERIENCE',
       icon: Activity,
       stats: {
         value: '60%',
-        label: 'Engagement Lift'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'IMPROVEMENT IN MEMBER ENGAGEMENT'
+      }
     },
     {
       id: 'operations-manager',
       name: 'Operations Manager',
-      shortName: 'OM',
       description: 'Optimizes facility usage, manages equipment maintenance, and automates administrative tasks.',
-      category: 'Operations',
+      category: 'OPERATIONS',
       icon: Settings,
       stats: {
         value: '50%',
-        label: 'Cost Reduction'
-      },
-      color: 'text-green-600',
-      bgColor: 'bg-green-50'
+        label: 'REDUCTION IN OPERATIONAL COSTS'
+      }
     }
   ];
 
+  const [activeFilter, setActiveFilter] = useState('All Agents');
+  
+  const filterCategories = [
+    'All Agents',
+    'Growth',
+    'Retention',
+    'Experience',
+    'Operations'
+  ];
+
+  const getCategoryColor = (category: string) => {
+    switch(category.toUpperCase()) {
+      case 'RETENTION': return 'bg-green-100 text-green-800';
+      case 'EXPERIENCE': return 'bg-blue-100 text-blue-800';
+      case 'GROWTH': return 'bg-teal-100 text-teal-800';
+      case 'OPERATIONS': return 'bg-indigo-100 text-indigo-800';
+      default: return 'bg-gray-100 text-gray-800';
+    }
+  };
+
+  const filteredAgents = activeFilter === 'All Agents' 
+    ? agents 
+    : agents.filter(agent => agent.category.toLowerCase() === activeFilter.toLowerCase());
+
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-10" id="agents">
-      {/* Modern Grid Background */}
-      <div className="absolute inset-0 z-0">
-        <DXFactorBackground />
-      </div>
-      
-      <div className="max-w-[1500px] mx-auto px-6 w-full relative z-10 flex flex-col items-center justify-center">
-        <div className="w-full flex flex-col items-center justify-center">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-5 tracking-tight leading-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text">
-              Meet the DX Outcomes Agent Platform
-            </h2>
-            <h3 className="text-xl md:text-2xl font-medium bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-6">
-              Not Just Another AI Tool. This Is the Operator's Edge.
-            </h3>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-5">
-                DXFactor has been in the trenches of Fitness & Wellness for years – working side-by-side with operators to solve real challenges.
-              </p>
-              <p className="text-base md:text-lg text-gray-600 font-light leading-relaxed">
-                From cancellations to collections, onboarding to member experience, we've seen the real problems. That's why we built <span className="font-semibold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">Outcome Agents</span> – AI modules that work 24/7 to grow your business, save staff time, and delight members.
-              </p>
+    <section className="py-12 bg-white" id="agents">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8">
+        {/* Header Section - Enhanced with modern design elements */}
+        <SpiralReveal delay={0.1} index={0}>
+          <div className="relative text-center mb-16">
+            {/* Background decorative elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+              <div className="absolute top-0 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
+              <div className="absolute top-16 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+            </div>
+            
+            {/* Main heading with enhanced typography */}
+            <div className="relative z-10 mb-8">
+              <h2 className="text-5xl md:text-7xl font-black text-gray-900 mb-6 leading-tight">
+                Meet the{" "}
+                <span className="relative">
+                  <span className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 bg-clip-text text-transparent">
+                    DX Outcomes
+                  </span>
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-green-600 to-emerald-500 rounded-full"></div>
+                </span>
+                <br />
+                Agent Platform
+              </h2>
+              
+              {/* Decorative elements */}
+              <div className="flex justify-center items-center mb-6">
+                <div className="w-12 h-px bg-gradient-to-r from-transparent to-green-500"></div>
+                <div className="mx-4 w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="w-12 h-px bg-gradient-to-l from-transparent to-green-500"></div>
+              </div>
+              
+              <h3 className="text-xl md:text-2xl font-bold text-gray-700 mb-4">
+                Not Just Another AI Tool.{" "}
+                <span className="text-green-600 font-black">This Is the Operator's Edge.</span>
+              </h3>
             </div>
           </div>
-
-          {/* Cards Arranged Horizontally with Staggered Heights */}
-          <div className="relative w-full max-w-[1400px]">
-            {/* Horizontal Layout Container with Staggered Positioning */}
-            <div className="flex items-center justify-center gap-4 relative h-[350px]">
-              {/* Left Side Cards (first 3) - Staggered Heights */}
-              <div className="flex gap-4 items-center">
-                {/* Card 1 - Higher */}
-                <div className="transform -translate-y-10 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-12 cursor-pointer group">
-                  <div className="w-60 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[0].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[0].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[0].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[0].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[0].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[0].stats.label}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                        <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                      </Button>
-                    </div>
+        </SpiralReveal>
+        
+        {/* Enhanced description section - Full width thin strip */}
+        <SpiralReveal delay={0.3} index={1}>
+          <div className="w-full bg-gradient-to-r from-green-50 via-gray-50 to-green-50 border-y border-green-100 py-6 mb-16 -mx-6 sm:-mx-8">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8">
+              <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-8">
+                {/* Left side - Header with icon */}
+                <div className="flex items-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mr-4">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900">Built by Operators, For Operators</h4>
+                    <p className="text-sm text-gray-600">Real solutions for real problems</p>
                   </div>
                 </div>
-
-                {/* Card 2 - Center */}
-                <div className="transition-all duration-500 hover:scale-[1.02] cursor-pointer group">
-                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[1].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[1].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[1].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[1].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[1].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[1].stats.label}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                        <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3 - Lower */}
-                <div className="transform translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:translate-y-14 cursor-pointer group">
-                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[2].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[2].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[2].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[2].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[2].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[2].stats.label}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                        <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Central DX Core - adjusted size */}
-              <div className="flex-shrink-0 mx-5">
-                <div className="w-36 h-36 bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl shadow-green-200/30 border-2 border-green-300/60 hover:shadow-green-300/40 hover:scale-105 hover:border-green-400/70 transition-all duration-500 cursor-pointer group relative">
-                  {/* Inner border ring for extra definition */}
-                  <div className="absolute inset-1 rounded-full border border-white/40 pointer-events-none"></div>
-                  <div className="text-center text-gray-900 group-hover:scale-110 transition-transform duration-500">
-                    <div className="text-2xl font-light mb-1 bg-gradient-to-r from-gray-800 to-gray-900 bg-clip-text text-transparent">DX</div>
-                    <div className="text-xs font-medium opacity-80 tracking-wider bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">Outcomes</div>
-                  </div>
-                          </div>
-                          </div>
-
-              {/* Right Side Cards (last 3) - with spacing adjustments */}
-              <div className="flex gap-5 items-center">
-                {/* Card 4 - Lower (mirrors card 3) */}
-                <div className="transform translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:translate-y-14 cursor-pointer group">
-                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[3].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[3].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[3].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[3].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[3].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[3].stats.label}</div>
-                          </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                            <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                          </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 5 - Center (mirrors card 2) */}
-                <div className="transition-all duration-500 hover:scale-[1.02] cursor-pointer group">
-                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[4].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[4].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[4].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[4].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[4].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[4].stats.label}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                        <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 6 - Higher (mirrors card 1) */}
-                <div className="transform -translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-14 cursor-pointer group">
-                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
-                    {/* Header */}
-                    <div className="flex items-center justify-between mb-4">
-                      <div className="flex items-center">
-                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
-                          {React.createElement(agents[5].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
-                        </div>
-                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[5].name}</h3>
-                      </div>
-                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
-                        {agents[5].category}
-                      </div>
-                    </div>
-                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[5].description}</p>
-                    <div className="flex items-center justify-between">
-                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
-                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[5].stats.value}</div>
-                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[5].stats.label}</div>
-                      </div>
-                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
-                        <Calculator className="w-3.5 h-3.5" />
-                        ROI
-                      </Button>
-                    </div>
-                  </div>
+                
+                {/* Center - Description */}
+                <div className="flex-1 text-center lg:text-left max-w-2xl">
+                  <p className="text-base text-gray-700 leading-relaxed">
+                    DXFactor has been in the fitness trenches for years, solving challenges from 
+                    <span className="font-semibold text-green-600"> cancellations to collections</span>, 
+                    <span className="font-semibold text-green-600"> onboarding to member experience</span>.
+                  </p>
                 </div>
               </div>
             </div>
+          </div>
+        </SpiralReveal>
 
-            {/* Enhanced Connection Lines with Gradients */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
-              <defs>
-                <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" style={{ stopColor: 'rgba(34, 197, 94, 0.1)', stopOpacity: 1 }} />
-                  <stop offset="50%" style={{ stopColor: 'rgba(34, 197, 94, 0.3)', stopOpacity: 1 }} />
-                  <stop offset="100%" style={{ stopColor: 'rgba(34, 197, 94, 0.1)', stopOpacity: 1 }} />
-                </linearGradient>
-              </defs>
-              {/* Line from left group to center */}
-              <line x1="30%" y1="50%" x2="50%" y2="50%" stroke="url(#connectionGradient)" strokeWidth="2" strokeDasharray="6,6" />
-              {/* Line from center to right group */}
-              <line x1="50%" y1="50%" x2="70%" y2="50%" stroke="url(#connectionGradient)" strokeWidth="2" strokeDasharray="6,6" />
-              </svg>
+        {/* Agent cards grid - Display all agents without filtering */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-6">
+          {agents.map((agent, index) => (
+            <SpiralReveal key={agent.id} delay={0.5 + index * 0.1} index={index + 2}>
+              <div className="bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+                <div className="p-6">
+                  <div className="flex items-start mb-4">
+                    <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+                      {React.createElement(agent.icon, { className: "w-5 h-5 text-green-600" })}
                     </div>
+                    <div className="flex-1">
+                      <span className={`inline-block px-2 py-1 text-xs font-medium rounded mb-2 ${getCategoryColor(agent.category)}`}>
+                        {agent.category}
+                      </span>
+                      <h3 className="text-base font-bold text-gray-900">{agent.name}</h3>
+                    </div>
+                  </div>
+                  
+                  <p className="text-gray-600 mb-5 text-sm leading-relaxed">
+                    {agent.description}
+                  </p>
+                  
+                  <div className="flex justify-between items-end">
+                    <div>
+                      <div className="text-2xl font-bold text-green-600">{agent.stats.value}</div>
+                      <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">
+                        {agent.stats.label}
+                      </div>
+                    </div>
+                    <button className="text-green-600 border border-green-300 rounded px-3 py-2 text-xs font-medium hover:bg-green-50 flex items-center gap-1">
+                      <Calculator className="w-3 h-3" />
+                      Calculate ROI
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </SpiralReveal>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-export default AgentsSection; 
+export default AgentsSection;

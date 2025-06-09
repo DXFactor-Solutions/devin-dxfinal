@@ -9,7 +9,8 @@ import {
   PhoneCall,
   ArrowRight,
   Bot,
-  ChevronRight
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 import { Button } from './ui/button';
 
@@ -17,103 +18,102 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="pt-16 pb-10 bg-white relative overflow-hidden w-full">
-      {/* Top divider */}
+    <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+      {/* Animated background elements - optional, can be removed for more compactness */}
+      {/* <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-24 -right-24 w-96 h-96 bg-green-500/10 rounded-full blur-[100px] animate-pulse"></div>
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] animate-pulse" style={{animationDelay: '2s'}}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-400/5 rounded-full blur-[80px] animate-pulse" style={{animationDelay: '4s'}}></div>
+      </div> */}
+
+      {/* Top wave divider */}
       <div className="absolute top-0 left-0 right-0 overflow-hidden">
-        <svg className="relative block w-full h-10 transform rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-gray-50"></path>
+        <svg className="relative block w-full h-6 transform" viewBox="0 0 1200 90" preserveAspectRatio="none">
+          <path d="M321.39,42.33c58-8.09,114.16-22.6,172-31.39,82.39-12.54,168.19-13.28,250.45-.29C823.78,23.5,906.67,54,985.66,69.62c70.05,13.86,146.53,19.59,214.34,2.25V0H0V20.51A600.21,600.21,0,0,0,321.39,42.33Z" className="fill-white"></path>
         </svg>
       </div>
       
-      {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}></div>
-      </div>
-      
-      {/* Background gradient elements */}
-      <div className="absolute top-20 right-1/4 w-96 h-96 bg-green-200/10 rounded-full blur-[120px] opacity-70"></div>
-      
-      <div className="px-8 sm:px-12 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Company Info */}
-          <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <div className="flex items-center mb-6">
-              <img src="/factor.svg" alt="DX FACTOR Logo" className="h-8" />
-            </div>
-            <p className="text-gray-600 mb-6 max-w-xs">
-              Stay up to date with insights from DXFactor
-            </p>
-            <p className="text-gray-500 text-sm uppercase mb-4">Stay Connected</p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-50 hover:text-green-600 transition-colors">
-                <Linkedin className="h-4 w-4" />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-50 hover:text-green-600 transition-colors">
-                <Instagram className="h-4 w-4" />
-              </a>
+      <div className="relative z-10 px-6 lg:px-12 pt-12 pb-8">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 lg:grid-cols-7 gap-8 mb-8">
+          
+          {/* Brand section */}
+          <div className="lg:col-span-2">
+            <div className="mb-8">
+              <img src="/factor.svg" alt="DXFactor Logo" className="h-10 w-auto mb-4" style={{filter: 'brightness(0) invert(1)'}} />
+              <p className="text-gray-300 leading-relaxed max-w-sm text-sm mb-6">
+                Deploying outcome-driven AI agents that transform fitness businesses through intelligent automation.
+              </p>
+              
+              {/* Social links */}
+              <div>
+                <p className="text-green-400 text-xs uppercase tracking-wider mb-3 font-medium">Stay Connected</p>
+                <div className="flex space-x-3">
+                  <a href="#" className="group relative w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
+                    <Linkedin className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  </a>
+                  <a href="#" className="group relative w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
+                    <Instagram className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  </a>
+                  <a href="#" className="group relative w-10 h-10 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
+                    <Twitter className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
-          
+
           {/* Solutions */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">SOLUTIONS</h3>
+            <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Solutions</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#ai-agents" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#ai-agents" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>AI Agents</span>
                 </a>
               </li>
               <li>
-                <a href="#click2save" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#click2save" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Click2Save</span>
                 </a>
               </li>
             </ul>
           </div>
           
-          {/* Core Digital Services */}
+          {/* Services */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">CORE DIGITAL SERVICES</h3>
+            <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#agentic-ai-development" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#agentic-ai" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Agentic AI Development</span>
                 </a>
               </li>
               <li>
-                <a href="#data-warehouse" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#data-warehouse" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Data Warehouse</span>
                 </a>
               </li>
               <li>
-                <a href="#business-intelligence" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#business-intelligence" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Business Intelligence</span>
                 </a>
               </li>
               <li>
-                <a href="#mobile-application" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Mobile Application Development</span>
+                <a href="#mobile-dev" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>Mobile Development</span>
                 </a>
               </li>
               <li>
-                <a href="#custom-software" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Custom Software Development & Integrations</span>
-                </a>
-              </li>
-              <li>
-                <a href="#ui-ux" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>UI / UX</span>
+                <a href="#ui-ux" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>UI / UX Design</span>
                 </a>
               </li>
             </ul>
@@ -121,30 +121,24 @@ const Footer = () => {
           
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">COMPANY</h3>
+            <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Company</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#about-us" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>About us</span>
+                <a href="/about" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>About Us</span>
                 </a>
               </li>
               <li>
-                <a href="#why-us" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Why us</span>
-                </a>
-              </li>
-              <li>
-                <a href="#careers" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#careers" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Careers</span>
                 </a>
               </li>
               <li>
-                <a href="#contact-us" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Contact us</span>
+                <a href="#contact" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>Contact</span>
                 </a>
               </li>
             </ul>
@@ -152,70 +146,62 @@ const Footer = () => {
           
           {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">RESOURCES</h3>
+            <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#blog" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#blog" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Blog</span>
                 </a>
               </li>
               <li>
-                <a href="#case-studies" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#case-studies" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Case Studies</span>
                 </a>
               </li>
               <li>
-                <a href="#news" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>News</span>
-                </a>
-              </li>
-              <li>
-                <a href="#webinars" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#webinars" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Webinars</span>
                 </a>
               </li>
               <li>
-                <a href="#ebooks" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Ebooks</span>
-                </a>
-              </li>
-              <li>
-                <a href="#videos" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                <a href="#videos" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Videos</span>
                 </a>
               </li>
             </ul>
           </div>
-        </div>
-        
-        {/* Certification Section */}
-        <div className="border-t border-gray-200 pt-10 pb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between">
-            <div className="mb-6 md:mb-0">
-              <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">CERTIFICATION</h3>
-              <div className="flex flex-wrap gap-6">
-                <img src="/logos/iso-certification.png" alt="ISO 27001:2013" className="h-16 object-contain" />
-                <img src="/logos/great-place-to-work.png" alt="Great Place to Work Certified" className="h-16 object-contain" />
+
+          {/* Certifications */}
+          <div>
+            <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Certifications</h3>
+            <div className="space-y-6">
+              <div className="flex items-center justify-center">
+                <img src="/logos/isocert.png" alt="ISO 27001:2013 Certification" className="h-16 w-auto object-contain" />
+              </div>
+              <div className="flex items-center justify-center">
+                <img src="/logos/gptwcert.webp" alt="Great Place to Work Certification" className="h-14 w-auto object-contain" />
               </div>
             </div>
           </div>
         </div>
         
-        {/* Bottom Bar */}
-        <div className="border-t border-gray-200 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-500 text-sm mb-4 md:mb-0">
-            &copy; {currentYear} DX Factor. All rights reserved.
-          </p>
-          <div className="flex flex-wrap gap-6">
-            <a href="#privacy" className="text-gray-500 hover:text-green-600 text-sm">Privacy Policy</a>
-            <a href="#terms" className="text-gray-500 hover:text-green-600 text-sm">Terms of Service</a>
-            <a href="#cookies" className="text-gray-500 hover:text-green-600 text-sm">Cookie Policy</a>
+        {/* Bottom section */}
+        <div className="border-t border-white/10 pt-4 flex flex-col md:flex-row justify-between items-center text-xs">
+          <div className="flex items-center mb-4 md:mb-0">
+            <p className="text-gray-400">
+              &copy; {currentYear} DX Factor. All rights reserved.
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <a href="#privacy" className="text-gray-400 hover:text-green-400 transition-colors">Privacy</a>
+            <span className="text-gray-600">•</span>
+            <a href="#terms" className="text-gray-400 hover:text-green-400 transition-colors">Terms</a>
+            <span className="text-gray-600">•</span>
+            <a href="#cookies" className="text-gray-400 hover:text-green-400 transition-colors">Cookies</a>
           </div>
         </div>
       </div>
