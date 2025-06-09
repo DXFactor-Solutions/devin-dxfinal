@@ -3,8 +3,11 @@ import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import MicroagentCommunity from '../components/MicroagentCommunity';
 import AgentsSection from '../components/AgentsSection';
-import PreacherSection from '../components/PreacherSection';
-import TestimonialsSection from '../components/TestimonialsSection';
+import DXFactorSection from '../components/DXFactorSection';
+import ContactForm from '../components/ContactForm';
+
+import TrustedByBelt from '../components/TrustedByBelt';
+// import AIMapSection from '../components/AIMapSection'; 
 // import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
 
@@ -158,23 +161,24 @@ const Index = () => {
         <HeroSection />
       </div>
       
-      {/* Other sections - no wrapper components, animations will be added by the observer */}
+      {/* Agents Section - now positioned first (swapped with MicroagentCommunity) */}
+      <div className="relative z-10">
+        <AgentsSection />
+      </div>
+      
+      {/* AI MAP Section (formerly MicroagentCommunity) - now positioned second */}
       <div className="relative z-10">
         <MicroagentCommunity />
       </div>
       
       <div className="relative z-10">
-        <AgentsSection />
+        <DXFactorSection />
       </div>
       
       <div className="relative z-10">
-        <PreacherSection />
+        <ContactForm />
       </div>
-      
-      <div className="relative z-10">
-        <TestimonialsSection />
-      </div>
-      
+    
       <div className="relative z-10">
         <Footer />
       </div>

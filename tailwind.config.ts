@@ -127,6 +127,10 @@ export default {
 					"50%": { opacity: "0.6", transform: "translateX(0) scale(1.2)" },
 					"100%": { opacity: "0.3", transform: "translateX(20px) scale(0.8)" },
 				},
+				shimmer: {
+					"0%": { transform: "translateX(-100%) rotate(12deg)" },
+					"100%": { transform: "translateX(100%) rotate(12deg)" },
+				},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -142,6 +146,10 @@ export default {
 				'nebula': "gradientShift 30s ease-in-out infinite alternate",
 				'flare': "flare 8s ease-in-out infinite",
 				'flare-delayed': "flare 10s ease-in-out infinite 2s",
+				'pulse-slower': "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+				'float': "float 6s ease-in-out infinite",
+				'shimmer': "shimmer 8s ease-in-out infinite",
+				'shimmer-delayed': "shimmer 8s ease-in-out infinite 4s",
 			},
 			backgroundImage: {
 				'hero-gradient': 'radial-gradient(circle at center, rgba(124, 58, 237, 0.8) 0%, rgba(17, 20, 43, 0) 70%)',

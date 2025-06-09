@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Home, Bot, BarChart3, Users, Settings, Plus, TrendingUp, TrendingDown, Activity, Zap, RefreshCw, MessageSquare, CheckCircle, Clock, ArrowUpRight } from 'lucide-react';
 
-const AIMapDashboard = () => {
+const MicroagentCommunity = () => {
   const [activeMenuItem, setActiveMenuItem] = useState('overview');
   const [statsVisible, setStatsVisible] = useState(false);
   const [hoveredAgent, setHoveredAgent] = useState(null);
@@ -126,24 +126,24 @@ const AIMapDashboard = () => {
   };
 
   return (
-    <section className="py-10 pb-20 bg-white relative">
+    <section className="min-h-screen py-16 bg-gray-50 flex flex-col justify-center items-center">
       {/* Header with divider line */}
       <div className="container mx-auto px-4 mb-8">
         <div className="max-w-5xl mx-auto relative">
           <div className="text-center pt-6 animate-on-scroll fade-up">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Inside AI MAP: Your Micro Agent Platform
+              Your Always-On Digital Staff
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-              AI MAP isn't just software—it's an ecosystem of intelligent micro-agents that work 24/7 to grow your business. Each agent is purpose-built for fitness & wellness, delivering measurable results from day one.
+            Your agents are only as smart as the platform that powers them. DX Micro Agent Platform was built from 100s of AI projects with 1,000s of operators just like you. We know your business inside out - from member acquisition to retention, from operations to revenue. That's why our agents deliver from day one.
             </p>
           </div>
         </div>
       </div>
       
       {/* Dashboard Preview Container */}
-      <div className="container mx-auto px-4">
-        <div className="w-[70%] mx-auto transform origin-top relative animate-on-scroll scale-in">
+      <div className="container mx-auto px-4 flex-grow flex items-center justify-center">
+        <div className="w-full max-w-6xl mx-auto transform origin-top relative animate-on-scroll scale-in">
           {/* Shadow effect for depth */}
           <div className="absolute -inset-4 bg-gradient-to-b from-gray-900/5 to-gray-900/10 rounded-3xl blur-xl -z-10"></div>
           
@@ -156,11 +156,14 @@ const AIMapDashboard = () => {
                 <div className="w-3 h-3 rounded-full bg-yellow-400 hover:bg-yellow-500 transition-colors cursor-pointer"></div>
                 <div className="w-3 h-3 rounded-full bg-green-400 hover:bg-green-500 transition-colors cursor-pointer"></div>
               </div>
-              <div className="flex-1"></div>
+              <div className="flex-1 text-center">
+                <span className="text-sm font-medium text-gray-600">DXFactor</span>
+              </div>
+              <div className="w-24"></div>
             </div>
 
             {/* Dashboard Container */}
-            <div className="flex h-[500px]">
+            <div className="flex h-[600px] md:h-[650px]">
               {/* Sidebar */}
               <aside className="w-52 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 animate-on-scroll slide-left">
                 <div className="p-4">
@@ -247,82 +250,82 @@ const AIMapDashboard = () => {
                     <div className="flex justify-between items-center mb-4">
                       <h2 className="text-lg font-bold text-gray-900">Active Agents</h2>
                       <button className="text-xs font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1 transition-colors">
-                        View all
-                        <ArrowUpRight size={12} />
+                        View all <ArrowUpRight size={12} />
                       </button>
                         </div>
                     
                     <div className="space-y-3">
                       {agents.map((agent, index) => {
+                        const Icon = agent.icon;
                         return (
                           <div
                             key={agent.id}
-                            className={`group relative bg-gradient-to-br from-gray-50 to-white rounded-xl p-3 border border-gray-100 hover:border-gray-900 transition-all duration-300 cursor-pointer hover:shadow-lg hover:scale-[1.01] animate-on-scroll slide-right delay-${index * 100}`}
+                            className="relative bg-green-50 rounded-xl p-4 hover:bg-green-100 transition-colors border border-green-100 cursor-pointer animate-on-scroll fade-up delay-300"
                             onMouseEnter={() => setHoveredAgent(agent.id)}
                             onMouseLeave={() => setHoveredAgent(null)}
                           >
-                            <div className="flex items-center justify-between">
-                              <div className="flex-1">
-                                <div className="flex items-center gap-3 mb-1">
-                                  <h3 className="text-sm font-bold text-gray-900">{agent.name}</h3>
-                                  <span className={`text-xs font-bold ${
-                                    agent.performance.startsWith('+') ? 'text-emerald-600' : 'text-rose-600'
-                                  }`}>
-                                    {agent.performance}
-                                  </span>
+                            <div className="flex justify-between items-center">
+                              <div className="flex items-start gap-3">
+                                <div className="flex-shrink-0 bg-green-100 p-2 rounded-lg">
+                                  <Icon size={18} className="text-green-600" />
+                                </div>
+                                <div>
+                                  <div className="flex items-center gap-2">
+                                    <h3 className="font-semibold text-gray-900">{agent.name}</h3>
+                                    <span className="text-xs font-medium text-green-600">{agent.performance}</span>
                         </div>
                                 <p className="text-xs text-gray-600">{agent.description}</p>
+                                </div>
                       </div>
                       
-                              <div className="flex gap-4 ml-4">
+                              <div className="flex items-center gap-6">
                                 <div className="text-center">
-                                  <p className="text-sm font-bold text-gray-900">{agent.metrics.active}</p>
-                                  <p className="text-[10px] text-gray-500 uppercase">Active</p>
+                                  <div className="font-semibold">{agent.metrics.active}</div>
+                                  <div className="text-xs text-gray-500">ACTIVE</div>
                                 </div>
                                 <div className="text-center">
-                                  <p className="text-sm font-bold text-gray-900">{agent.metrics.processed}</p>
-                                  <p className="text-[10px] text-gray-500 uppercase">Processed</p>
+                                  <div className="font-semibold">{agent.metrics.processed}</div>
+                                  <div className="text-xs text-gray-500">PROCESSED</div>
                       </div>
                                 <div className="text-center">
-                                  <p className="text-sm font-bold text-gray-900">{agent.metrics.success}</p>
-                                  <p className="text-[10px] text-gray-500 uppercase">Success</p>
+                                  <div className="font-semibold">{agent.metrics.success}</div>
+                                  <div className="text-xs text-gray-500">SUCCESS</div>
             </div>
           </div>
         </div>
-
-                            <div className={`absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-700 rounded-xl opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
                       </div>
                         );
                       })}
                     </div>
                   </section>
 
-                  {/* Recent Activity */}
-                  <section className="animate-on-scroll fade-up delay-300">
-                    <h2 className="text-lg font-bold text-gray-900 mb-4">Recent Activity</h2>
-                    <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 border border-gray-100">
-                      <div className="space-y-2">
-                        {activities.map((activity, index) => {
+                  {/* Recent Activity Section */}
+                  <section className="animate-on-scroll fade-up delay-400">
+                    <div className="flex justify-between items-center mb-4">
+                      <h2 className="text-lg font-bold text-gray-900">Recent Activity</h2>
+                      <button className="text-xs font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-1 transition-colors">
+                        View all <ArrowUpRight size={12} />
+                      </button>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      {activities.map((activity) => {
                           const Icon = activity.icon;
                           return (
-                            <div 
-                              key={activity.id} 
-                              className={`flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:shadow-sm transition-all duration-200 cursor-pointer group animate-on-scroll fade-in delay-${index * 100 + 300}`}
-                            >
-                              <div className={`p-1.5 rounded-md ${getActivityColor(activity.type)} bg-opacity-10 group-hover:scale-110 transition-transform`}>
-                                <Icon size={14} className={getActivityColor(activity.type).replace('bg-', 'text-')} />
+                          <div key={activity.id} className="flex items-start gap-3 p-3 hover:bg-gray-50 rounded-lg transition-colors">
+                            <div className={`p-2 rounded-full ${getActivityColor(activity.type)}`}>
+                              <Icon size={14} className="text-white" />
                     </div>
                               <div className="flex-1">
-                                <p className="font-medium text-xs text-gray-900">{activity.title}</p>
-                                <p className="text-[10px] text-gray-500 flex items-center gap-1 mt-0.5">
-                                  <Clock size={10} />
-                                  {activity.time}
-                                </p>
+                              <p className="text-sm text-gray-800 font-medium">{activity.title}</p>
+                              <div className="flex items-center gap-1 mt-1">
+                                <Clock size={12} className="text-gray-400" />
+                                <span className="text-xs text-gray-500">{activity.time}</span>
+                              </div>
                     </div>
                   </div>
                 );
               })}
-            </div>
                     </div>
                   </section>
                 </div>
@@ -331,15 +334,8 @@ const AIMapDashboard = () => {
           </div>
         </div>
       </div>
-
-      {/* Enhanced section divider */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-0 h-8">
-        <svg className="relative block w-full h-8" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-green-100 opacity-40"></path>
-        </svg>
-      </div>
     </section>
   );
 };
 
-export default AIMapDashboard; 
+export default MicroagentCommunity; 

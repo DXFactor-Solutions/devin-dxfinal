@@ -1,60 +1,84 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Home, Bot, Star, FileText, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TubelightNavBar } from './ui/tubelight-navbar';
+import { useNavigate } from 'react-router-dom';
+
+const navLinks = [
+  { name: 'Agent24', url: '#platform', icon: Home },
+  { name: 'Solutions', url: '#agents', icon: Bot },
+  { name: 'Testimonials', url: '#results', icon: Star },
+  { name: 'Resources', url: '/resources', icon: FileText },
+  { name: 'About', url: '/about', icon: Info },
+];
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigation = (url: string) => {
+    if (url.startsWith('/')) {
+      // Router navigation for pages
+      navigate(url);
+    } else if (url.startsWith('#')) {
+      // Anchor navigation for sections on home page
+      if (window.location.pathname !== '/') {
+        // If not on home page, go to home first then scroll
+        navigate('/');
+        setTimeout(() => {
+          const element = document.querySelector(url);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      } else {
+        // Already on home page, just scroll
+        const element = document.querySelector(url);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    }
+  };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full bg-white shadow-md`}
-    >
-      <nav className="w-full max-w-[2000px] mx-auto px-5 sm:px-8 lg:px-12 py-4">
-        <div className="flex items-center justify-between w-full">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full">
+      <nav className="w-full max-w-[1800px] mx-auto px-8 py-3 flex items-center justify-between">
+        {/* Logo */}
           <div className="flex items-center">
             <a href="/" className="flex items-center">
-              <img src="/factor.svg" alt="DX FACTOR Logo" className="h-8" /> 
+            <img 
+              src="/factor.svg" 
+              alt="DX FACTOR Logo" 
+              className="h-9 w-auto" 
+              style={{ minWidth: 110 }}
+            />
             </a>
           </div>
 
-          <div className="hidden md:flex items-center justify-center flex-1 mx-10 space-x-8">
-            <a href="#platform" className="text-gray-700 hover:text-black transition-colors relative group">
-              Platform
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#agents" className="text-gray-700 hover:text-black transition-colors relative group">
-              Agents
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#results" className="text-gray-700 hover:text-black transition-colors relative group">
-              Results
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#services" className="text-gray-700 hover:text-black transition-colors relative group">
-              Services
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
-            <a href="#about" className="text-gray-700 hover:text-black transition-colors relative group">
-              About
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-green-500 transition-all duration-300 group-hover:w-full"></span>
-            </a>
+        {/* Tubelight Navbar - Desktop */}
+        <div className="hidden md:block">
+          <TubelightNavBar items={navLinks} onNavigate={handleNavigation} />
           </div>
 
-          <div className="hidden md:flex items-center space-x-4">
-            <Button className="bg-black hover:bg-gray-800 text-white border-none shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2">
+        {/* Book Demo Button - Desktop */}
+        <div className="hidden md:flex items-center">
+          <Button className="bg-black hover:bg-gray-900 text-white shadow-md transition-all duration-300 px-6 py-2 h-auto rounded-md font-medium text-base">
               Book Demo
             </Button>
           </div>
 
+        {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-700 hover:text-black"
+          className="md:hidden text-gray-800 ml-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
           </button>
-        </div>
+      </nav>
 
+      {/* Mobile Menu */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -62,54 +86,29 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden mt-4 w-full"
+            className="md:hidden w-full bg-white shadow-lg border-t"
             >
-              <div className="flex flex-col space-y-4 pt-4 pb-6 bg-white rounded-lg p-4 w-full shadow-lg">
-                <a
-                  href="#platform"
-                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
+            <div className="flex flex-col space-y-2 pt-4 pb-6 px-6">
+              {navLinks.map((item) => (
+                <button
+                  key={item.name}
+                  type="button"
+                  onClick={() => {
+                    handleNavigation(item.url);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="text-gray-800 font-medium text-base py-2 border-l-2 border-transparent hover:border-black pl-3 transition-colors duration-200 text-left"
                 >
-                  Platform
-                </a>
-                <a
-                  href="#agents"
-                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Agents
-                </a>
-                <a
-                  href="#results"
-                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Results
-                </a>
-                <a
-                  href="#services"
-                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Services
-                </a>
-                <a
-                  href="#about"
-                  className="text-gray-700 hover:text-black transition-colors py-2 border-l-2 border-transparent hover:border-green-500 pl-2"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About
-                </a>
-                <div className="pt-2 flex flex-col space-y-3">
-                  <Button className="bg-black hover:bg-gray-800 text-white border-none shadow-md hover:shadow-lg transition-all duration-300 w-full py-2">
+                  {item.name}
+                </button>
+              ))}
+              <Button className="bg-black hover:bg-gray-900 text-white border-none shadow-md transition-all duration-300 w-full py-3 text-base font-medium rounded-md mt-3">
                     Book Demo
                   </Button>
-                </div>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
     </header>
   );
 };

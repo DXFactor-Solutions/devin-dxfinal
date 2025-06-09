@@ -1,208 +1,239 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
-import { ArrowRight, PlayCircle } from 'lucide-react';
+import { ArrowRight, Play } from 'lucide-react';
+import TrustedByBelt from './TrustedByBelt';
+import TrillionDollarBackground from './TrillionDollarBackground';
 
-// Updated to have a cleaner 2-line format
-const FIRST_LINE = "We Don't Build Software";
-const SECOND_LINE = "We Build Revenue Machines";
-const SOFTWARE = 'Software';
-const REVENUE_MACHINES = 'Revenue Machines';
+const RevenueCountUp = ({ duration = 2500, delay = 0 }: { 
+  duration?: number; 
+  delay?: number; 
+}) => {
+  const [currentValue, setCurrentValue] = useState(100); // Start at 100M
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimeout = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    // Target is 2000M (2B), starting from 100M, incrementing by 100M
+    const startValue = 100;
+    const endValue = 2000;
+    const increment = 100;
+    const steps = (endValue - startValue) / increment;
+    const stepDuration = duration / steps;
+
+    let currentStep = 0;
+    
+    const interval = setInterval(() => {
+      currentStep++;
+      const newValue = startValue + (currentStep * increment);
+      setCurrentValue(newValue);
+      
+      if (newValue >= endValue) {
+        clearInterval(interval);
+      }
+    }, stepDuration);
+
+    return () => clearInterval(interval);
+  }, [started, duration]);
+
+  const formatValue = (value: number) => {
+    if (value >= 1000) {
+      const billions = value / 1000;
+      return `$${billions}B${value >= 2000 ? '+' : ''}`;
+    }
+    return `$${value}M`;
+  };
+
+  return <span>{formatValue(currentValue)}</span>;
+};
+
+const CountUp = ({ end, duration = 2000, delay = 0, suffix = '', prefix = '' }: { 
+  end: number; 
+  duration?: number; 
+  delay?: number; 
+  suffix?: string; 
+  prefix?: string; 
+}) => {
+  const [count, setCount] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimeout = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    let startTimestamp: number;
+    const step = (timestamp: number) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(easeOutCubic * end));
+
+      if (progress < 1) {
+        requestAnimationFrame(step);
+            }
+    };
+
+    requestAnimationFrame(step);
+  }, [started, end, duration]);
+
+  return <span>{prefix}{count}{suffix}</span>;
+};
+
+const TypingAnimation = ({ text, speed = 100, delay = 0 }: { text: string; speed?: number; delay?: number }) => {
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const startTimeout = setTimeout(() => {
+      setStarted(true);
+    }, delay);
+
+    return () => clearTimeout(startTimeout);
+  }, [delay]);
+
+  useEffect(() => {
+    if (!started) return;
+
+    if (currentIndex < text.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText(prev => prev + text[currentIndex]);
+        setCurrentIndex(prev => prev + 1);
+      }, speed);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, text, speed, started]);
+
+    return (
+    <span>
+      {displayedText}
+    </span>
+    );
+  };
 
 const HeroSection = () => {
-  const [text1, setText1] = useState('');
-  const [text2, setText2] = useState('');
-  const [showCursor1, setShowCursor1] = useState(true);
-  const [showCursor2, setShowCursor2] = useState(false);
-  const [line1Done, setLine1Done] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  const fullLine1 = "We Don't Build Software";
-  const fullLine2 = "We Build Revenue Machines";
-  
-  const softwareWord = "Software";
-  const revenueMachinesWord = "Revenue Machines";
-
-  const softwareStartIndex = fullLine1.indexOf(softwareWord);
-  const softwareEndIndex = softwareStartIndex + softwareWord.length;
-  const revenueMachinesStartIndex = fullLine2.indexOf(revenueMachinesWord);
-
-  useEffect(() => {
-    // Initialize video when component mounts
-    if (videoRef.current) {
-      videoRef.current.playbackRate = 0.8; // Slightly slower playback
-    }
-  }, []);
-
-  useEffect(() => {
-    setText1('');
-    setText2('');
-    setShowCursor1(true);
-    setShowCursor2(false);
-    setLine1Done(false);
-
-    let charIndex1 = 0;
-    const interval1 = setInterval(() => {
-      if (charIndex1 < fullLine1.length) {
-        setText1(fullLine1.substring(0, charIndex1 + 1));
-        charIndex1++;
-      } else {
-        clearInterval(interval1);
-        setShowCursor1(false);
-        setLine1Done(true);
-
-        setTimeout(() => {
-          setShowCursor2(true);
-          let charIndex2 = 0;
-          const interval2 = setInterval(() => {
-            if (charIndex2 < fullLine2.length) {
-              setText2(fullLine2.substring(0, charIndex2 + 1));
-              charIndex2++;
-            } else {
-              clearInterval(interval2);
-              setShowCursor2(false); // Hide cursor when done
-            }
-          }, 70); // Typing speed for line 2
-        }, 500); // Pause between lines
-      }
-    }, 70); // Typing speed for line 1
-
-    return () => {
-      clearInterval(interval1);
-      // It's good practice to clear the second interval too, though it's nested.
-      // This might require a ref for interval2 if cleanup is strictly needed here.
-    };
-  }, []); // Empty dependency array ensures this runs once on mount
-
-  const renderLine1 = () => {
-    const part1 = text1.substring(0, softwareStartIndex);
-    const software = text1.substring(softwareStartIndex, Math.min(text1.length, softwareEndIndex));
-    const part3 = text1.substring(Math.min(text1.length, softwareEndIndex));
-
-    return (
-      <div className="block mb-2 md:mb-3 whitespace-nowrap">
-        {part1}
-        {software && (
-          <span className="relative inline-block">
-            <span className="text-white">{software}</span>
-            {text1.length >= softwareEndIndex && (
-              <span 
-                className="absolute left-0 right-0 top-1/2 h-1 bg-red-500 opacity-80 transform -translate-y-1/2 pointer-events-none"
-                style={{ zIndex: 1 }}
-              ></span>
-            )}
-          </span>
-        )}
-        {part3}
-        {showCursor1 && <span className="animate-pulse text-white">|</span>}
-      </div>
-    );
-  };
-
-  const renderLine2 = () => {
-    if (!line1Done) return null;
-    const beforeRevenue = text2.substring(0, revenueMachinesStartIndex);
-    const revenueMachines = text2.substring(revenueMachinesStartIndex);
-
-    return (
-      <div className="block whitespace-nowrap">
-        {beforeRevenue}
-        {revenueMachines && (
-          <span className="text-green-500">{revenueMachines}</span>
-        )}
-        {showCursor2 && <span className="animate-pulse text-white">|</span>}
-      </div>
-    );
-  };
-
   return (
-    <section className="relative h-screen flex flex-col pt-20 overflow-hidden">
-      {/* Video Background */}
-      <div className="absolute inset-0 w-full h-full z-0">
-        <video 
-          ref={videoRef}
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover"
-          style={{ filter: 'brightness(0.8)' }}
-        >
-          <source src="/videos/dx1.mp4" type="video/mp4" />
-        </video>
+    <section className="relative min-h-screen overflow-hidden flex flex-col justify-between">
+      {/* Trillion Dollar Background */}
+      <div className="absolute inset-0 z-10">
+        <TrillionDollarBackground />
       </div>
 
-      {/* Content Overlay */}
-      <div className="relative z-10 flex-1 flex flex-col justify-center items-center w-full">
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="container px-4 mx-auto text-center"
-        >
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="mb-4 md:mb-5 text-4xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto flex flex-col"
-            style={{ lineHeight: 1.2, minHeight: '2.8em' }} // minHeight helps prevent layout shift
-          >
-            {renderLine1()}
-            {renderLine2()}
-          </motion.div>
+      {/* Content Overlay - z-20 with pointer-events-none on container, auto on interactive elements */}
+      <div className="relative z-20 flex flex-col h-screen pointer-events-none">
+        {/* Main content - takes most of the screen */}
+        <div className="flex-grow flex flex-col justify-center items-center text-center px-4 pt-20 pb-10">
+          <div className="max-w-6xl mx-auto pointer-events-auto">
+            {/* Header with typing animation */}
+            <div className="mb-8">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
+                <span className="block mb-2">
+                  <TypingAnimation 
+                    text="We Don't Build " 
+                    speed={80} 
+                    delay={500}
+                  />
+                  <span className="relative">
+                    <TypingAnimation 
+                      text="Software" 
+                      speed={80} 
+                      delay={1700}
+                    />
+                    <span className="absolute left-0 right-0 top-1/2 h-[3px] bg-red-500 opacity-90 transform -translate-y-1/2 z-20 animate-in fade-in duration-500 delay-[2500ms]"></span>
+                  </span>
+                </span>
+                <span className="block text-5xl md:text-6xl lg:text-7xl">
+                  <TypingAnimation 
+                    text="We Build " 
+                    speed={80} 
+                    delay={3000}
+                  />
+                  <span className="text-green-600">
+                    <TypingAnimation 
+                      text="Revenue Machines" 
+                      speed={80} 
+                      delay={3800}
+                    />
+                  </span>
+                </span>
+              </h1>
+            </div>
+            
+            {/* Subtitle */}
+            <div className="mb-16">
+              <p className="max-w-2xl mx-auto text-base md:text-xl text-gray-700 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[1000ms]">
+             Meet the DXAgent Outcomes Platform — the only AI system built from<br className="hidden md:block" />
+             100s of real fitness operator deployment. Each Agent solves a specific revenue, operations, or experience challenge—with proven ROI, not promises.
+              </p>
+            </div>
           
-          <motion.p 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="max-w-xl md:max-w-2xl mx-auto mb-7 md:mb-8 text-base md:text-xl text-gray-200 leading-relaxed"
-          >
-            The first Agentic Platform built specifically for Fitness & Wellness. Deploy agents that deliver measurable outcomes at scale.
-          </motion.p>
-          
-          <motion.div 
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-wrap items-center justify-center gap-3 md:gap-5 mb-8"
-          >
+            {/* CTA Buttons */}
+            <div className="mb-24">
+              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[1500ms]">
             <Button 
-              size="lg" 
-              className="bg-black hover:bg-gray-800 text-white border-none rounded-md px-8 py-3 shadow-md hover:shadow-lg transition-all duration-300"
+                  className="bg-green-600 hover:bg-green-700 text-white border-none rounded-md px-8 py-3 text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 h-auto"
             >
-              Book Demo
+                  Start Free with Concierge Agent
               <ArrowRight className="ml-2 w-4 h-4" />
             </Button>
             <Button 
               variant="outline" 
-              size="lg"
-              className="border-white hover:border-gray-300 text-white hover:text-white bg-transparent hover:bg-black/20 rounded-md px-8 py-3 shadow-sm hover:shadow-md transition-all duration-300"
+                  className="border-green-600 hover:border-green-700 text-green-600 hover:text-white bg-white/80 hover:bg-green-600 rounded-md px-8 py-3 text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 h-auto"
             >
-              <PlayCircle className="mr-2 w-5 h-5 text-gray-200" />
-              Watch Demo
+                  <Play className="mr-2 w-5 h-5" />
+                  Request a Demo
             </Button>
-          </motion.div>
+              </div>
+            </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9, duration: 0.8 }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 max-w-4xl mx-auto mt-10 md:mt-12 w-full px-2"
-          >
-            <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-lg shadow-lg border border-white/10">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-1">$2B+</h3>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">REVENUE GENERATED</p>
+            {/* Stats section */}
+            <div className="mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-4xl mx-auto animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[2000ms]">
+                <div className="p-6 bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm pointer-events-auto hover:shadow-md transition-shadow duration-300">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <RevenueCountUp duration={2500} delay={2000} />
+                  </h3>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider font-medium">Revenue Generated</p>
+                </div>
+                <div className="p-6 bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm pointer-events-auto hover:shadow-md transition-shadow duration-300">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <CountUp end={120} duration={2500} delay={2200} suffix="%" />
+                  </h3>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider font-medium">Net Revenue Retention</p>
+                </div>
+                <div className="p-6 bg-white/90 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm pointer-events-auto hover:shadow-md transition-shadow duration-300">
+                  <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <CountUp end={96} duration={2500} delay={2400} />
+                  </h3>
+                  <p className="text-xs text-gray-600 uppercase tracking-wider font-medium">Net Promoter Score</p>
+                </div>
+              </div>
             </div>
-            <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-lg shadow-lg border border-white/10">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-1">120%</h3>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">NET REVENUE RETENTION</p>
-            </div>
-            <div className="text-center p-6 bg-black/40 backdrop-blur-sm rounded-lg shadow-lg border border-white/10">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-1">96</h3>
-              <p className="text-xs md:text-sm text-gray-300 uppercase tracking-wider">NET PROMOTER SCORE</p>
-            </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
+        
+        {/* Trusted By section - clean belt at bottom */}
+        <div className="pb-8 md:pb-12 w-full animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[2500ms]">
+          <TrustedByBelt />
+        </div>
       </div>
     </section>
   );

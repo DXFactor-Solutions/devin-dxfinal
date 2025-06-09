@@ -17,7 +17,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="pt-16 pb-10 bg-white relative overflow-hidden">
+    <footer className="pt-16 pb-10 bg-white relative overflow-hidden w-full">
       {/* Top divider */}
       <div className="absolute top-0 left-0 right-0 overflow-hidden">
         <svg className="relative block w-full h-10 transform rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -36,20 +36,18 @@ const Footer = () => {
       {/* Background gradient elements */}
       <div className="absolute top-20 right-1/4 w-96 h-96 bg-green-200/10 rounded-full blur-[120px] opacity-70"></div>
       
-      <div className="container px-4 sm:px-6 lg:px-8 mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="px-8 sm:px-12 lg:px-16 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <div className="flex items-center mb-6">
               <img src="/factor.svg" alt="DX FACTOR Logo" className="h-8" />
             </div>
             <p className="text-gray-600 mb-6 max-w-xs">
-              The first Agentic Platform built specifically for Fitness & Wellness. Deploy agents that deliver measurable outcomes at scale.
+              Stay up to date with insights from DXFactor
             </p>
+            <p className="text-gray-500 text-sm uppercase mb-4">Stay Connected</p>
             <div className="flex space-x-4">
-              <a href="#" className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-50 hover:text-green-600 transition-colors">
-                <Twitter className="h-4 w-4" />
-              </a>
               <a href="#" className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-green-50 hover:text-green-600 transition-colors">
                 <Linkedin className="h-4 w-4" />
               </a>
@@ -59,32 +57,63 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Quick Links */}
+          {/* Solutions */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">Platform</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">SOLUTIONS</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#platform" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#ai-agents" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Platform Overview</span>
+                  <span>AI Agents</span>
                 </a>
               </li>
               <li>
-                <a href="#agents" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#click2save" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>AI Micro Agents</span>
+                  <span>Click2Save</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          
+          {/* Core Digital Services */}
+          <div>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">CORE DIGITAL SERVICES</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#agentic-ai-development" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Agentic AI Development</span>
                 </a>
               </li>
               <li>
-                <a href="#results" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#data-warehouse" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Results</span>
+                  <span>Data Warehouse</span>
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#business-intelligence" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Pricing</span>
+                  <span>Business Intelligence</span>
+                </a>
+              </li>
+              <li>
+                <a href="#mobile-application" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Mobile Application Development</span>
+                </a>
+              </li>
+              <li>
+                <a href="#custom-software" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Custom Software Development & Integrations</span>
+                </a>
+              </li>
+              <li>
+                <a href="#ui-ux" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>UI / UX</span>
                 </a>
               </li>
             </ul>
@@ -92,24 +121,18 @@ const Footer = () => {
           
           {/* Company */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">Company</h3>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">COMPANY</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#about" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#about-us" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>About Us</span>
+                  <span>About us</span>
                 </a>
               </li>
               <li>
-                <a href="#services" className="text-gray-600 hover:text-green-600 flex items-center group">
+                <a href="#why-us" className="text-gray-600 hover:text-green-600 flex items-center group">
                   <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Services</span>
-                </a>
-              </li>
-              <li>
-                <a href="#testimonials" className="text-gray-600 hover:text-green-600 flex items-center group">
-                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
-                  <span>Testimonials</span>
+                  <span>Why us</span>
                 </a>
               </li>
               <li>
@@ -118,46 +141,68 @@ const Footer = () => {
                   <span>Careers</span>
                 </a>
               </li>
+              <li>
+                <a href="#contact-us" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Contact us</span>
+                </a>
+              </li>
             </ul>
           </div>
           
-          {/* Contact */}
+          {/* Resources */}
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">Contact</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start">
-                <MapPin className="w-5 h-5 text-green-600 mt-0.5 mr-2 flex-shrink-0" />
-                <span className="text-gray-600">123 Innovation Drive<br/>San Francisco, CA 94107</span>
+            <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">RESOURCES</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="#blog" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Blog</span>
+                </a>
               </li>
-              <li className="flex items-center">
-                <PhoneCall className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
-                <a href="tel:+1234567890" className="text-gray-600 hover:text-green-600">+1 (234) 567-890</a>
+              <li>
+                <a href="#case-studies" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Case Studies</span>
+                </a>
               </li>
-              <li className="flex items-center">
-                <Mail className="w-5 h-5 text-green-600 mr-2 flex-shrink-0" />
-                <a href="mailto:contact@dxfactor.com" className="text-gray-600 hover:text-green-600">contact@dxfactor.com</a>
+              <li>
+                <a href="#news" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>News</span>
+                </a>
+              </li>
+              <li>
+                <a href="#webinars" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Webinars</span>
+                </a>
+              </li>
+              <li>
+                <a href="#ebooks" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Ebooks</span>
+                </a>
+              </li>
+              <li>
+                <a href="#videos" className="text-gray-600 hover:text-green-600 flex items-center group">
+                  <ChevronRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 transition-all" />
+                  <span>Videos</span>
+                </a>
               </li>
             </ul>
           </div>
         </div>
         
-        {/* Newsletter Section */}
+        {/* Certification Section */}
         <div className="border-t border-gray-200 pt-10 pb-8">
           <div className="flex flex-col md:flex-row md:items-center justify-between">
             <div className="mb-6 md:mb-0">
-              <h3 className="text-lg font-semibold text-gray-900 mb-1 font-['Open_Sans']">Stay Updated</h3>
-              <p className="text-gray-600 text-sm">Subscribe to our newsletter for the latest updates</p>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
-              />
-              <Button className="bg-green-600 hover:bg-green-700 text-white border-none shadow-md hover:shadow-lg transition-all duration-300 px-6 py-2">
-                Subscribe
-                <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
+              <h3 className="text-lg font-semibold text-gray-900 mb-4 font-['Open_Sans']">CERTIFICATION</h3>
+              <div className="flex flex-wrap gap-6">
+                <img src="/logos/iso-certification.png" alt="ISO 27001:2013" className="h-16 object-contain" />
+                <img src="/logos/great-place-to-work.png" alt="Great Place to Work Certified" className="h-16 object-contain" />
+              </div>
             </div>
           </div>
         </div>

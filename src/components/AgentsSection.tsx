@@ -1,418 +1,340 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { 
-  ShieldAlert, Bot, Target, PieChart, Activity, Settings, Info, ArrowLeft, TrendingUp, 
-  Crosshair, MessageSquare, Gauge, Clock, RefreshCw, User, Globe, Users, MapPin, 
-  Calendar, Handshake, Search, Tags, Percent, Rocket, Dumbbell, Apple, Heart, Trophy,
-  CalendarCheck, Wrench, Lightbulb, FileText, Plus, ChevronRight, Check
+  ShieldAlert, Bot, Target, PieChart, Activity, Settings,
+  Calculator, ArrowRight
 } from 'lucide-react';
-
-// Define agent categories
-type AgentCategory = 'all' | 'growth' | 'retention' | 'experience' | 'operations';
-
-// Define agent interface
-interface Agent {
-  id: string;
-  name: string;
-  description: string;
-  category: Exclude<AgentCategory, 'all'>;
-  icon: React.ElementType;
-  impact: {
-    value: string;
-    label: string;
-  };
-  features: {
-    icon: React.ElementType;
-    text: string;
-  }[];
-}
+import { Button } from './ui/button';
+import { cn } from '@/lib/utils';
+import DXFactorBackground from './DXFactorBackground';
 
 const AgentsSection: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<AgentCategory>('all');
-  const [flippedCard, setFlippedCard] = useState<string | null>(null);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  // Reset flipped cards when changing categories
-  useEffect(() => {
-    setFlippedCard(null);
-  }, [activeCategory]);
-
-  // Agents data
-  const agents: Agent[] = [
+  // Agent data structure with unified green aesthetic
+  const agents = [
     {
       id: 'click2save',
       name: 'Click2Save',
-      description: 'Proactively identifies at-risk members and deploys targeted retention strategies before they cancel.',
-      category: 'retention',
+      shortName: 'C2S',
+      description: 'Save Thousands of Dollars Click2Save helps you stop cancellations from walking out the door.',
+      category: 'Retention',
       icon: ShieldAlert,
-      impact: {
-        value: '85%',
-        label: 'reduction in churn rate'
+      stats: {
+        value: '15%',
+        label: 'Higher Retention'
       },
-      features: [
-        {
-          icon: TrendingUp,
-          text: 'Analyzes 50+ behavior signals to predict cancellation risk'
-        },
-        {
-          icon: Crosshair,
-          text: 'Creates personalized retention offers based on member history'
-        },
-        {
-          icon: MessageSquare,
-          text: 'Engages via preferred channel (email, SMS, app) at optimal time'
-        },
-        {
-          icon: Gauge,
-          text: 'Continuously optimizes strategies based on results'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       id: 'member-concierge',
       name: 'Member Concierge',
+      shortName: 'MC',
       description: '24/7 AI-powered member support that handles inquiries, bookings, and personalized recommendations.',
-      category: 'experience',
+      category: 'Experience',
       icon: Bot,
-      impact: {
+      stats: {
         value: '90%',
-        label: 'query resolution rate'
+        label: 'Resolution Rate'
       },
-      features: [
-        {
-          icon: Clock,
-          text: 'Available 24/7 across all digital channels'
-        },
-        {
-          icon: RefreshCw,
-          text: 'Integrates with your booking and membership systems'
-        },
-        {
-          icon: User,
-          text: 'Remembers preferences and history for personalized service'
-        },
-        {
-          icon: Globe,
-          text: 'Supports multiple languages and escalates to human when needed'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       id: 'lead-converter',
       name: 'Lead Converter',
+      shortName: 'LC',
       description: 'Intelligently nurtures prospects through personalized journeys, optimizing conversion at every touchpoint.',
-      category: 'growth',
+      category: 'Growth',
       icon: Target,
-      impact: {
+      stats: {
         value: '40%',
-        label: 'increase in lead conversion'
+        label: 'Lead Conversion'
       },
-      features: [
-        {
-          icon: Users,
-          text: 'Creates unique buyer personas based on behavioral data'
-        },
-        {
-          icon: MapPin,
-          text: 'Designs optimal conversion paths for each prospect type'
-        },
-        {
-          icon: Calendar,
-          text: 'Schedules perfectly timed multi-channel touchpoints'
-        },
-        {
-          icon: Handshake,
-          text: 'Identifies ideal moment to involve human sales team'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       id: 'revenue-optimizer',
       name: 'Revenue Optimizer',
+      shortName: 'RO',
       description: 'Analyzes member behavior and market trends to identify upselling and cross-selling opportunities.',
-      category: 'growth',
+      category: 'Growth',
       icon: PieChart,
-      impact: {
+      stats: {
         value: '25%',
-        label: 'boost in revenue per member'
+        label: 'Revenue Boost'
       },
-      features: [
-        {
-          icon: Search,
-          text: 'Identifies spending patterns and service gaps'
-        },
-        {
-          icon: Tags,
-          text: 'Creates personalized upsell and cross-sell bundles'
-        },
-        {
-          icon: Percent,
-          text: 'Optimizes pricing based on willingness to pay'
-        },
-        {
-          icon: Rocket,
-          text: 'Deploys offers through email, app, and in-person staff'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       id: 'fitness-coach',
       name: 'Fitness Coach AI',
+      shortName: 'FC',
       description: 'Delivers personalized workout plans and nutrition guidance based on individual goals and progress.',
-      category: 'experience',
+      category: 'Experience',
       icon: Activity,
-      impact: {
+      stats: {
         value: '60%',
-        label: 'improvement in member engagement'
+        label: 'Engagement Lift'
       },
-      features: [
-        {
-          icon: Dumbbell,
-          text: 'Creates adaptive workout plans based on fitness level'
-        },
-        {
-          icon: Apple,
-          text: 'Provides nutrition guidance aligned with fitness goals'
-        },
-        {
-          icon: Heart,
-          text: 'Adjusts plans based on progress and lifestyle changes'
-        },
-        {
-          icon: Trophy,
-          text: 'Celebrates achievements and maintains motivation'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     },
     {
       id: 'operations-manager',
       name: 'Operations Manager',
+      shortName: 'OM',
       description: 'Optimizes facility usage, manages equipment maintenance, and automates administrative tasks.',
-      category: 'operations',
+      category: 'Operations',
       icon: Settings,
-      impact: {
+      stats: {
         value: '50%',
-        label: 'reduction in operational costs'
+        label: 'Cost Reduction'
       },
-      features: [
-        {
-          icon: CalendarCheck,
-          text: 'Optimizes staff scheduling based on demand patterns'
-        },
-        {
-          icon: Wrench,
-          text: 'Predicts maintenance needs before equipment fails'
-        },
-        {
-          icon: Lightbulb,
-          text: 'Manages energy usage to reduce utility costs'
-        },
-        {
-          icon: FileText,
-          text: 'Automates invoicing, payroll, and inventory management'
-        }
-      ]
+      color: 'text-green-600',
+      bgColor: 'bg-green-50'
     }
   ];
 
-  // Filter agents by category
-  const filteredAgents = activeCategory === 'all' 
-    ? agents 
-    : agents.filter(agent => agent.category === activeCategory);
-
-  const handleCardFlip = (id: string) => {
-    if (isAnimating) return;
-    
-    setIsAnimating(true);
-    if (flippedCard === id) {
-      setFlippedCard(null);
-    } else {
-      setFlippedCard(id);
-    }
-    
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 700); // Match to transition duration
-  };
-
   return (
-    <section className="pt-16 pb-20 bg-gray-50 relative overflow-hidden" id="agents">
-      {/* Top divider */}
-      <div className="absolute top-0 left-0 right-0 overflow-hidden">
-        <svg className="relative block w-full h-10 transform rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
-        </svg>
+    <section className="min-h-screen flex flex-col items-center justify-center relative overflow-hidden py-10" id="agents">
+      {/* Modern Grid Background */}
+      <div className="absolute inset-0 z-0">
+        <DXFactorBackground />
       </div>
       
-      {/* Bottom divider */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden">
-        <svg className="relative block w-full h-10" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
-        </svg>
-      </div>
-      
-      {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}></div>
-      </div>
-      
-      {/* Background gradient elements */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-green-200/10 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-green-200/10 rounded-full blur-[100px]"></div>
-      
-      {/* Green accent gradient */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-green-400 to-green-600"></div>
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-12 animate-on-scroll fade-up">
-          <div className="inline-block mb-3 px-4 py-1 bg-white/80 rounded-full shadow-sm">
-            <span className="text-sm font-medium text-gray-600 flex items-center gap-1">
-              <Bot size={14} className="text-green-600" />
-              Our AI Technology
-            </span>
+      <div className="max-w-[1500px] mx-auto px-6 w-full relative z-10 flex flex-col items-center justify-center">
+        <div className="w-full flex flex-col items-center justify-center">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-light text-gray-900 mb-5 tracking-tight leading-tight bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 bg-clip-text">
+              Meet the DX Outcomes Agent Platform
+            </h2>
+            <h3 className="text-xl md:text-2xl font-medium bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent mb-6">
+              Not Just Another AI Tool. This Is the Operator's Edge.
+            </h3>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-lg md:text-xl text-gray-700 font-light leading-relaxed mb-5">
+                DXFactor has been in the trenches of Fitness & Wellness for years – working side-by-side with operators to solve real challenges.
+              </p>
+              <p className="text-base md:text-lg text-gray-600 font-light leading-relaxed">
+                From cancellations to collections, onboarding to member experience, we've seen the real problems. That's why we built <span className="font-semibold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">Outcome Agents</span> – AI modules that work 24/7 to grow your business, save staff time, and delight members.
+              </p>
+            </div>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-['Open_Sans']">
-            <span className="relative inline-block">
-              <span className="relative z-10">AI Micro Agents</span>
-              <span className="absolute bottom-2 left-0 w-full h-3 bg-green-200/50 z-0"></span>
-            </span>
-          </h2>
-          <p className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
-            Specialized AI agents built to solve specific challenges and drive measurable results
-          </p>
-        </div>
 
-        {/* Category Tabs */}
-        <div className="flex justify-center flex-wrap gap-2 mb-12 animate-on-scroll scale-in delay-200">
-          {(['all', 'growth', 'retention', 'experience', 'operations'] as const).map(category => (
-            <button
-              key={category}
-              className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200
-                ${activeCategory === category 
-                  ? 'bg-green-600 text-white shadow-md' 
-                  : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-200'
-                }`}
-              onClick={() => setActiveCategory(category)}
-            >
-              {category === activeCategory && (
-                <span className="inline-block mr-1">
-                  <Check size={14} />
-                </span>
-              )}
-              {category.charAt(0).toUpperCase() + category.slice(1)} {category === 'all' ? 'Agents' : ''}
-            </button>
-          ))}
-        </div>
-
-        {/* Agents Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredAgents.map((agent, index) => {
-            const isFlipped = flippedCard === agent.id;
-            
-            return (
-              <div key={agent.id} className={`perspective-1000 animate-on-scroll fade-up delay-${(index % 3) * 100 + 300}`}>
-                <div
-                  className={`relative h-[450px] w-full transition-transform duration-700 transform-style-3d ${
-                    isFlipped ? 'rotate-y-180' : ''
-                  }`}
-                >
-                  {/* Card Front */}
-                  <div 
-                    className="absolute inset-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 backface-hidden hover:shadow-xl transition-all duration-300"
-                  >
-                    {/* Colored accent line at top of card */}
-                    <div className="h-1 w-full bg-gradient-to-r from-green-400 to-green-600"></div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className="flex items-center">
-                          <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center mr-4 flex-shrink-0">
-                            <agent.icon className="w-5 h-5 text-gray-600" />
-                          </div>
-                          <div>
-                            <h3 className="text-xl font-semibold text-gray-900 font-['Open_Sans']">{agent.name}</h3>
-                            <span className="text-xs font-medium text-green-600 mt-0.5 block">
-                              {agent.category.charAt(0).toUpperCase() + agent.category.slice(1)}
-                            </span>
-                          </div>
+          {/* Cards Arranged Horizontally with Staggered Heights */}
+          <div className="relative w-full max-w-[1400px]">
+            {/* Horizontal Layout Container with Staggered Positioning */}
+            <div className="flex items-center justify-center gap-4 relative h-[350px]">
+              {/* Left Side Cards (first 3) - Staggered Heights */}
+              <div className="flex gap-4 items-center">
+                {/* Card 1 - Higher */}
+                <div className="transform -translate-y-10 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-12 cursor-pointer group">
+                  <div className="w-60 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[0].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
                         </div>
-                        <div className="text-xs font-medium text-white px-3 py-1 rounded-full bg-green-600">
-                          AI Powered
-                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[0].name}</h3>
                       </div>
-                      
-                      <p className="text-gray-600 text-sm leading-relaxed mb-6">{agent.description}</p>
-                      
-                      {/* Impact Stats */}
-                      <div className="mt-auto mb-6">
-                        <div className="flex items-center">
-                          <div className="w-16 h-16 rounded-full flex items-center justify-center bg-green-50 mr-4">
-                            <span className="text-2xl font-bold text-green-600">{agent.impact.value}</span>
-                          </div>
-                          <div className="text-sm text-gray-700 font-medium">
-                            {agent.impact.label}
-                          </div>
-                        </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[0].category}
                       </div>
-                      
-                      {/* Flip Button */}
-                      <button
-                        onClick={() => handleCardFlip(agent.id)}
-                        className="w-full py-3 px-4 bg-green-600 text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-700 hover:shadow-md"
-                      >
-                        View Capabilities
-                        <ChevronRight size={16} className="text-white" />
-                      </button>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[0].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[0].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[0].stats.label}</div>
+                      </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                        <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                      </Button>
                     </div>
                   </div>
-                  
-                  {/* Card Back */}
-                  <div 
-                    className="absolute inset-0 bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 backface-hidden rotate-y-180"
-                  >
-                    {/* Colored accent line at top of card */}
-                    <div className="h-1 w-full bg-gradient-to-r from-green-400 to-green-600"></div>
-                    
-                    <div className="p-6">
-                      <div className="flex items-center mb-4">
-                        <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center mr-3 flex-shrink-0">
-                          <agent.icon className="w-5 h-5 text-gray-600" />
+                </div>
+
+                {/* Card 2 - Center */}
+                <div className="transition-all duration-500 hover:scale-[1.02] cursor-pointer group">
+                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[1].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
                         </div>
-                        <div>
-                          <h3 className="text-lg font-semibold text-gray-900">{agent.name}</h3>
-                          <p className="text-xs text-gray-500">Key Features & Capabilities</p>
-                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[1].name}</h3>
                       </div>
-                      
-                      {/* Features List */}
-                      <ul className="space-y-4 mb-6 h-[260px] overflow-auto">
-                        {agent.features.map((feature, idx) => (
-                          <li key={idx} className="flex gap-3 items-start">
-                            <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600 flex-shrink-0 mt-0.5">
-                              <feature.icon className="w-4 h-4" />
-                            </div>
-                            <p className="text-sm text-gray-700 leading-tight pt-1.5">{feature.text}</p>
-                          </li>
-                        ))}
-                      </ul>
-                      
-                      {/* Back Button */}
-                      <button
-                        onClick={() => handleCardFlip(agent.id)}
-                        className="w-full py-3 px-4 bg-green-600 text-white text-sm font-medium rounded-lg flex items-center justify-center gap-2 transition-all duration-300 hover:bg-green-700 hover:shadow-md"
-                      >
-                        <ArrowLeft size={16} />
-                        Back to Overview
-                      </button>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[1].category}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[1].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[1].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[1].stats.label}</div>
+                      </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                        <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 3 - Lower */}
+                <div className="transform translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:translate-y-14 cursor-pointer group">
+                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[2].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[2].name}</h3>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[2].category}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[2].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[2].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[2].stats.label}</div>
+                      </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                        <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                      </Button>
                     </div>
                   </div>
                 </div>
               </div>
-            );
-          })}
+
+              {/* Central DX Core - adjusted size */}
+              <div className="flex-shrink-0 mx-5">
+                <div className="w-36 h-36 bg-gradient-to-br from-white/30 via-white/20 to-white/10 backdrop-blur-xl rounded-full flex items-center justify-center shadow-2xl shadow-green-200/30 border-2 border-green-300/60 hover:shadow-green-300/40 hover:scale-105 hover:border-green-400/70 transition-all duration-500 cursor-pointer group relative">
+                  {/* Inner border ring for extra definition */}
+                  <div className="absolute inset-1 rounded-full border border-white/40 pointer-events-none"></div>
+                  <div className="text-center text-gray-900 group-hover:scale-110 transition-transform duration-500">
+                    <div className="text-2xl font-light mb-1 bg-gradient-to-r from-gray-800 to-gray-900 bg-clip-text text-transparent">DX</div>
+                    <div className="text-xs font-medium opacity-80 tracking-wider bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">Outcomes</div>
+                  </div>
+                          </div>
+                          </div>
+
+              {/* Right Side Cards (last 3) - with spacing adjustments */}
+              <div className="flex gap-5 items-center">
+                {/* Card 4 - Lower (mirrors card 3) */}
+                <div className="transform translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:translate-y-14 cursor-pointer group">
+                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[3].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[3].name}</h3>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[3].category}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[3].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[3].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[3].stats.label}</div>
+                          </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                            <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                          </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 5 - Center (mirrors card 2) */}
+                <div className="transition-all duration-500 hover:scale-[1.02] cursor-pointer group">
+                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[4].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[4].name}</h3>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[4].category}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[4].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[4].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[4].stats.label}</div>
+                      </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                        <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Card 6 - Higher (mirrors card 1) */}
+                <div className="transform -translate-y-12 transition-all duration-500 hover:scale-[1.02] hover:-translate-y-14 cursor-pointer group">
+                  <div className="w-64 bg-gradient-to-br from-white/95 to-white/90 backdrop-blur-md rounded-3xl shadow-xl shadow-green-100/50 border border-white/50 p-5 hover:shadow-2xl hover:shadow-green-200/60 transition-all duration-500 group-hover:border-green-200/70">
+                    {/* Header */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center">
+                        <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center mr-3 shadow-lg shadow-green-100/50 transition-all duration-300 group-hover:shadow-green-200/70", "bg-gradient-to-br from-green-50 to-green-100 border border-green-200/50")}>
+                          {React.createElement(agents[5].icon, { className: "w-5 h-5 text-green-600", strokeWidth: 1.5 })}
+                        </div>
+                        <h3 className="text-sm font-semibold text-gray-900 group-hover:text-gray-800 transition-colors duration-300">{agents[5].name}</h3>
+                      </div>
+                      <div className="px-3 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider bg-gradient-to-r from-green-100 to-green-200 text-green-700 border border-green-200/50 shadow-sm">
+                        {agents[5].category}
+                      </div>
+                    </div>
+                    <p className="text-gray-600 text-xs leading-relaxed mb-5 group-hover:text-gray-700 transition-colors duration-300">{agents[5].description}</p>
+                    <div className="flex items-center justify-between">
+                      <div className="group-hover:transform group-hover:scale-105 transition-transform duration-300">
+                        <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-green-700 bg-clip-text text-transparent">{agents[5].stats.value}</div>
+                        <div className="text-xs text-gray-500 uppercase tracking-wider font-medium">{agents[5].stats.label}</div>
+                      </div>
+                      <Button variant="outline" size="sm" className="border-2 border-green-300/70 text-green-700 hover:bg-gradient-to-r hover:from-green-50 hover:to-green-100 hover:border-green-400 text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-green-100/50 hover:shadow-green-200/70 transition-all duration-300">
+                        <Calculator className="w-3.5 h-3.5" />
+                        ROI
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Enhanced Connection Lines with Gradients */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
+              <defs>
+                <linearGradient id="connectionGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style={{ stopColor: 'rgba(34, 197, 94, 0.1)', stopOpacity: 1 }} />
+                  <stop offset="50%" style={{ stopColor: 'rgba(34, 197, 94, 0.3)', stopOpacity: 1 }} />
+                  <stop offset="100%" style={{ stopColor: 'rgba(34, 197, 94, 0.1)', stopOpacity: 1 }} />
+                </linearGradient>
+              </defs>
+              {/* Line from left group to center */}
+              <line x1="30%" y1="50%" x2="50%" y2="50%" stroke="url(#connectionGradient)" strokeWidth="2" strokeDasharray="6,6" />
+              {/* Line from center to right group */}
+              <line x1="50%" y1="50%" x2="70%" y2="50%" stroke="url(#connectionGradient)" strokeWidth="2" strokeDasharray="6,6" />
+              </svg>
+                    </div>
         </div>
       </div>
     </section>

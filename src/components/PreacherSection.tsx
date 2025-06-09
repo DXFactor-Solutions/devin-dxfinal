@@ -85,16 +85,27 @@ const PreacherSection: React.FC = () => {
   ];
 
   return (
-    <section className="pt-16 pb-20 bg-gray-50 relative overflow-hidden">
+    <section 
+      className="min-h-screen flex flex-col justify-center py-16 bg-gray-50 relative overflow-hidden"
+      style={{
+        backgroundImage: `url('/videos/dxf1t back.png')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Optional overlay for better text readability */}
+      <div className="absolute inset-0 bg-white/60"></div>
+      
       {/* Top divider for separation from AgentsSection */}
-      <div className="absolute top-0 left-0 right-0 overflow-hidden">
+      <div className="absolute top-0 left-0 right-0 overflow-hidden z-10">
         <svg className="relative block w-full h-10 transform rotate-180" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-gray-50"></path>
         </svg>
       </div>
       
       {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div className="absolute inset-0 opacity-5 z-10">
         <div className="absolute inset-0" style={{ 
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           backgroundSize: '60px 60px'
@@ -102,13 +113,13 @@ const PreacherSection: React.FC = () => {
       </div>
       
       {/* Background gradient elements */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-green-200/10 rounded-full blur-[120px]"></div>
-      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-green-200/10 rounded-full blur-[100px]"></div>
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-green-200/10 rounded-full blur-[120px] z-10"></div>
+      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-green-200/10 rounded-full blur-[100px] z-10"></div>
       
       {/* Green accent gradient */}
-      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200"></div>
+      <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200 z-10"></div>
       
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 flex-grow flex flex-col justify-center">
         {/* Section Header with improved styling */}
         <div className="text-center mb-10 animate-on-scroll fade-up">
           <div className="inline-block mb-3 px-4 py-1 bg-white/80 rounded-full shadow-sm">
@@ -156,7 +167,7 @@ const PreacherSection: React.FC = () => {
         </div>
         
         {/* CTA Button with improved styling */}
-        <div className="text-center animate-on-scroll scale-in delay-500">
+        <div className="text-center animate-on-scroll scale-in delay-500 mb-8">
           <button className="inline-flex items-center px-7 py-3 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-all hover:shadow-lg group">
             <span>Learn More About Our Services</span>
             <ChevronRight className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
@@ -165,7 +176,7 @@ const PreacherSection: React.FC = () => {
       </div>
       
       {/* Bottom divider for separation from TestimonialsSection */}
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-0 h-10">
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-0 h-10 mt-auto z-10">
         <svg className="relative block w-full h-10" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
           <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
         </svg>
