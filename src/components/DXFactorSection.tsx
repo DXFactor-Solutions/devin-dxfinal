@@ -134,120 +134,120 @@ const DXFactorSection = () => {
 
   return (
     <div className="min-h-screen bg-white py-16 px-4">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <SpiralReveal delay={0.1} index={0}>
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-6xl font-black text-black mb-4 animate-on-scroll fade-up">
-            Built on Proven Foundations. 
-              <span className="block bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-              Transformed by AI.
-              </span>
-            </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto animate-on-scroll fade-up delay-100">
-            The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for $2B+ in outcomes. Now with AI making everything faster, smarter, and more affordable.
-            </p>
-          </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-black mb-4 animate-on-scroll fade-up">
+          Built on Proven Foundations. 
+            <span className="block bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
+            Transformed by AI.
+            </span>
+          </h2>
+            <p className="text-base text-gray-600 max-w-4xl mx-auto animate-on-scroll fade-up delay-100">
+          The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for $2B+ in outcomes. Now with AI making everything faster, smarter, and more affordable.
+          </p>
+        </div>
         </SpiralReveal>
 
-        {/* Service Cards Grid */}
+        {/* Service Cards Grid - Optimized layout */}
         <SpiralReveal delay={0.3} index={1}>
-          <div className="pt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16 animate-on-scroll fade-up delay-200">
-            {services.map((service, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedService(index)}
-                className={`group relative p-4 rounded-xl border-2 transition-all duration-300 ${
-                  selectedService === index
-                    ? 'border-green-500 bg-green-50 scale-105 shadow-xl'
-                    : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg'
-                }`}
-              >
-                {/* Icon */}
-                <div className={`inline-flex items-center justify-center w-10 h-10 rounded-xl mb-3 transition-all duration-300 ${
-                  selectedService === index 
-                    ? 'bg-green-600 text-white' 
-                    : 'bg-gray-100 text-gray-700 group-hover:bg-gray-200'
-                }`}>
-                  {service.icon}
-                </div>
-          
-                {/* Title */}
-                <h3 className={`font-bold text-base mb-1 transition-colors duration-300 ${
-                  selectedService === index ? 'text-black' : 'text-gray-800'
-                }`}>
-                  {service.title}
-                </h3>
+          <div className="pt-6 grid grid-cols-2 md:grid-cols-3 gap-3 mb-12 animate-on-scroll fade-up delay-200">
+          {services.map((service, index) => (
+            <button
+              key={index}
+              onClick={() => setSelectedService(index)}
+                className={`group relative p-3 rounded-xl border-2 transition-all duration-300 ${
+                selectedService === index
+                  ? 'border-green-500 bg-green-50 scale-105 shadow-xl'
+                  : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg'
+              }`}
+            >
+              {/* Icon */}
+                <div className={`inline-flex items-center justify-center w-8 h-8 rounded-xl mb-2 transition-all duration-300 ${
+                selectedService === index 
+                  ? 'bg-green-600 text-white' 
+                  : 'bg-gray-100 text-gray-700 group-hover:bg-gray-200'
+              }`}>
+                  {React.cloneElement(service.icon, { className: "w-4 h-4" })}
+              </div>
+              
+              {/* Title */}
+                <h3 className={`font-bold text-sm mb-1 leading-tight transition-colors duration-300 ${
+                selectedService === index ? 'text-black' : 'text-gray-800'
+              }`}>
+                {service.title}
+              </h3>
 
-                {/* Active Indicator */}
-                {selectedService === index && (
-                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-10 h-1 bg-green-500 rounded-full"></div>
-                )}
-              </button>
-            ))}
-          </div>
+              {/* Active Indicator */}
+              {selectedService === index && (
+                  <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-green-500 rounded-full"></div>
+              )}
+            </button>
+          ))}
+        </div>
         </SpiralReveal>
 
-        {/* Service & Testimonial Display */}
-        <div className="bg-gray-50 rounded-3xl p-2 animate-on-scroll scale-in delay-300 mb-10">
+        {/* Service & Testimonial Display - Compact layout */}
+        <div className="bg-gray-50 rounded-3xl p-2 animate-on-scroll scale-in delay-300 mb-8">
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="grid md:grid-cols-2">
               {/* Service Details */}
-              <div className="p-6 md:p-10">
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-green-100 rounded-2xl mb-5">
+              <div className="p-6 md:p-8">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-2xl mb-4">
                   <div className="text-green-600">
-                    {React.cloneElement(services[selectedService].icon, { className: "w-7 h-7" })}
+                    {React.cloneElement(services[selectedService].icon, { className: "w-6 h-6" })}
                   </div>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-black text-black mb-3">
+                <h3 className="text-xl md:text-2xl font-black text-black mb-3">
                   {services[selectedService].title}
                 </h3>
-                <p className="text-base md:text-lg text-gray-600 mb-5 leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 mb-4 leading-relaxed">
                   {services[selectedService].description}
                 </p>
                 <div className="flex items-center gap-3 flex-wrap">
-                  <button className="group inline-flex items-center gap-2 bg-black text-white px-5 py-2 rounded-full font-semibold hover:bg-gray-900 transition-all">
+                  <button className="group inline-flex items-center gap-2 bg-black text-white px-4 py-2 rounded-full font-semibold hover:bg-gray-900 transition-all text-sm">
                     Learn More
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                   </button>
-                  <div className="flex items-center gap-2 text-green-600 font-semibold">
-                    <Zap className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-green-600 font-semibold text-sm">
+                    <Zap className="w-3 h-3" />
                     {services[selectedService].impact}
                   </div>
                 </div>
               </div>
 
               {/* Testimonial */}
-              <div className="bg-green-50 p-6 md:p-10 relative">
-                <Quote className="absolute top-6 right-6 w-12 h-12 text-green-100" />
+              <div className="bg-green-50 p-6 md:p-8 relative">
+                <Quote className="absolute top-6 right-6 w-10 h-10 text-green-100" />
                 
                 <div className="relative">
                   <div className="flex gap-1 mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-green-500 text-green-500" />
+                      <Star key={i} className="w-3 h-3 fill-green-500 text-green-500" />
                     ))}
                   </div>
                   
-                  <p className="text-gray-700 text-base md:text-lg mb-5 italic leading-relaxed">
+                  <p className="text-gray-700 text-sm md:text-base mb-4 italic leading-relaxed">
                     "{services[selectedService].testimonial.quote}"
                   </p>
                   
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white font-bold">
+                    <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white font-bold text-sm">
                       {services[selectedService].testimonial.author.charAt(0)}
                     </div>
                     <div>
-                      <p className="font-bold text-black">
+                      <p className="font-bold text-black text-sm">
                         {services[selectedService].testimonial.author}
                       </p>
-                      <p className="text-gray-600 text-sm">
+                      <p className="text-gray-600 text-xs">
                         {services[selectedService].testimonial.role}
                       </p>
                     </div>
                   </div>
                   
-                  <div className="mt-5 pt-5 border-t border-green-200">
-                    <p className="text-sm text-gray-500 font-medium">
+                  <div className="mt-4 pt-4 border-t border-green-200">
+                    <p className="text-xs text-gray-500 font-medium">
                       Success Story • {services[selectedService].testimonial.company}
                     </p>
                   </div>
@@ -256,6 +256,28 @@ const DXFactorSection = () => {
             </div>
           </div>
         </div>
+
+        {/* Compact CTA Section */}
+        <SpiralReveal delay={0.9} index={10}>
+          <div className="text-center mt-6">
+            <div className="bg-black rounded-lg p-4 text-white relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10"></div>
+              <div className="relative z-10">
+                <h3 className="text-base font-bold mb-2">Need More Than Agents?</h3>
+                <div className="flex flex-col sm:flex-row gap-2 justify-center items-center">
+                  <button type="button" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg font-medium shadow transition-all duration-300 inline-flex items-center text-sm">
+                    Schedule Strategy Call
+                    <ArrowRight className="ml-1 w-3 h-3" />
+                  </button>
+                  <button type="button" className="border border-white text-white hover:bg-white hover:text-black px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center text-sm">
+                    <TrendingUp className="mr-1 w-3 h-3" />
+                    View Success Stories
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </SpiralReveal>
       </div>
     </div>
   );

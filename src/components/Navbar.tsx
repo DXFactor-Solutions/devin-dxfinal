@@ -1,21 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Menu, X, Home, Bot, Star, FileText, Info } from 'lucide-react';
+import { Menu, X, Home, Bot, Star, FileText, Info, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TubelightNavBar } from './ui/tubelight-navbar';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Agent24', url: '#platform', icon: Home },
+  { name: 'Outcome Agents Platform', url: '#microagentcommunity', icon: Home },
   { name: 'Solutions', url: '#agents', icon: Bot },
-  { name: 'Testimonials', url: '#results', icon: Star },
-  { name: 'Resources', url: '/resources', icon: FileText },
-  { name: 'About', url: '/about', icon: Info },
+  { name: 'Testimonials', url: '/testimonials', icon: Star },
+  { 
+    name: 'Resources', 
+    url: '/blog', 
+    icon: FileText,
+    subPages: [
+      { name: 'Blog', url: '/blog' },
+      { name: 'Ebook', url: '/ebook' },
+      { name: 'Webinars', url: '/webinars' },
+      { name: 'News', url: '/news' }
+    ]
+  },
+  { 
+    name: 'About', 
+    url: '/about', 
+    icon: Info,
+    subPages: [
+      { name: 'About Us', url: '/about' },
+      { name: 'Why Us', url: '/why-us' },
+      { name: 'Careers', url: '/careers' }
+    ]
+  },
 ];
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Handle click outside to close dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setOpenDropdown(null);
+      }
+    };
+
+    if (openDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openDropdown]);
 
   const handleNavigation = (url: string) => {
     if (url.startsWith('/')) {
@@ -40,6 +78,12 @@ const Navbar = () => {
         }
       }
     }
+    // Always close dropdown after navigation
+    setOpenDropdown(null);
+  };
+
+  const handleDropdownToggle = (itemName: string) => {
+    setOpenDropdown(openDropdown === itemName ? null : itemName);
   };
 
   return (
@@ -57,9 +101,63 @@ const Navbar = () => {
             </a>
           </div>
 
-        {/* Tubelight Navbar - Desktop */}
-        <div className="hidden md:block">
-          <TubelightNavBar items={navLinks} onNavigate={handleNavigation} />
+        {/* Enhanced Desktop Navigation with Dropdowns */}
+        <div className="hidden md:flex items-center space-x-1">
+          <div className="flex items-center gap-3 bg-white/80 backdrop-blur-lg py-1 px-1 rounded-full shadow-lg border border-gray-200">
+            {navLinks.map((item) => (
+              <div key={item.name} className="relative">
+                {item.subPages ? (
+                  // Dropdown Item
+                  <div className="relative" ref={dropdownRef}>
+                    <button
+                      onClick={() => handleDropdownToggle(item.name)}
+                      className="flex items-center gap-1 cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors text-gray-700 hover:text-black hover:bg-gray-50"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                    </button>
+                    
+                    <AnimatePresence>
+                      {openDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-[60]"
+                        >
+                          <button
+                            onClick={() => handleNavigation(item.url)}
+                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                          >
+                            {item.name}
+                          </button>
+                          <div className="border-t border-gray-100 my-1"></div>
+                          {item.subPages.map((subPage) => (
+                            <button
+                              key={subPage.name}
+                              onClick={() => handleNavigation(subPage.url)}
+                              className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                            >
+                              {subPage.name}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  // Regular Item
+                  <button
+                    onClick={() => handleNavigation(item.url)}
+                    className="cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors text-gray-700 hover:text-black hover:bg-gray-50"
+                  >
+                    {item.name}
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
           </div>
 
         {/* Book Demo Button - Desktop */}
@@ -78,7 +176,7 @@ const Navbar = () => {
           </button>
       </nav>
 
-      {/* Mobile Menu */}
+      {/* Enhanced Mobile Menu with Dropdowns */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
@@ -90,17 +188,65 @@ const Navbar = () => {
             >
             <div className="flex flex-col space-y-2 pt-4 pb-6 px-6">
               {navLinks.map((item) => (
+                <div key={item.name}>
+                  {item.subPages ? (
+                    // Mobile Dropdown Item
+                    <div>
+                      <button
+                        onClick={() => handleDropdownToggle(item.name)}
+                        className="flex items-center justify-between w-full text-gray-800 font-medium text-base py-2 border-l-2 border-transparent hover:border-black pl-3 transition-colors duration-200 text-left"
+                      >
+                        <span>{item.name}</span>
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </button>
+                      
+                      <AnimatePresence>
+                        {openDropdown === item.name && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="ml-6 mt-2 space-y-2"
+                          >
+                            <button
+                              onClick={() => {
+                                handleNavigation(item.url);
+                                setIsMobileMenuOpen(false);
+                              }}
+                              className="block w-full text-left text-gray-600 font-normal text-sm py-1 hover:text-black transition-colors"
+                            >
+                              {item.name}
+                            </button>
+                            {item.subPages.map((subPage) => (
+                              <button
+                                key={subPage.name}
+                                onClick={() => {
+                                  handleNavigation(subPage.url);
+                                  setIsMobileMenuOpen(false);
+                                }}
+                                className="block w-full text-left text-gray-600 font-normal text-sm py-1 hover:text-black transition-colors"
+                              >
+                                {subPage.name}
+                              </button>
+                            ))}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  ) : (
+                    // Regular Mobile Item
                 <button
-                  key={item.name}
-                  type="button"
                   onClick={() => {
                     handleNavigation(item.url);
                     setIsMobileMenuOpen(false);
                   }}
-                  className="text-gray-800 font-medium text-base py-2 border-l-2 border-transparent hover:border-black pl-3 transition-colors duration-200 text-left"
+                      className="text-gray-800 font-medium text-base py-2 border-l-2 border-transparent hover:border-black pl-3 transition-colors duration-200 text-left w-full"
                 >
                   {item.name}
                 </button>
+                  )}
+                </div>
               ))}
               <Button className="bg-black hover:bg-gray-900 text-white border-none shadow-md transition-all duration-300 w-full py-3 text-base font-medium rounded-md mt-3">
                     Book Demo

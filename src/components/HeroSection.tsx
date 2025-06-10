@@ -257,7 +257,7 @@ const HeroSection = () => {
                     className="border-green-600 hover:border-green-700 text-green-600 hover:text-white bg-white/80 hover:bg-green-600 rounded-md px-8 py-3 text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 h-auto"
               >
                     <Play className="mr-2 w-5 h-5" />
-                    Request a Demo
+                    See the Outcomes Agent Platform in Action
               </Button>
                 </div>
               </div>

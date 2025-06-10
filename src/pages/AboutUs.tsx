@@ -798,6 +798,18 @@ const AboutUs = () => {
         </div>
       </section>
       
+      {/* Get In Touch Strip */}
+      <section className="py-8 bg-green-50">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <Button 
+            className="bg-white hover:bg-gray-50 text-green-600 hover:text-green-700 border-none rounded-md px-8 py-3 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 h-auto"
+          >
+            Get In Touch
+            <ArrowRight className="ml-2 w-5 h-5" />
+          </Button>
+        </div>
+      </section>
+      
       {/* Full-width Contact Form */}
       <ContactForm />
       <Footer />

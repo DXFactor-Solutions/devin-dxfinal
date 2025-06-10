@@ -57,67 +57,121 @@ const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
   );
 };
 
-const ResourcesPage = () => {
+const BlogPage = () => {
   const [activeCategory, setActiveCategory] = useState('ALL POST');
   const [searchTerm, setSearchTerm] = useState('');
 
-  const categories = ['ALL POST', 'FITNESS', 'DIGITAL TRANSFORMATION', 'MEMBER RETENTION', 'MEMBER EXPERIENCE', 'OPERATIONAL EXCELLENCE'];
+  const categories = ['ALL POST', 'FITNESS'];
 
   const blogPosts = [
     {
-      title: "Why Global Delivery Teams Are the Smartest Investment for Quality Talent and Superior ROI",
+      title: "AI ROI: Click2Save Transforms Fitness Industry Revenue",
       url: "https://dxfactor.com/ai-roi-click2save-fitness/",
-      author: "Rohan Shroff",
-      date: "05 Dec 2024",
-      category: "DIGITAL TRANSFORMATION",
-      tags: ["Digital Transformation", "global delivery"],
+      author: "DXFactor Team",
+      date: "15 Dec 2024",
+      category: "FITNESS",
+      tags: ["AI", "ROI", "Click2Save"],
       image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=500&fit=crop",
       featured: true
     },
     {
-      title: "Understanding Fitness Consumer Behavior in the AI Era",
+      title: "AI Adoption in Fitness Operations: A Complete Guide",
       url: "https://dxfactor.com/ai-adoption-fitness-operations/",
       author: "DXFactor Team",
-      date: "28 Nov 2024",
+      date: "12 Dec 2024",
       category: "FITNESS",
-      tags: ["Artificial Intelligence", "Digital Transformation"],
+      tags: ["AI Adoption", "Operations", "Fitness"],
       image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=600&h=400&fit=crop"
     },
     {
-      title: "Harnessing AI to Transform Fitness Businesses: One Algorithm at a Time",
+      title: "How AI Stopped Gym Cancellations: Real Success Stories",
       url: "https://dxfactor.com/ai-stopped-gym-cancellation/",
       author: "Sarah Chen",
-      date: "22 Nov 2024",
+      date: "10 Dec 2024",
       category: "FITNESS",
-      tags: ["Digital Transformation", "Fitness"],
+      tags: ["AI", "Cancellation Prevention", "Success Stories"],
       image: "https://images.unsplash.com/photo-1593642532842-98d0fd5ebc1a?w=600&h=400&fit=crop"
     },
     {
-      title: "7 Signs You Need a Cancellation Save Solution",
+      title: "How AI Helps Fitness Clubs Fight Rising Tariff Costs",
       url: "https://dxfactor.com/how-ai-helps-fitness-clubs-fight-tariff-costs/",
       author: "Michael Rodriguez",
-      date: "15 Nov 2024",
-      category: "MEMBER RETENTION",
-      tags: ["Digital Transformation", "Fitness"],
+      date: "08 Dec 2024",
+      category: "FITNESS",
+      tags: ["AI", "Cost Management", "Tariffs"],
       image: "https://images.unsplash.com/photo-1556761175-4b46a572b786?w=600&h=400&fit=crop"
     },
     {
       title: "The Compliance Trap: Click-to-Save vs Easy Cancel",
       url: "https://dxfactor.com/the-compliance-trap-click-to-save-vs-easy-cancel/",
       author: "Emily Watson",
-      date: "10 Nov 2024",
-      category: "MEMBER EXPERIENCE",
-      tags: ["Compliance", "Member Experience"],
+      date: "05 Dec 2024",
+      category: "FITNESS",
+      tags: ["Compliance", "Click-to-Save", "Regulations"],
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=400&fit=crop"
     },
     {
-      title: "FTC Click-to-Cancel Law: What Fitness Businesses Need to Know",
+      title: "FTC Click-to-Cancel Law: Complete Guide for Fitness Businesses",
       url: "https://www.dxfactor.com//ftc-click-to-cancel-law-guide/",
       author: "Legal Team",
-      date: "05 Nov 2024",
-      category: "OPERATIONAL EXCELLENCE",
-      tags: ["Legal", "Compliance"],
+      date: "03 Dec 2024",
+      category: "FITNESS",
+      tags: ["FTC", "Legal", "Compliance"],
       image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Navigating Gym Membership Cancellation Laws",
+      url: "https://www.dxfactor.com/navigating-gym-membership-cancellation-laws/",
+      author: "Legal Team",
+      date: "01 Dec 2024",
+      category: "FITNESS",
+      tags: ["Legal", "Membership", "Cancellation Laws"],
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop"
+    },
+    {
+      title: "AI Agents and the Fitness Member Journey Revolution",
+      url: "https://www.dxfactor.com/ai-agents-and-the-fitness-member-journey/",
+      author: "Alex Turner",
+      date: "28 Nov 2024",
+      category: "FITNESS",
+      tags: ["AI Agents", "Member Journey", "Customer Experience"],
+      image: "https://images.unsplash.com/photo-1571019613914-85e2d6d97b3c?w=600&h=400&fit=crop"
+    },
+    {
+      title: "The Netflix Effect: How Streaming Changed Gym Retention",
+      url: "https://www.dxfactor.com/netflix-effect-gym-retention/",
+      author: "David Kim",
+      date: "25 Nov 2024",
+      category: "FITNESS",
+      tags: ["Netflix Effect", "Retention", "Digital Transformation"],
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Why Your Gym Needs Agentic AI Now: The Future is Here",
+      url: "https://www.dxfactor.com/why-your-gym-needs-agentic-ai-now/",
+      author: "Jennifer Lopez",
+      date: "22 Nov 2024",
+      category: "FITNESS",
+      tags: ["Agentic AI", "Future of Fitness", "Innovation"],
+      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Generative AI in Fitness: Real Success Stories & ROI",
+      url: "https://www.dxfactor.com/generative-ai-fitness-success-stories/",
+      author: "Maria Garcia",
+      date: "20 Nov 2024",
+      category: "FITNESS",
+      tags: ["Generative AI", "Success Stories", "ROI"],
+      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop"
+    },
+    {
+      title: "Harnessing Data and AI to Enhance Fitness Member Retention",
+      url: "https://www.dxfactor.com/harnessing-data-and-ai-to-enhance-fitness-member-retention/",
+      author: "Robert Chen",
+      date: "18 Nov 2024",
+      category: "FITNESS",
+      tags: ["Data Analytics", "AI", "Member Retention"],
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
     }
   ];
 
@@ -138,11 +192,29 @@ const ResourcesPage = () => {
       <Navbar />
       
       {/* Enhanced Header Section - Compact */}
-      <div className="relative bg-white border-b border-gray-200 pt-24 overflow-hidden">
+      <div className="relative bg-gray-900 border-b border-gray-200 pt-24 overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video 
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            style={{ 
+              filter: 'brightness(0.7)',
+              mixBlendMode: 'normal'
+            }}
+          >
+            <source src="/videos/futurecityh.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/50 mix-blend-multiply"></div>
+        </div>
+        
         {/* Background decorative elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/5 rounded-full blur-3xl"></div>
-          <div className="absolute top-16 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute inset-0 overflow-hidden pointer-events-none z-1">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-green-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-16 right-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
         </div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -152,24 +224,24 @@ const ResourcesPage = () => {
                 <TrendingUp className="w-3 h-3 mr-1" />
                 BLOGS & NEWS
               </div>
-              <h1 className="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-4">
+              <h1 className="text-3xl md:text-4xl font-black text-white leading-tight mb-4">
                 Explore insights, updates, and<br />
-                <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-green-400 to-emerald-300 bg-clip-text text-transparent">
                   DXFactor stories
                 </span>
               </h1>
-              <p className="text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-base text-gray-200 max-w-2xl mx-auto leading-relaxed">
                 Stay ahead with industry insights, expert perspectives, and the latest innovations 
                 in fitness technology and business transformation.
               </p>
             </div>
           </SpiralReveal>
 
-          {/* Enhanced Search and Stats - Compact */}
+          {/* Enhanced Search - Compact */}
           <SpiralReveal delay={0.3} index={1}>
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mb-6">
+            <div className="flex justify-center mb-6">
               {/* Search Bar */}
-              <div className="relative flex-1 max-w-md">
+              <div className="relative max-w-md w-full">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                 <input
                   type="text"
@@ -178,22 +250,6 @@ const ResourcesPage = () => {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white shadow-sm text-sm"
                 />
-              </div>
-              
-              {/* Stats */}
-              <div className="flex items-center gap-6">
-                <div className="text-center">
-                  <div className="text-lg font-bold text-gray-900">50+</div>
-                  <div className="text-xs text-gray-600">Articles</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg font-bold text-gray-900">12K+</div>
-                  <div className="text-xs text-gray-600">Readers</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-lg font-bold text-gray-900">25+</div>
-                  <div className="text-xs text-gray-600">Topics</div>
-                </div>
               </div>
             </div>
           </SpiralReveal>
@@ -356,4 +412,4 @@ const ResourcesPage = () => {
   );
 };
 
-export default ResourcesPage; 
+export default BlogPage; 
