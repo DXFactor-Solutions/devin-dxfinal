@@ -104,7 +104,7 @@ const DXFactorSection = () => {
             </span>
           </h2>
             <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto animate-on-scroll fade-up delay-100">
-          The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for $2B+ in outcomes. Now with AI making everything faster, smarter, and more affordable.
+          The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for <span className="text-green-600 font-bold">$2B+</span> in outcomes. Now with AI making everything faster, smarter, and more affordable.
           </p>
         </div>
         </SimpleReveal>

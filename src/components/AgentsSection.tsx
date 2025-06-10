@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import ROICalculator from '@/components/ROICalculator';
 
 // Simple CSS animation wrapper
 const SimpleReveal = ({ children, delay = 0 }) => {
@@ -20,6 +21,8 @@ const SimpleReveal = ({ children, delay = 0 }) => {
 
 const AgentsSection: React.FC = () => {
   const [flippedCards, setFlippedCards] = useState<Set<string>>(new Set());
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [selectedAgent, setSelectedAgent] = useState<string>("");
 
   const handleCardFlip = (agentId: string) => {
     setFlippedCards(prev => {
@@ -31,6 +34,11 @@ const AgentsSection: React.FC = () => {
       }
       return newSet;
     });
+  };
+
+  const handleROIClick = (agentName: string) => {
+    setSelectedAgent(agentName);
+    setCalculatorOpen(true);
   };
 
   // Updated Agent data structure with one-liners
@@ -299,7 +307,7 @@ const AgentsSection: React.FC = () => {
                             className="w-full bg-green-50 text-green-700 border border-green-200 rounded-lg px-4 py-2.5 text-sm font-semibold hover:bg-green-100 hover:border-green-300 transition-all duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow"
                             onClick={(e) => {
                               e.stopPropagation();
-                              // ROI calculator logic here
+                              handleROIClick(agent.name);
                             }}
                           >
                             <Calculator className="w-4 h-4" />
@@ -367,6 +375,14 @@ const AgentsSection: React.FC = () => {
           </div>
         </SimpleReveal>
       </div>
+
+      {calculatorOpen && (
+        <ROICalculator
+          isOpen={calculatorOpen}
+          onClose={() => setCalculatorOpen(false)}
+          agentName={selectedAgent}
+        />
+      )}
     </section>
   );
 };
