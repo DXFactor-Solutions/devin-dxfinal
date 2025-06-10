@@ -61,7 +61,7 @@ const AgentsSection: React.FC = () => {
       name: 'Click2Save',
       oneLiner: 'Stop cancellations from walking out the door—Click2Save is proven to save up to 15% of at-risk members and automates 100% of the cancellation process.',
       description: 'AI intercepts cancellations with automated retention offers, and incentive flows based on member profile. Outcome: More cancels saved, actionable churn insights, increased revenue & hundreds of hours save in manual effort to process cancellations.',
-      category: 'RETENTION',
+      category: 'GROWTH',
       icon: ShieldAlert,
       stats: {
         value: '12%',
@@ -74,7 +74,7 @@ const AgentsSection: React.FC = () => {
       name: 'Learning & Development',
       oneLiner: 'Cut onboarding time in half with AI-guided training that saves hours and gets staff ramped up faster.',
       description: 'Centralizes SOPs, training videos, and guides with AI search and Q&A. Empowers staff to self-learn and reduces time spent on manual training. Outcome: Faster onboarding, higher compliance, consistent staff knowledge.',
-      category: 'OPERATIONS',
+      category: 'GROWTH',
       icon: Brain,
       stats: {
         value: '40%',
@@ -87,7 +87,7 @@ const AgentsSection: React.FC = () => {
       name: 'Collections',
       oneLiner: 'Recover up to 96% of outstanding balances—while eliminating staff time spent chasing payments.',
       description: 'Automates billing reminders, payment follow-ups, and escalations for overdue accounts. Tracks collections and provides actionable reports. Outcome: Improved cash flow, fewer missed payments, and less manual chasing.',
-      category: 'OPERATIONS',
+      category: 'EFFICIENCY',
       icon: BarChart3,
       stats: {
         value: '10%',
@@ -100,7 +100,7 @@ const AgentsSection: React.FC = () => {
       name: 'MRM Configuration',
       oneLiner: 'Enable non-technical users to customize workflows, branding, and integrations through a no-code interface.',
       description: 'Enables non-technical users to customize workflows, branding, and integrations through a no-code interface. Outcome: Faster implementations & Go-Live, less IT dependency, and tailored platform experiences.',
-      category: 'OPERATIONS',
+      category: 'EFFICIENCY',
       icon: Settings,
       stats: {
         value: '70%',
@@ -139,6 +139,7 @@ const AgentsSection: React.FC = () => {
       case 'EXPERIENCE': return 'bg-blue-100 text-blue-800';
       case 'GROWTH': return 'bg-teal-100 text-teal-800';
       case 'OPERATIONS': return 'bg-indigo-100 text-indigo-800';
+      case 'EFFICIENCY': return 'bg-purple-100 text-purple-800';
       default: return 'bg-gray-100 text-gray-800';
     }
   };
@@ -219,34 +220,14 @@ const AgentsSection: React.FC = () => {
           </div>
         </SimpleReveal>
 
-        {/* Enhanced description section - Full width thin strip */}
+        {/* Enhanced description section - Centered text without box */}
         <SimpleReveal delay={2}>
-          <div className="w-full bg-gradient-to-r from-green-50 via-gray-50 to-green-50 border-y border-green-100 py-3 sm:py-5 mb-8 sm:mb-12 -mx-4 sm:-mx-6 lg:-mx-8">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-6">
-                {/* Left side - Header with icon */}
-                <div className="flex items-center flex-shrink-0">
-                  <div className="w-8 sm:w-10 h-8 sm:h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl flex items-center justify-center mr-2 sm:mr-3">
-                    <svg className="w-4 sm:w-5 h-4 sm:h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-base sm:text-lg font-bold text-gray-900">Built by Operators, For Operators</h4>
-                    <p className="text-xs sm:text-sm text-gray-600">Real solutions for real problems</p>
-                  </div>
-                </div>
-                
-                {/* Center - Description */}
-                <div className="flex-1 text-center lg:text-left max-w-xl">
-                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
-                    DXFactor has been in the fitness trenches for years, solving challenges from 
-                    <span className="font-semibold text-green-600"> cancellations to collections</span>, 
-                    <span className="font-semibold text-green-600"> onboarding to member experience</span>.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div className="text-center mb-8 sm:mb-12">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              DXFactor has been in the trenches of Fitness & Wellness for years – working side-by-side with operators to solve real challenges. From{" "}
+              <span className="font-semibold text-green-600">cancellations to collections</span>,{" "}
+              <span className="font-semibold text-green-600">onboarding to member experience</span>, we've seen the real problems. That's why we built Outcome Agents – AI modules that work 24/7 to grow your business, save staff time, and delight members.
+            </p>
           </div>
         </SimpleReveal>
 
@@ -357,9 +338,6 @@ const AgentsSection: React.FC = () => {
               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
                 Ready to Transform Your Operations?
               </h3>
-              <p className="text-xs sm:text-sm text-gray-600 mb-3 sm:mb-4 max-w-2xl mx-auto">
-                Start with our most popular agent or schedule a demo to see how all 6 agents can work together for your business.
-              </p>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center items-center">
                 <button type="button" className="w-full sm:w-auto bg-green-600 hover:bg-green-700 hover:scale-105 text-white px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium shadow transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm group">
               Start Free with Concierge Agent

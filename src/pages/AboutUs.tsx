@@ -162,7 +162,7 @@ const AboutUs = () => {
     {
       name: "Dharmesh Trivedi",
       role: "Co-Founder & CEO",
-      image: "/logos/dharmesh.webp",
+      image: "/headshots/dharmesh.webp",
       expertise: "Growth Strategy",
       bio: "CEO, Industry Insider, and AI Transformation Architect.",
       achievement: "Generated $500M+ in fitness revenue",
@@ -171,7 +171,7 @@ const AboutUs = () => {
     {
       name: "Tejas Shah", 
       role: "Co-Founder & CTO",
-      image: "/logos/tejas.webp",
+      image: "/headshots/tejas.webp",
       expertise: "AI & Engineering",
       bio: "CTO, agentic systems builder with global scale.",
       achievement: "Built AI systems serving 50M+ users",
@@ -180,7 +180,7 @@ const AboutUs = () => {
     {
       name: "Harshil Shah",
       role: "Director of Product Management",
-      image: "/logos/harshil.jpeg",
+      image: "/headshots/harshil.jpeg",
       expertise: "Product Strategy",
       bio: "Product visionary who turns complex AI into simple, powerful experiences. Led product teams at companies serving 50M+ users.",
       achievement: "Shipped 12 category-defining products",
@@ -189,7 +189,7 @@ const AboutUs = () => {
     {
       name: "Ron Benamor",
       role: "Strategic Advisor",
-      image: "/logos/ronben.jpeg",
+      image: "/headshots/ronben.jpeg",
       expertise: "Business Development",
       bio: "Strategic advisor with deep industry connections and proven track record in scaling fitness technology companies.",
       achievement: "Facilitated partnerships worth $100M+",
@@ -198,7 +198,7 @@ const AboutUs = () => {
     {
       name: "Al Noshirvani",
       role: "Board Member", 
-      image: "/logos/alno.webp",
+      image: "/headshots/alno.webp",
       expertise: "Industry Vision",
       bio: "Board Member, fitness visionary and GTM leader.",
       achievement: "Founded 3 fitness unicorns",
@@ -289,66 +289,66 @@ const AboutUs = () => {
             <div className="logos-slide-track py-8">
               {/* First set of logos */}
               <div className="logo-slide">
-                <img src="/logos/xsport.png" alt="XSport Fitness" />
+                <img src="/logos/xponential_black.webp" alt="Xponential Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/Golds-Gym.webp" alt="Gold's Gym" />
+                <img src="/logos/goldsgym.svg" alt="Gold's Gym" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/chuze_logo.webp" alt="Chuze Fitness" />
+                <img src="/logos/Chuze.jpg" alt="Chuze Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/orangetheory.png" alt="Orange Theory" />
+                <img src="/logos/orangetheory.svg" alt="Orange Theory" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/wac.png" alt="WAC" />
+                <img src="/logos/wac-logo.svg" alt="WAC" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/chrunch.webp" alt="Crunch" />
+                <img src="/logos/crunch.svg" alt="Crunch" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/Chelsea-Piers-fitness.svg" alt="Chelsea Piers Fitness" />
+                <img src="/logos/chelsea piers.svg" alt="Chelsea Piers Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/lifetime.png" alt="Lifetime" />
+                <img src="/logos/fitnessSF.svg" alt="Fitness SF" />
               </div>
               <div className="logo-slide">
                 <img src="/logos/burn-new-logo.svg" alt="Burn Boot Camp" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/ebc.webp" alt="EBC" />
+                <img src="/logos/ebc-logo.svg" alt="EBC" />
               </div>
 
               {/* Duplicate for seamless scrolling */}
               <div className="logo-slide">
-                <img src="/logos/xsport.png" alt="XSport Fitness" />
+                <img src="/logos/xponential_black.webp" alt="Xponential Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/Golds-Gym.webp" alt="Gold's Gym" />
+                <img src="/logos/goldsgym.svg" alt="Gold's Gym" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/chuze_logo.webp" alt="Chuze Fitness" />
+                <img src="/logos/Chuze.jpg" alt="Chuze Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/orangetheory.png" alt="Orange Theory" />
+                <img src="/logos/orangetheory.svg" alt="Orange Theory" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/wac.png" alt="WAC" />
+                <img src="/logos/wac-logo.svg" alt="WAC" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/chrunch.webp" alt="Crunch" />
+                <img src="/logos/crunch.svg" alt="Crunch" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/Chelsea-Piers-fitness.svg" alt="Chelsea Piers Fitness" />
+                <img src="/logos/chelsea piers.svg" alt="Chelsea Piers Fitness" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/lifetime.png" alt="Lifetime" />
+                <img src="/logos/fitnessSF.svg" alt="Fitness SF" />
               </div>
               <div className="logo-slide">
                 <img src="/logos/burn-new-logo.svg" alt="Burn Boot Camp" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/ebc.webp" alt="EBC" />
+                <img src="/logos/ebc-logo.svg" alt="EBC" />
               </div>
             </div>
           </div>
@@ -361,66 +361,66 @@ const AboutUs = () => {
             <div className="logos-slide-track-reverse py-6">
               {/* First set of partner logos */}
               <div className="logo-slide">
-                <img src="/logos/Alta-1.png" alt="ALTA" />
+                <img src="/logos/southwestfunding-white.svg" alt="Southwest Funding" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/health_and_fitness.webp" alt="Health & Fitness" />
+                <img src="/logos/healthworks.png" alt="Healthworks" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/american_eagle.webp" alt="American Eagle" />
+                <img src="/logos/URBN Playground.png" alt="URBN Playground" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/egym.webp" alt="EGYM" />
+                <img src="/logos/ge.svg" alt="GE" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/sensigo.svg" alt="Sensigo" />
+                <img src="/logos/Sensigo.svg" alt="Sensigo" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/nowsecure.webp" alt="NowSecure" />
+                <img src="/logos/nowsecure.png" alt="NowSecure" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/method.png" alt="Method" />
+                <img src="/logos/method-gym.png" alt="Method Gym" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/8weeks.webp" alt="8 Weeks" />
+                <img src="/logos/8WeeksOut-Logo.webp" alt="8 Weeks Out" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/abcfitness.webp" alt="ABC Fitness" />
+                <img src="/logos/Intraprise-Health.png" alt="Intraprise Health" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/intaprise.svg" alt="Intaprise" />
+                <img src="/logos/Worx_logo.png" alt="Worx" />
               </div>
 
               {/* Duplicate for seamless scrolling */}
               <div className="logo-slide">
-                <img src="/logos/Alta-1.png" alt="ALTA" />
+                <img src="/logos/southwestfunding-white.svg" alt="Southwest Funding" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/health_and_fitness.webp" alt="Health & Fitness" />
+                <img src="/logos/healthworks.png" alt="Healthworks" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/american_eagle.webp" alt="American Eagle" />
+                <img src="/logos/URBN Playground.png" alt="URBN Playground" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/egym.webp" alt="EGYM" />
+                <img src="/logos/ge.svg" alt="GE" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/sensigo.svg" alt="Sensigo" />
+                <img src="/logos/Sensigo.svg" alt="Sensigo" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/nowsecure.webp" alt="NowSecure" />
+                <img src="/logos/nowsecure.png" alt="NowSecure" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/method.png" alt="Method" />
+                <img src="/logos/method-gym.png" alt="Method Gym" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/8weeks.webp" alt="8 Weeks" />
+                <img src="/logos/8WeeksOut-Logo.webp" alt="8 Weeks Out" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/abcfitness.webp" alt="ABC Fitness" />
+                <img src="/logos/Intraprise-Health.png" alt="Intraprise Health" />
               </div>
               <div className="logo-slide">
-                <img src="/logos/intaprise.svg" alt="Intaprise" />
+                <img src="/logos/Worx_logo.png" alt="Worx" />
               </div>
             </div>
           </div>
@@ -452,12 +452,21 @@ const AboutUs = () => {
               max-width: 100%;
               max-height: 50px;
               object-fit: contain;
-              filter: grayscale(0%);
+              filter: none !important;
               transition: all 0.3s ease;
             }
             
+            .logo-slide img[alt="Gold's Gym"] {
+              filter: sepia(1) saturate(3) hue-rotate(35deg) brightness(1.2) drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black) !important;
+            }
+            
             .logo-slide img:hover {
-              filter: grayscale(0%);
+              filter: none !important;
+              transform: scale(1.05);
+            }
+            
+            .logo-slide img[alt="Gold's Gym"]:hover {
+              filter: sepia(1) saturate(3) hue-rotate(35deg) brightness(1.3) drop-shadow(1px 1px 0px black) drop-shadow(-1px -1px 0px black) drop-shadow(1px -1px 0px black) drop-shadow(-1px 1px 0px black) !important;
               transform: scale(1.05);
             }
             

@@ -191,12 +191,21 @@ const HeroSection = () => {
               </div>
             </SimpleReveal>
             
+            {/* New tagline */}
+            <SimpleReveal delay={1.5}>
+              <div className="mb-4 sm:mb-6">
+                <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600 animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[4500ms]">
+                  Built for Fitness & Wellness. Powered by Outcomes.
+                </p>
+              </div>
+            </SimpleReveal>
+            
             {/* Subtitle */}
             <SimpleReveal delay={2}>
               <div className="mb-6 sm:mb-8 md:mb-16">
                 <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-xl text-gray-700 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[1000ms] px-4 sm:px-0">
-               Meet the DXAgent Outcomes Platform — the only AI system built from<br className="hidden md:block" />
-               100s of real fitness operator deployment. Each Agent solves a specific revenue, operations, or experience challenge—with proven ROI, not promises.
+               Meet the <strong>DXAgent Outcomes Platform</strong> — the only <strong>AI system</strong> built from<br className="hidden md:block" />
+               <strong>100s of real fitness operator deployment</strong>. Each Agent solves a specific <strong>revenue, operations, or experience challenge</strong>—with <strong>proven ROI</strong>, not promises.
                 </p>
               </div>
             </SimpleReveal>

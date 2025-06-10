@@ -90,16 +90,16 @@ const WhyUsPage = () => {
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=64&h=64&fit=crop&crop=face"
     },
     {
-      quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
-      author: "Mike Neff",
-      title: "Executive Vice President, Member Services, Crunch",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
-    },
-    {
       quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
       author: "Rob Koehler",
       title: "Director of Technology Development, Wisconsin Athletic Club",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=64&h=64&fit=crop&crop=face"
+    },
+    {
+      quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
+      author: "Mike Neff",
+      title: "Executive Vice President, Member Services, Crunch",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=64&h=64&fit=crop&crop=face"
     }
   ];
 

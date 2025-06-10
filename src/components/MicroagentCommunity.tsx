@@ -148,19 +148,26 @@ const MicroagentCommunity = () => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2 sm:mb-3">
                 DX Outcomes Agent Platform
               </h2>
-              <p className="text-sm sm:text-base lg:text-lg font-medium text-green-600">$2B+ in Outcomes. One Platform.</p>
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-green-600 mb-2 sm:mb-3">$2B+ in Outcomes. One Platform.</p>
             </div>
             
             {/* Simplified description */}
             <div className="max-w-3xl mx-auto">
               <p className="text-sm sm:text-base lg:text-xl text-gray-700 leading-relaxed mb-3 sm:mb-4">
-                <span className="font-semibold text-gray-900">Built by operators, for operators.</span>
+
               </p>
               <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed">
-                DXFactor has been in the fitness trenches for years, solving real challenges from 
-                <span className="font-medium text-green-600"> cancellations to collections</span>, 
-                <span className="font-medium text-green-600"> onboarding to member experience</span>. 
-                That's why we built Outcome Agents – AI modules that work 24/7 to grow your business.
+              Your agents are only as smart as
+              the platform behind them.  
+                <span className="font-medium text-green-600"> The DX Outcomes Agent Platform</span>, 
+              is built
+              on years of real-world experience
+              with Fitness & Wellness operators.
+              From member growth to operations
+              and retention – every agent is
+              designed to drive outcomes that
+              matter. That's why they deliver from
+              day one.
               </p>
             </div>
           </div>

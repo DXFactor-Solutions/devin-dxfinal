@@ -27,6 +27,7 @@ interface Testimonial {
   author: string;
   role: string;
   company: string;
+  image?: string;
 }
 
 interface Brand {
@@ -49,31 +50,34 @@ const TestimonialsSection: React.FC = () => {
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      quote: "DXFactor built a state-of-the-art streaming platform for CRUNCH+ digital content. Their team worked tirelessly to develop a solution that is reliable, secure, and scalable.",
-      author: "Mike Neff",
-      role: "Executive Vice President, Member Services",
-      company: "Crunch"
+      quote: "DXFactor understands our industry, delivers real results, and moves fast. Their responsiveness and expertise cut costs by 50%—a true game-changer for us!",
+      author: "Don Dickerson",
+      role: "Vice President",
+      company: "Fitness SF",
+      image: "/headshots/Don-Dickerson-Fitness-SF.png"
     },
     {
       id: 2,
-      quote: "We found the ideal digital transformation partner in DXFactor. Their approach has streamlined our operations, providing a unified view of our member data for informed decisions.",
-      author: "Rob Koehler",
-      role: "Director of Technology Development",
-      company: "Wisconsin Athletic Club"
+      quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
+      author: "Mike Neff",
+      role: "Executive Vice President",
+      company: "Crunch",
+      image: "/headshots/Mike-Neff-Crunch.jpeg"
     },
     {
       id: 3,
+      quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
+      author: "Rob Koehler",
+      role: "Director of Technology Development",
+      company: "Wisconsin Athletic Club",
+      image: "/headshots/Rob-Koehler-WAC.jpeg"
+    },
+    {
+      id: 4,
       quote: "DXFactor was the perfect match thanks to their knowledge of data and fitness. The digital outcomes they delivered have had a significant impact on our operations.",
       author: "Brent Zempel",
       role: "Chief Information Officer",
       company: "XSport Fitness"
-    },
-    {
-      id: 4,
-      quote: "We completed our project in just 3 weeks with DXFactor. They built personas for our multi-billion dollar client, who was thrilled with the results and opened up additional revenue opportunities.",
-      author: "Steve Rao",
-      role: "CEO",
-      company: "Farm Market iD"
     },
     {
       id: 5,
@@ -263,10 +267,30 @@ const TestimonialsSection: React.FC = () => {
         <p className="text-gray-700 font-normal text-base leading-relaxed whitespace-normal">{testimonial.quote}</p>
       </div>
       
-      {/* Author info */}
+      {/* Author info with headshot */}
       <div className="border-t border-gray-200 pt-4 mt-4">
-        <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonial.author}</h4>
-        <p className="text-gray-500 text-sm whitespace-normal">{testimonial.role}, <span className="text-green-600">{testimonial.company}</span></p>
+        <div className="flex items-center space-x-3">
+          {/* Author headshot or initials */}
+          <div className="flex-shrink-0">
+            {testimonial.image && (
+              <img 
+                src={testimonial.image} 
+                alt={testimonial.author}
+                className="w-12 h-12 rounded-full object-cover border-2 border-green-100"
+                onError={(e) => {
+                  console.log('Image failed to load:', testimonial.image);
+                }}
+                onLoad={() => console.log('Image loaded successfully:', testimonial.image)}
+              />
+            )}
+          </div>
+          
+          {/* Author details */}
+          <div className="flex-1 min-w-0">
+            <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonial.author}</h4>
+            <p className="text-gray-500 text-sm whitespace-normal">{testimonial.role}, <span className="text-green-600">{testimonial.company}</span></p>
+          </div>
+        </div>
       </div>
       
       {/* Hover effects */}
@@ -298,8 +322,28 @@ const TestimonialsSection: React.FC = () => {
       </div>
       
       <div className="border-t border-gray-200 pt-4 mt-4">
-        <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonials[activeTestimonial].author}</h4>
-        <p className="text-gray-500 text-sm whitespace-normal">{testimonials[activeTestimonial].role}, <span className="text-green-600">{testimonials[activeTestimonial].company}</span></p>
+        <div className="flex items-center space-x-3">
+          {/* Author headshot or initials */}
+          <div className="flex-shrink-0">
+            {testimonials[activeTestimonial].image && (
+              <img 
+                src={testimonials[activeTestimonial].image} 
+                alt={testimonials[activeTestimonial].author}
+                className="w-12 h-12 rounded-full object-cover border-2 border-green-100"
+                onError={(e) => {
+                  console.log('Mobile image failed to load:', testimonials[activeTestimonial].image);
+                }}
+                onLoad={() => console.log('Mobile image loaded successfully:', testimonials[activeTestimonial].image)}
+              />
+            )}
+          </div>
+          
+          {/* Author details */}
+          <div className="flex-1 min-w-0">
+            <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonials[activeTestimonial].author}</h4>
+            <p className="text-gray-500 text-sm whitespace-normal">{testimonials[activeTestimonial].role}, <span className="text-green-600">{testimonials[activeTestimonial].company}</span></p>
+          </div>
+        </div>
       </div>
       
       <div className="flex justify-between mt-6">

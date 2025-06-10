@@ -19,7 +19,7 @@ const DXFactorSection = () => {
   const services = [
     {
       icon: <Brain className="w-6 h-6" />,
-      title: "Agentic AI Development",
+      title: "AI Development",
       description: "Custom AI agents tailored to your specific business needs, integrated seamlessly with existing systems.",
       impact: "3x Faster Operations",
       testimonial: {
@@ -219,8 +219,8 @@ const DXFactorSection = () => {
         {/* Compact CTA Section */}
         <SimpleReveal delay={3}>
           <div className="text-center mt-4 sm:mt-6">
-            <div className="bg-black rounded-lg p-4 sm:p-6 text-white relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-emerald-600/10"></div>
+            <div className="bg-white border border-gray-200 rounded-lg p-4 sm:p-6 text-gray-900 relative overflow-hidden shadow-sm">
+              <div className="absolute inset-0 bg-gradient-to-r from-green-50/50 to-emerald-50/50"></div>
               <div className="relative z-10">
                 <h3 className="text-sm sm:text-base font-bold mb-2">Need More Than Agents?</h3>
                 <div className="flex flex-col sm:flex-row gap-2 justify-center items-center">
@@ -228,7 +228,7 @@ const DXFactorSection = () => {
                     Schedule Strategy Call
                     <ArrowRight className="ml-1 w-3 h-3" />
                   </button>
-                  <button type="button" className="w-full sm:w-auto border border-white text-white hover:bg-white hover:text-black px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm">
+                  <button type="button" className="w-full sm:w-auto border border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 px-4 py-2 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm">
                     <TrendingUp className="mr-1 w-3 h-3" />
                     View Success Stories
                   </button>
