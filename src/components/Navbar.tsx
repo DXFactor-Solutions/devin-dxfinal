@@ -126,13 +126,6 @@ const Navbar = () => {
                           transition={{ duration: 0.2 }}
                           className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-[60]"
                         >
-                          <button
-                            onClick={() => handleNavigation(item.url)}
-                            className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                          >
-                            {item.name}
-                          </button>
-                          <div className="border-t border-gray-100 my-1"></div>
                           {item.subPages.map((subPage) => (
                             <button
                               key={subPage.name}
@@ -209,15 +202,6 @@ const Navbar = () => {
                             transition={{ duration: 0.2 }}
                             className="ml-6 mt-2 space-y-2"
                           >
-                            <button
-                              onClick={() => {
-                                handleNavigation(item.url);
-                                setIsMobileMenuOpen(false);
-                              }}
-                              className="block w-full text-left text-gray-600 font-normal text-sm py-1 hover:text-black transition-colors"
-                            >
-                              {item.name}
-                            </button>
                             {item.subPages.map((subPage) => (
                               <button
                                 key={subPage.name}

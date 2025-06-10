@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Sparkles, Zap, Target, TrendingUp } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Target, TrendingUp, Shield, Clock } from 'lucide-react';
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -7,7 +7,8 @@ const ContactForm = () => {
     companyEmail: '',
     message: '',
     interestedIn: 'AI Agents',
-    robotCheck: false
+    robotCheck: false,
+    agreeToTerms: false
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -42,42 +43,24 @@ const ContactForm = () => {
   ];
 
   return (
-    <div className="w-screen left-1/2 transform -translate-x-1/2 relative bg-gradient-to-br from-green-50 via-white to-green-100/70 overflow-hidden">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div 
-          className="absolute -top-40 -right-40 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          style={{
-            animation: 'blob 7s infinite'
-          }}
-        ></div>
-        <div 
-          className="absolute -bottom-40 -left-40 w-96 h-96 bg-green-200 rounded-full mix-blend-multiply filter blur-xl opacity-70"
-          style={{
-            animation: 'blob 7s infinite',
-            animationDelay: '2s'
-          }}
-        ></div>
-        <div 
-          className="absolute top-1/3 left-1/3 w-64 h-64 bg-green-100 rounded-full mix-blend-multiply filter blur-xl opacity-50"
-          style={{
-            animation: 'blob 10s infinite',
-            animationDelay: '3s'
-          }}
-        ></div>
+    <section id="contact" className="relative py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-30"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
       </div>
 
-      <div className="relative mx-auto px-4 sm:px-6 lg:px-16 py-12 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 items-center">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-16 py-8 sm:py-12 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-10 items-center">
           
           {/* Left Side - Content */}
           <div className="lg:col-span-3 text-center lg:text-left">
-            <div className="inline-flex items-center gap-1.5 bg-green-100 text-green-800 px-2.5 py-0.5 rounded-full text-xs font-medium mb-3">
+            <div className="inline-flex items-center gap-1.5 bg-green-100 text-green-800 px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium mb-2 sm:mb-3">
               <Sparkles className="w-2.5 h-2.5" />
               <span>AI-Powered Solutions</span>
             </div>
             
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
               Unlock Growth with{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">
                 AI & Digital
@@ -85,27 +68,27 @@ const ContactForm = () => {
               Innovation
             </h1>
             
-            <p className="text-base text-gray-600 mb-6 leading-relaxed max-w-2xl">
+            <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
               Tell us your challenges, and we'll craft AI-driven, scalable solutions to optimize operations, enhance engagement, and drive business impact.
             </p>
             
             {/* Stats - Horizontal */}
-            <div className="flex flex-wrap gap-10 items-center justify-center lg:justify-start">
+            <div className="flex flex-wrap gap-6 sm:gap-10 items-center justify-center lg:justify-start">
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-gray-900">$100M</div>
+                <div className="text-xl sm:text-2xl font-bold text-gray-900">$100M</div>
                 <div className="text-xs text-gray-600">Revenue Generated</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-gray-900">99%</div>
+                <div className="text-xl sm:text-2xl font-bold text-gray-900">99%</div>
                 <div className="text-xs text-gray-600">Retention Rate</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-2xl font-bold text-gray-900">100+</div>
+                <div className="text-xl sm:text-2xl font-bold text-gray-900">100+</div>
                 <div className="text-xs text-gray-600">Happy Clients</div>
               </div>
             </div>
             
-            <div className="mt-6 flex items-center gap-2 text-xs text-gray-500 justify-center lg:justify-start">
+            <div className="mt-4 sm:mt-6 flex items-center gap-2 text-xs text-gray-500 justify-center lg:justify-start">
               <div className="flex -space-x-2">
                 <div className="w-5 h-5 rounded-full bg-gray-300"></div>
                 <div className="w-5 h-5 rounded-full bg-gray-400"></div>
@@ -121,11 +104,11 @@ const ContactForm = () => {
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-2xl blur-xl opacity-30 scale-95"></div>
               
-              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-5 border border-green-100">
+              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-4 sm:p-5 border border-green-100">
                 <div className="space-y-3">
                   {/* Form Header */}
                   <div className="text-center mb-3">
-                    <h2 className="text-lg font-bold text-gray-900">Start Your AI Journey</h2>
+                    <h2 className="text-base sm:text-lg font-bold text-gray-900">Start Your AI Journey</h2>
                     <p className="text-xs text-gray-600">Get a demo in 24 hours</p>
                   </div>
 
@@ -189,61 +172,54 @@ const ContactForm = () => {
                   </div>
 
                   {/* Checkbox and Submit in one row */}
-                  <div className="flex items-center gap-2">
-                    <div className="flex items-center space-x-1">
+                  <div className="space-y-3">
+                    <label className="flex items-start gap-2 cursor-pointer">
                       <input
                         type="checkbox"
-                        name="robotCheck"
-                        id="robotCheck"
-                        checked={formData.robotCheck}
+                        name="agreeToTerms"
+                        checked={formData.agreeToTerms}
                         onChange={handleChange}
-                        className="w-3 h-3 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                        className="mt-0.5 w-4 h-4 text-green-600 bg-gray-50 border-gray-300 rounded focus:ring-green-500 focus:ring-2"
                       />
-                      <label htmlFor="robotCheck" className="text-xs text-gray-600">
-                        I'm not a robot
-                      </label>
-                    </div>
+                      <span className="text-xs text-gray-600">
+                        I agree to the{' '}
+                        <a href="#" className="text-green-600 hover:underline">Terms</a> and{' '}
+                        <a href="#" className="text-green-600 hover:underline">Privacy Policy</a>
+                      </span>
+                    </label>
 
                     <button
-                      onClick={handleSubmit}
-                      disabled={isSubmitting || !formData.robotCheck}
-                      className={`flex-1 py-1.5 px-3 rounded-lg font-medium text-xs transition-all duration-500 ${
-                        isSubmitting || !formData.robotCheck
-                          ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                          : showSuccess
-                          ? 'bg-green-600 text-white'
-                          : 'bg-gradient-to-r from-green-600 to-green-500 text-white hover:shadow-md'
-                      }`}
+                      type="submit"
+                      disabled={!formData.agreeToTerms || isSubmitting}
+                      className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-2.5 px-4 rounded-lg font-medium text-xs sm:text-sm hover:from-green-700 hover:to-green-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] shadow-md"
                     >
-                      <span className="flex items-center justify-center gap-1.5">
-                        {isSubmitting ? (
-                          <>
-                            <div className="w-2.5 h-2.5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                            <span>Processing...</span>
-                          </>
-                        ) : showSuccess ? (
-                          <>
-                            <svg className="w-2.5 h-2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
-                              <path d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Success!</span>
-                          </>
-                        ) : (
-                          <>
-                            <span>Get Started</span>
-                            <ArrowRight className="w-2.5 h-2.5" />
-                          </>
-                        )}
-                      </span>
+                      {isSubmitting ? (
+                        <span className="flex items-center justify-center gap-2">
+                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                          </svg>
+                          Processing...
+                        </span>
+                      ) : (
+                        <span className="flex items-center justify-center gap-2">
+                          Get Started
+                          <ArrowRight className="w-3 h-3" />
+                        </span>
+                      )}
                     </button>
                   </div>
 
-                  {/* Trust Badge */}
-                  <div className="text-center text-[10px] text-gray-500 flex items-center justify-center gap-1">
-                    <svg className="w-2.5 h-2.5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
-                    <span>Secure & Confidential</span>
+                  {/* Trust indicators */}
+                  <div className="flex items-center justify-center gap-4 pt-2">
+                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <Shield className="w-3 h-3" />
+                      <span>SSL Secured</span>
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-gray-500">
+                      <Clock className="w-3 h-3" />
+                      <span>24hr Response</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -251,24 +227,7 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
-
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes blob {
-          0% {
-            transform: translate(0px, 0px) scale(1);
-          }
-          33% {
-            transform: translate(30px, -50px) scale(1.1);
-          }
-          66% {
-            transform: translate(-20px, 20px) scale(0.9);
-          }
-          100% {
-            transform: translate(0px, 0px) scale(1);
-          }
-        }
-      ` }} />
-    </div>
+    </section>
   );
 };
 

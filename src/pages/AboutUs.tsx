@@ -217,7 +217,7 @@ const AboutUs = () => {
       />
       
       {/* Hero Section - Immersive & Bold */}
-      <section className="relative h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden">
         {/* Video Background */}
         <div className="absolute inset-0 z-0">
           <video 
@@ -237,35 +237,36 @@ const AboutUs = () => {
         </div>
           
         {/* Hero Content */}
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-4xl mx-auto">
           <SpiralReveal delay={0.2} index={0}>
-            <h1 className="text-[70px] md:text-[95px] font-black tracking-tight leading-none mb-6">
+            <h1 className="text-[50px] sm:text-[70px] md:text-[95px] font-black tracking-tight leading-none mb-4 sm:mb-6">
               <span className="text-white block md:inline">ABOUT</span>
-              <span className="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent inline-block ml-4">US</span>
+              <span className="bg-gradient-to-r from-green-500 to-emerald-400 bg-clip-text text-transparent inline-block ml-0 md:ml-4">US</span>
             </h1>
           </SpiralReveal>
           
           <SpiralReveal delay={0.5} index={1}>
-            <h2 className="text-2xl md:text-4xl font-black text-white mb-8 tracking-tight">
+            <h2 className="text-xl sm:text-2xl md:text-4xl font-black text-white mb-6 sm:mb-8 tracking-tight px-4 sm:px-0">
               We Don't Build Software. We Build Revenue Machines.
             </h2>
           </SpiralReveal>
           
           <SpiralReveal delay={0.7} index={2}>
-            <div className="mb-16 mt-8">
-              <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
+            <div className="mb-8 sm:mb-16 mt-6 sm:mt-8">
+              <div className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
                 <Button 
-                  className="bg-green-600 hover:bg-green-700 text-white border-none rounded-md px-8 py-3 text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 h-auto"
+                  className="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white border-none rounded-md px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg shadow-lg hover:shadow-xl transition-all duration-300 h-auto"
                 >
                   Start Free with Concierge Agent
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Button>
                 <Button 
                   variant="outline" 
-                  className="border-green-600 hover:border-green-700 text-green-600 hover:text-white bg-white/80 hover:bg-green-600 rounded-md px-8 py-3 text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 h-auto"
+                  className="w-full sm:w-auto border-green-600 hover:border-green-700 text-green-600 hover:text-white bg-white/80 hover:bg-green-600 rounded-md px-6 sm:px-8 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 h-auto"
                 >
-                  <Play className="mr-2 w-5 h-5" />
-                  Request a Demo
+                  <Play className="mr-2 w-4 sm:w-5 h-4 sm:h-5" />
+                  <span className="hidden sm:inline">Request a Demo</span>
+                  <span className="sm:hidden">Demo</span>
                 </Button>
               </div>
             </div>
@@ -274,12 +275,12 @@ const AboutUs = () => {
       </section>
 
       {/* Clients & Partners Section - Using Testimonials Approach */}
-      <section className="py-20 bg-green-50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-green-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-14">
-              <p className="text-green-500 text-sm uppercase tracking-wider mb-4 font-medium"></p>
-              <h2 className="text-4xl font-black text-gray-800 mb-6 tracking-tight">OUR CUSTOMERS & PARTNERS</h2>
+            <div className="text-center mb-8 sm:mb-14">
+              <p className="text-green-500 text-xs sm:text-sm uppercase tracking-wider mb-3 sm:mb-4 font-medium"></p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-800 mb-4 sm:mb-6 tracking-tight">OUR CUSTOMERS & PARTNERS</h2>
             </div>
           </SpiralReveal>
 
@@ -526,36 +527,36 @@ const AboutUs = () => {
       </section>
       
       {/* Mission Section - Now full width */}
-      <section className="py-28 bg-white relative overflow-hidden">
+      <section className="py-16 sm:py-28 bg-white relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 bg-gradient-to-tr from-gray-50 to-white opacity-60"></div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
           <SpiralReveal delay={0.1} index={0}>
             <motion.div
-              className="text-center mb-20"
+              className="text-center mb-12 sm:mb-20"
               viewport={{ once: true }}
             >
-              <div className="w-20 h-1 bg-green-500 mx-auto mb-8"></div>
-              <h2 className="text-5xl font-black text-gray-900 tracking-tight">Our Mission & Vision</h2>
+              <div className="w-16 sm:w-20 h-1 bg-green-500 mx-auto mb-6 sm:mb-8"></div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 tracking-tight">Our Mission & Vision</h2>
             </motion.div>
           </SpiralReveal>
           
-          <div className="grid md:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-3 gap-8 sm:gap-12">
             {/* Left Text Column */}
             <SpiralReveal delay={0.2} index={1}>
-              <div className="flex flex-col justify-center pr-6">
-                <h3 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
+              <div className="flex flex-col justify-center md:pr-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
                   To help fitness and wellness organizations scale like never before
                 </h3>
-                <p className="text-lg text-gray-700 mb-6 leading-relaxed">
+                <p className="text-base sm:text-lg text-gray-700 mb-4 sm:mb-6 leading-relaxed">
                   — by deploying intelligent AI micro-agents that drive growth, retention, and operational excellence.
                 </p>
-                <p className="text-xl font-bold text-green-600">
+                <p className="text-lg sm:text-xl font-bold text-green-600">
               We deliver more than software. We deliver outcomes.
             </p>
                 
-                <div className="mt-10 hidden md:flex items-center">
+                <div className="mt-8 sm:mt-10 hidden md:flex items-center">
                   <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   <div className="w-16 h-0.5 bg-green-100"></div>
                   <div className="w-3 h-3 border border-green-100 rounded-full"></div>
@@ -565,16 +566,16 @@ const AboutUs = () => {
             
             {/* Mission Card */}
             <SpiralReveal delay={0.3} index={2}>
-              <div className="bg-white rounded-lg p-10 shadow-md border border-gray-100 h-full">
-                <div className="border-b border-green-500 w-16 pb-2 mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900">Mission</h3>
+              <div className="bg-white rounded-lg p-6 sm:p-10 shadow-md border border-gray-100 h-full">
+                <div className="border-b border-green-500 w-16 pb-2 mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Mission</h3>
           </div>
 
-                <p className="text-gray-700 mb-10 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-10 leading-relaxed">
                   To transform our clients into market leaders and industry disruptors by building a balanced ecosystem of AI systems and human capital with the agility of a start-up and the power of Fortune 500 business experience.
                 </p>
                 
-                <div className="inline-flex items-center bg-green-50 rounded-full px-4 py-2 text-green-700 text-sm font-medium">
+                <div className="inline-flex items-center bg-green-50 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-green-700 text-xs sm:text-sm font-medium">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
                   Transforming fitness through intelligent automation
             </div>
@@ -583,16 +584,16 @@ const AboutUs = () => {
             
             {/* Vision Card */}
             <SpiralReveal delay={0.4} index={3}>
-              <div className="bg-white rounded-lg p-10 shadow-md border border-gray-100 h-full">
-                <div className="border-b border-green-500 w-16 pb-2 mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900">Vision</h3>
+              <div className="bg-white rounded-lg p-6 sm:p-10 shadow-md border border-gray-100 h-full">
+                <div className="border-b border-green-500 w-16 pb-2 mb-4 sm:mb-6">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Vision</h3>
           </div>
 
-                <p className="text-gray-700 mb-10 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 mb-6 sm:mb-10 leading-relaxed">
                   To build a future where businesses of all scales can confidently utilize data-driven innovation to grow sustainably, adapt fearlessly, and achieve lasting success in a constantly evolving world.
                 </p>
                 
-                <div className="inline-flex items-center bg-green-50 rounded-full px-4 py-2 text-green-700 text-sm font-medium">
+                <div className="inline-flex items-center bg-green-50 rounded-full px-3 sm:px-4 py-1.5 sm:py-2 text-green-700 text-xs sm:text-sm font-medium">
                   <span className="w-1.5 h-1.5 bg-green-500 rounded-full mr-1.5"></span>
                   Purpose-built AI that solves real business problems
                 </div>
@@ -603,26 +604,26 @@ const AboutUs = () => {
       </section>
 
       {/* Leadership Team - Redesigned */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-12 sm:py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-12">
-              <div className="w-16 h-1 bg-green-500 mx-auto mb-6"></div>
-              <h2 className="text-4xl font-black text-gray-900 tracking-tight">Leadership</h2>
+            <div className="text-center mb-8 sm:mb-12">
+              <div className="w-12 sm:w-16 h-1 bg-green-500 mx-auto mb-4 sm:mb-6"></div>
+              <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">Leadership</h2>
             </div>
           </SpiralReveal>
             
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {leaders.map((leader, index) => (
               <SpiralReveal key={index} delay={0.2} index={index}>
-                <div className="border border-gray-200 rounded-lg p-6 flex flex-col items-center">
-                  <div className="mb-4">
-                    <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full font-medium">
+                <div className="border border-gray-200 rounded-lg p-4 sm:p-6 flex flex-col items-center">
+                  <div className="mb-3 sm:mb-4">
+                    <span className="bg-green-600 text-white text-xs px-2 sm:px-3 py-1 rounded-full font-medium">
                       {leader.expertise}
                     </span>
                   </div>
                   
-                  <div className="w-24 h-24 rounded-full overflow-hidden mb-4">
+                  <div className="w-20 sm:w-24 h-20 sm:h-24 rounded-full overflow-hidden mb-3 sm:mb-4">
                   <img 
                       src={leader.image} 
                       alt={leader.name}
@@ -630,14 +631,14 @@ const AboutUs = () => {
                     />
                   </div>
                   
-                  <h3 className="text-lg font-bold text-gray-900 text-center mb-2">{leader.name}</h3>
-                  <p className="text-green-600 text-xs font-medium text-center mb-4">{leader.role}</p>
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 text-center mb-1 sm:mb-2">{leader.name}</h3>
+                  <p className="text-green-600 text-xs font-medium text-center mb-3 sm:mb-4">{leader.role}</p>
                   
-                  <p className="text-gray-700 text-center mb-4 text-sm leading-relaxed">
+                  <p className="text-gray-700 text-center mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                     {leader.bio}
                   </p>
                   
-                  <div className="border-l-4 border-green-500 pl-3 py-1 italic text-gray-600 mt-auto w-full text-sm">
+                  <div className="border-l-4 border-green-500 pl-2 sm:pl-3 py-1 italic text-gray-600 mt-auto w-full text-xs sm:text-sm">
                     "{leader.quote}"
                   </div>
                 </div>
@@ -648,45 +649,45 @@ const AboutUs = () => {
       </section>
       
       {/* Why We Win Section */}
-      <section className="py-20 bg-green-50 relative overflow-hidden">
+      <section className="py-12 sm:py-20 bg-green-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-tr from-white to-green-100/40 opacity-70"></div>
-        <div className="relative z-10 max-w-6xl mx-auto px-6">
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6">
           <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-5xl font-black text-gray-900 mb-6 tracking-tight">WHY WE WIN</h2>
-              <p className="text-2xl font-bold text-green-600 mb-6">Deep Domain + Real Data + Proven Execution</p>
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-4 sm:mb-6 tracking-tight">WHY WE WIN</h2>
+              <p className="text-lg sm:text-xl md:text-2xl font-bold text-green-600 mb-4 sm:mb-6">Deep Domain + Real Data + Proven Execution</p>
             </div>
           </SpiralReveal>
           
           <SpiralReveal delay={0.3} index={1}>
-            <div className="max-w-3xl mx-auto mb-16 text-center">
-              <p className="text-xl font-medium text-gray-900 mb-6">We combine:</p>
+            <div className="max-w-3xl mx-auto mb-8 sm:mb-16 text-center">
+              <p className="text-lg sm:text-xl font-medium text-gray-900 mb-4 sm:mb-6">We combine:</p>
           </div>
           </SpiralReveal>
           
-          <div className="grid md:grid-cols-3 gap-10 max-w-4xl mx-auto">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-10 max-w-4xl mx-auto">
             <SpiralReveal delay={0.4} index={2}>
-              <div className="bg-white rounded-xl p-10 shadow-md border border-gray-100">
-                <div className="w-12 h-1 bg-green-500 mb-6"></div>
-                <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="bg-white rounded-xl p-6 sm:p-10 shadow-md border border-gray-100">
+                <div className="w-10 sm:w-12 h-1 bg-green-500 mb-4 sm:mb-6"></div>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   20+ years of fitness & wellness industry expertise
                 </p>
               </div>
             </SpiralReveal>
             
             <SpiralReveal delay={0.5} index={3}>
-              <div className="bg-white rounded-xl p-10 shadow-md border border-gray-100">
-                <div className="w-12 h-1 bg-green-500 mb-6"></div>
-                <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="bg-white rounded-xl p-6 sm:p-10 shadow-md border border-gray-100">
+                <div className="w-10 sm:w-12 h-1 bg-green-500 mb-4 sm:mb-6"></div>
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   Proprietary language models trained on billions in outcomes
                 </p>
             </div>
             </SpiralReveal>
             
             <SpiralReveal delay={0.6} index={4}>
-              <div className="bg-white rounded-xl p-10 shadow-md border border-gray-100">
-                <div className="w-12 h-1 bg-green-500 mb-6"></div>
-            <p className="text-lg text-gray-700 leading-relaxed">
+              <div className="bg-white rounded-xl p-6 sm:p-10 shadow-md border border-gray-100 sm:col-span-2 md:col-span-1">
+                <div className="w-10 sm:w-12 h-1 bg-green-500 mb-4 sm:mb-6"></div>
+            <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
                   A team of experts in AI, data, systems, and scale
             </p>
               </div>
@@ -694,8 +695,8 @@ const AboutUs = () => {
           </div>
 
           <SpiralReveal delay={0.7} index={5}>
-            <div className="max-w-3xl mx-auto mt-16 text-center">
-              <p className="text-xl text-gray-700 italic">
+            <div className="max-w-3xl mx-auto mt-8 sm:mt-16 text-center">
+              <p className="text-lg sm:text-xl text-gray-700 italic">
                 We're not just consultants or tech builders — we're co-executors embedded in your outcomes.
               </p>
             </div>
@@ -704,32 +705,32 @@ const AboutUs = () => {
       </section>
       
       {/* Core Values Section - Based on Screenshot */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-16">
-              <div className="text-green-600 uppercase text-sm font-medium tracking-wider mb-3">
+            <div className="text-center mb-8 sm:mb-16">
+              <div className="text-green-600 uppercase text-xs sm:text-sm font-medium tracking-wider mb-2 sm:mb-3">
                 CORE VALUES
               </div>
-              <h2 className="text-5xl font-black text-gray-900 mb-3 tracking-tight">V.O.I.C.E</h2>
-              <h3 className="text-4xl font-black text-gray-900 mb-8 tracking-tight">Matters</h3>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto font-medium">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-gray-900 mb-2 sm:mb-3 tracking-tight">V.O.I.C.E</h2>
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-gray-900 mb-4 sm:mb-8 tracking-tight">Matters</h3>
+              <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto font-medium">
                 Our core principles are the foundation for every decision we make and that all of our employees act on.
               </p>
             </div>
           </SpiralReveal>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-8 sm:mb-16">
             {/* Be Virtuous */}
             <SpiralReveal delay={0.2} index={1}>
-              <div className="bg-white border border-gray-200 rounded-lg p-10">
-                <div className="w-16 h-16 rounded-full border-2 border-gray-200 flex items-center justify-center mb-6">
-                  <svg className="w-8 h-8 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <div className="bg-white border border-gray-200 rounded-lg p-6 sm:p-10">
+                <div className="w-12 sm:w-16 h-12 sm:h-16 rounded-full border-2 border-gray-200 flex items-center justify-center mb-4 sm:mb-6">
+                  <svg className="w-6 sm:w-8 h-6 sm:h-8 text-gray-700" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 16L12 12M12 8H12.01M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Be Virtuous</h3>
-                <p className="text-gray-600">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Be Virtuous</h3>
+                <p className="text-sm sm:text-base text-gray-600">
                   We make a living by what we get, but we make a life by what we give
                 </p>
               </div>
