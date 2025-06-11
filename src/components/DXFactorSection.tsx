@@ -18,15 +18,15 @@ const DXFactorSection = () => {
 
   const services = [
     {
-      icon: <Brain className="w-6 h-6" />,
-      title: "AI Development",
-      description: "Custom AI agents tailored to your specific business needs, integrated seamlessly with existing systems.",
-      impact: "3x Faster Operations",
+      icon: <Smartphone className="w-6 h-6" />,
+      title: "Mobile App Development",
+      description: "Engaging mobile experiences with AI-powered features that drive member engagement and retention.",
+      impact: "3 Week Delivery",
       testimonial: {
-        quote: "With AI Agents, we have an opportunity to have a conversation with every prospect to guide them to the correct membership type, to try to upsell them with personal training, and discuss other things like goals as they come into the club. We saved 4000 man hours in 12 months due to DxFactor's Concierge Agent mainly from answering phone calls and front desk questions.",
-        author: "Don Dickerson",
-        role: "President, Fitness SF",
-        company: "Fitness SF"
+        quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
+        author: "Mike Neff",
+        role: "Executive Vice President, Member Services",
+        company: "Crunch"
       }
     },
     {
@@ -42,15 +42,27 @@ const DXFactorSection = () => {
       }
     },
     {
-      icon: <Smartphone className="w-6 h-6" />,
-      title: "Mobile App Development",
-      description: "Engaging mobile experiences with AI-powered features that drive member engagement and retention.",
-      impact: "3 Week Delivery",
+      icon: <Users className="w-6 h-6" />,
+      title: "Dedicated Engineering Teams",
+      description: "On-demand access to specialized engineering talent, augmented with AI tools for faster delivery.",
+      impact: "50% Faster Delivery",
       testimonial: {
-        quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
-        author: "Mike Neff",
-        role: "Executive Vice President, Member Services",
-        company: "Crunch"
+        quote: "Not just code—DXFactor brought collaboration, speed, and structure to help us scale our digital platform with confidence.",
+        author: "Jeremy Brutus",
+        role: "Co-Founder and CEO",
+        company: "URBN Playground"
+      }
+    },
+    {
+      icon: <Brain className="w-6 h-6" />,
+      title: "AI Development",
+      description: "Custom AI agents tailored to your specific business needs, integrated seamlessly with existing systems.",
+      impact: "3x Faster Operations",
+      testimonial: {
+        quote: "With AI Agents, we have an opportunity to have a conversation with every prospect to guide them to the correct membership type, to try to upsell them with personal training, and discuss other things like goals as they come into the club. We saved 4000 man hours in 12 months due to DxFactor's Concierge Agent mainly from answering phone calls and front desk questions.",
+        author: "Don Dickerson",
+        role: "President, Fitness SF",
+        company: "Fitness SF"
       }
     },
     {
@@ -63,18 +75,6 @@ const DXFactorSection = () => {
         author: "John Ford",
         role: "Chief Product Officer",
         company: "EGYM"
-      }
-    },
-    {
-      icon: <Users className="w-6 h-6" />,
-      title: "Dedicated Engineering Teams",
-      description: "On-demand access to specialized engineering talent, augmented with AI tools for faster delivery.",
-      impact: "50% Faster Delivery",
-      testimonial: {
-        quote: "Not just code—DXFactor brought collaboration, speed, and structure to help us scale our digital platform with confidence.",
-        author: "Jeremy Brutus",
-        role: "Co-Founder and CEO",
-        company: "URBN Playground"
       }
     },
     {

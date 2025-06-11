@@ -6,7 +6,7 @@ const ContactForm = () => {
     fullName: '',
     companyEmail: '',
     message: '',
-    interestedIn: 'AI Agents',
+    interestedIn: 'Outcomes Agents',
     robotCheck: false,
     agreeToTerms: false
   });
@@ -57,44 +57,41 @@ const ContactForm = () => {
           <div className="lg:col-span-3 text-center lg:text-left">
             <div className="inline-flex items-center gap-1.5 bg-green-100 text-green-800 px-2 sm:px-2.5 py-0.5 rounded-full text-xs font-medium mb-2 sm:mb-3">
               <Sparkles className="w-2.5 h-2.5" />
-              <span>AI-Powered Solutions</span>
+              <span>Proven Outcomes</span>
             </div>
             
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
-              Unlock Growth with{' '}
+              Transform Your Business with the{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">
-                AI & Digital
-              </span>{' '}
-              Innovation
+                DX Outcomes Agent Platform
+              </span>
             </h1>
             
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Tell us your challenges, and we'll craft AI-driven, scalable solutions to optimize operations, enhance engagement, and drive business impact.
+              Join operators who've driven $2B+ in outcomes. Deploy AI agents that work 24/7 to grow revenue, cut costs, and delight members — with proven ROI from day one.
             </p>
             
             {/* Stats - Horizontal */}
             <div className="flex flex-wrap gap-6 sm:gap-10 items-center justify-center lg:justify-start">
               <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-gray-900">$100M</div>
-                <div className="text-xs text-gray-600">Revenue Generated</div>
+                <div className="text-xl sm:text-2xl font-bold text-green-600">$2B+</div>
+                <div className="text-xs text-gray-600">Outcomes Delivered</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-gray-900">99%</div>
-                <div className="text-xs text-gray-600">Retention Rate</div>
+                <div className="text-xl sm:text-2xl font-bold text-green-600">120%</div>
+                <div className="text-xs text-gray-600">Net Revenue Retention</div>
               </div>
               <div className="text-center lg:text-left">
-                <div className="text-xl sm:text-2xl font-bold text-gray-900">100+</div>
-                <div className="text-xs text-gray-600">Happy Clients</div>
+                <div className="text-xl sm:text-2xl font-bold text-green-600">100+</div>
+                <div className="text-xs text-gray-600">Happy Operators</div>
               </div>
             </div>
             
             <div className="mt-4 sm:mt-6 flex items-center gap-2 text-xs text-gray-500 justify-center lg:justify-start">
-              <div className="flex -space-x-2">
-                <div className="w-5 h-5 rounded-full bg-gray-300"></div>
-                <div className="w-5 h-5 rounded-full bg-gray-400"></div>
-                <div className="w-5 h-5 rounded-full bg-gray-500"></div>
+              <div className="flex items-center gap-1">
+                <span className="text-green-600">✓</span>
+                <span>Trusted by Fitness SF, Crunch, Wisconsin Athletic Club, and 100s more</span>
               </div>
-              <span>Trusted by leading brands</span>
             </div>
           </div>
 
@@ -108,29 +105,61 @@ const ContactForm = () => {
                 <div className="space-y-3">
                   {/* Form Header */}
                   <div className="text-center mb-3">
-                    <h2 className="text-base sm:text-lg font-bold text-gray-900">Start Your AI Journey</h2>
-                    <p className="text-xs text-gray-600">Get a demo in 24 hours</p>
+                    <h2 className="text-base sm:text-lg font-bold text-gray-900">See Your Outcomes in Action</h2>
+                    <p className="text-xs text-gray-600">Deploy Agents in 5 minutes, see ROI from day one</p>
                   </div>
 
                   {/* Service Selection - 2x2 Grid */}
                   <div className="grid grid-cols-2 gap-2">
-                    {services.map((service) => (
-                      <button
-                        key={service.id}
-                        type="button"
-                        onClick={() => setFormData(prev => ({ ...prev, interestedIn: service.id }))}
-                        className={`relative py-1.5 px-2 rounded-lg text-xs font-medium transition-all duration-300 flex items-center justify-center gap-1 ${
-                          formData.interestedIn === service.id
-                            ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-md'
-                            : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                        }`}
-                      >
-                        {service.icon}
-                        <span className="hidden sm:inline">{service.id}</span>
-                        <span className="sm:hidden">{service.id.split(' ')[0]}</span>
-                      </button>
-                    ))}
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Outcomes Agents' }))}
+                      className={`relative py-1.5 px-2 rounded-lg text-xs font-medium transition-all duration-300 flex items-center justify-center gap-1 ${
+                        formData.interestedIn === 'Outcomes Agents'
+                          ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-md'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <span>Outcomes Agents</span>
+                    </button>
+                    
+                    <button
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Solutions' }))}
+                      className={`relative py-1.5 px-2 rounded-lg text-xs font-medium transition-all duration-300 flex items-center justify-center gap-1 ${
+                        formData.interestedIn === 'Solutions'
+                          ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-md'
+                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                      }`}
+                    >
+                      <span>Solutions</span>
+                    </button>
                   </div>
+
+                  {/* Start Free with Concierge Agent Button */}
+                  <button
+                    type="button"
+                    onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Concierge Agent' }))}
+                    className="w-full bg-white text-green-600 border-2 border-green-600 py-2.5 px-4 rounded-lg font-medium text-xs sm:text-sm hover:bg-green-50 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-md"
+                  >
+                    Start Free with Concierge Agent
+                  </button>
+
+                  {/* Click2Save Option */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setFormData(prev => ({ ...prev, interestedIn: 'Click2Save' }));
+                      // You can add navigation or form submission logic here if needed
+                    }}
+                    className={`w-full py-2 px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
+                      formData.interestedIn === 'Click2Save'
+                        ? 'bg-gray-800 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    Click2Save
+                  </button>
 
                   {/* Two-column input layout */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
