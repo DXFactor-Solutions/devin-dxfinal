@@ -68,15 +68,15 @@ const Footer = () => {
             <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Solutions</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#ai-agents" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/#microagentcommunity" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>AI Agents</span>
+                  <span>Outcome Agents Platform</span>
                 </a>
               </li>
               <li>
-                <a href="#click2save" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>Click2Save</span>
+                  <span>All Solutions</span>
                 </a>
               </li>
             </ul>
@@ -87,31 +87,31 @@ const Footer = () => {
             <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Services</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#agentic-ai" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Agentic AI Development</span>
                 </a>
               </li>
               <li>
-                <a href="#data-warehouse" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Data Warehouse</span>
                 </a>
               </li>
               <li>
-                <a href="#business-intelligence" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Business Intelligence</span>
                 </a>
               </li>
               <li>
-                <a href="#mobile-dev" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Mobile Development</span>
                 </a>
               </li>
               <li>
-                <a href="#ui-ux" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/solutions" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>UI / UX Design</span>
                 </a>
@@ -130,13 +130,19 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#careers" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/why-us" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>Why Us</span>
+                </a>
+              </li>
+              <li>
+                <a href="/careers" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Careers</span>
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/#contact" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Contact</span>
                 </a>
@@ -149,27 +155,33 @@ const Footer = () => {
             <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Resources</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#blog" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/blog" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Blog</span>
                 </a>
               </li>
               <li>
-                <a href="#case-studies" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/testimonials" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>Case Studies</span>
+                  <span>Testimonials</span>
                 </a>
               </li>
               <li>
-                <a href="#webinars" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/webinars" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                   <span>Webinars</span>
                 </a>
               </li>
               <li>
-                <a href="#videos" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                <a href="/ebook" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>Videos</span>
+                  <span>Ebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="/news" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
+                  <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <span>News</span>
                 </a>
               </li>
             </ul>

@@ -83,6 +83,20 @@ const Solutions = () => {
     }
   ];
 
+  // Add refs and state for single video play
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
+
+  // Pause all other videos when one starts playing
+  const handlePlay = (index: number) => {
+    setPlayingIndex(index);
+    videoRefs.current.forEach((video, i) => {
+      if (video && i !== index) {
+        video.pause();
+      }
+    });
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <style>{`
@@ -212,17 +226,18 @@ const Solutions = () => {
                   className="w-full h-full object-cover"
                   controls
                   preload="metadata"
+                  ref={el => videoRefs.current[index] = el}
+                  onPlay={() => handlePlay(index)}
                 >
                   <source src={testimonial.video} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
-                
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 text-white pointer-events-none">
-                  <h3 className="font-semibold mb-1">{testimonial.title}</h3>
-                  <p className="text-sm opacity-80 mb-3">{testimonial.subtitle}</p>
-                  <div className="flex items-center gap-2 text-sm">
-                    <img src={testimonial.avatar} alt={testimonial.author} className="w-6 h-6 rounded-full" />
-                    <span>{testimonial.author} • {testimonial.company}</span>
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="font-semibold text-sm">{testimonial.title}</h3>
+                  <p className="text-xs opacity-80">{testimonial.subtitle}</p>
+                  <div className="flex items-center gap-2 text-xs mt-1">
+                    <img src={testimonial.avatar} alt={testimonial.author} className="w-5 h-5 rounded-full" />
+                    <span className="opacity-90">{testimonial.author} • {testimonial.company}</span>
                   </div>
                 </div>
               </div>
