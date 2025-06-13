@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
   { name: 'Outcome Agents Platform', url: '#microagentcommunity', icon: Home },
-  { name: 'Solutions', url: '#agents', icon: Bot },
+  { name: 'Solutions', url: '/solutions', icon: Bot },
   { name: 'Testimonials', url: '/testimonials', icon: Star },
   { 
     name: 'Resources', 

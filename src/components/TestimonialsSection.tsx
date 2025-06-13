@@ -287,8 +287,8 @@ const TestimonialsSection: React.FC = () => {
           
           {/* Author details */}
           <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonial.author}</h4>
-            <p className="text-gray-500 text-sm whitespace-normal">{testimonial.role}, <span className="text-green-600">{testimonial.company}</span></p>
+        <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonial.author}</h4>
+        <p className="text-gray-500 text-sm whitespace-normal">{testimonial.role}, <span className="text-green-600">{testimonial.company}</span></p>
           </div>
         </div>
       </div>
@@ -340,8 +340,8 @@ const TestimonialsSection: React.FC = () => {
           
           {/* Author details */}
           <div className="flex-1 min-w-0">
-            <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonials[activeTestimonial].author}</h4>
-            <p className="text-gray-500 text-sm whitespace-normal">{testimonials[activeTestimonial].role}, <span className="text-green-600">{testimonials[activeTestimonial].company}</span></p>
+        <h4 className="font-semibold text-gray-900 text-lg mb-1 whitespace-normal">{testimonials[activeTestimonial].author}</h4>
+        <p className="text-gray-500 text-sm whitespace-normal">{testimonials[activeTestimonial].role}, <span className="text-green-600">{testimonials[activeTestimonial].company}</span></p>
           </div>
         </div>
       </div>

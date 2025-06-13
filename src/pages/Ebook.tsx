@@ -58,79 +58,26 @@ const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
 };
 
 const EbookPage = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const ebook = {
+    title: "The Complete Guide to Generative AI in Fitness",
+    description: "A comprehensive guide covering AI implementation strategies, ROI calculations, and real-world case studies from leading fitness brands. Learn how to transform your fitness business with cutting-edge AI technology.",
+    author: "DXFactor Team",
+    pages: "50+ pages",
+    downloadCount: "2.4K",
+    rating: "4.9",
+    category: "AI Strategy",
+    image: "/logos/Ebook_GenAI.png",
+    pdfUrl: "/docz/ebook.pdf"
+  };
 
-  const ebooks = [
-    {
-      title: "The Complete Guide to AI in Fitness: Transforming Member Experience",
-      description: "A comprehensive 50-page guide covering AI implementation strategies, ROI calculations, and real-world case studies from leading fitness brands.",
-      author: "DXFactor Team",
-      pages: "50 pages",
-      downloadCount: "2.4K",
-      rating: "4.9",
-      category: "AI Strategy",
-      image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&h=400&fit=crop",
-      featured: true
-    },
-    {
-      title: "Member Retention Playbook: Data-Driven Strategies That Work",
-      description: "Learn proven retention techniques using AI and data analytics to reduce churn and increase lifetime value.",
-      author: "Sarah Chen",
-      pages: "35 pages",
-      downloadCount: "1.8K",
-      rating: "4.7",
-      category: "Retention",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Compliance Made Easy: FTC Guidelines for Fitness Businesses",
-      description: "Navigate the complex landscape of fitness industry regulations with this practical compliance guide.",
-      author: "Legal Team",
-      pages: "28 pages",
-      downloadCount: "1.2K",
-      rating: "4.8",
-      category: "Legal",
-      image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&h=400&fit=crop"
-    },
-    {
-      title: "ROI Calculator Workbook: Measuring AI Success in Fitness",
-      description: "Step-by-step worksheets and templates to calculate and track your AI investment returns.",
-      author: "Analytics Team",
-      pages: "22 pages",
-      downloadCount: "950",
-      rating: "4.6",
-      category: "Analytics",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Future of Fitness: Trends and Predictions for 2025",
-      description: "Industry insights and expert predictions on the evolving fitness landscape and technology adoption.",
-      author: "Industry Experts",
-      pages: "40 pages",
-      downloadCount: "1.5K",
-      rating: "4.8",
-      category: "Trends",
-      image: "https://images.unsplash.com/photo-1571019613914-85e2d6d97b3c?w=600&h=400&fit=crop"
-    },
-    {
-      title: "Member Journey Mapping: Creating Seamless Experiences",
-      description: "Design perfect member journeys from first contact to long-term retention using AI and automation.",
-      author: "UX Team",
-      pages: "33 pages",
-      downloadCount: "1.1K",
-      rating: "4.7",
-      category: "Experience",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
-    }
-  ];
-
-  // Enhanced filtering with search
-  const searchFilteredEbooks = ebooks.filter(ebook => 
-    searchTerm === '' || 
-    ebook.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    ebook.author.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    ebook.category.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handleDownload = (pdfUrl: string, title: string) => {
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    link.download = title.replace(/\s+/g, '-') + '.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -176,26 +123,9 @@ const EbookPage = () => {
                 </span>
               </h1>
               <p className="text-base text-gray-200 max-w-2xl mx-auto leading-relaxed">
-                Get instant access to comprehensive guides, playbooks, and resources designed to help 
+                Get instant access to our comprehensive guide designed to help 
                 you implement AI and transform your fitness business.
               </p>
-            </div>
-          </SpiralReveal>
-
-          {/* Enhanced Search */}
-          <SpiralReveal delay={0.3} index={1}>
-            <div className="flex justify-center mb-6">
-              {/* Search Bar */}
-              <div className="relative max-w-md w-full">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-                <input
-                  type="text"
-                  placeholder="Search ebooks..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white shadow-sm text-sm"
-                />
-              </div>
             </div>
           </SpiralReveal>
         </div>
@@ -204,99 +134,54 @@ const EbookPage = () => {
       {/* Main Content Area */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Featured Ebook */}
-        {searchFilteredEbooks.filter(ebook => ebook.featured).map((ebook, index) => (
-          <SpiralReveal key={index} delay={0.1} index={0}>
-            <div className="bg-white rounded-lg border border-gray-200 overflow-hidden mb-12 shadow-lg">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
-                <div className="lg:col-span-2 relative h-64 lg:h-80">
-                  <img 
-                    src={ebook.image} 
-                    alt={ebook.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
-                      FEATURED
-                    </span>
-                  </div>
-                </div>
-                <div className="lg:col-span-3 p-6 lg:p-8 flex flex-col justify-center">
-                  <div className="mb-4">
-                    <span className="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded">
-                      {ebook.category}
-                    </span>
-                  </div>
-                  <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 leading-tight">
-                    {ebook.title}
-                  </h2>
-                  <p className="text-gray-600 mb-6 text-sm leading-relaxed">
-                    {ebook.description}
-                  </p>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-4 text-sm text-gray-500">
-                      <span>By: {ebook.author}</span>
-                      <span>•</span>
-                      <span>{ebook.pages}</span>
-                      <span>•</span>
-                      <div className="flex items-center gap-1">
-                        <Star className="w-3 h-3 text-yellow-400 fill-current" />
-                        <span>{ebook.rating}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 w-fit">
-                    <Download className="w-4 h-4" />
-                    Download Free
-                  </button>
+        <SpiralReveal delay={0.1} index={0}>
+          <div className="bg-white rounded-lg border border-gray-200 overflow-hidden mb-12 shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-0">
+              <div className="lg:col-span-2 relative h-64 lg:h-80 bg-gray-100">
+                <img 
+                  src={ebook.image} 
+                  alt={ebook.title}
+                  className="w-full h-full object-contain p-8"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-green-500 text-white px-2 py-1 rounded text-xs font-medium">
+                    FEATURED
+                  </span>
                 </div>
               </div>
-            </div>
-          </SpiralReveal>
-        ))}
-
-        {/* Ebook Grid */}
-        <SpiralReveal delay={0.3} index={1}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {searchFilteredEbooks.filter(ebook => !ebook.featured).map((ebook, index) => (
-              <div key={index} className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow">
-                <div className="h-48 relative">
-                  <img 
-                    src={ebook.image} 
-                    alt={ebook.title}
-                    className="w-full h-full object-cover"
-                  />
+              <div className="lg:col-span-3 p-6 lg:p-8 flex flex-col justify-center">
+                <div className="mb-4">
+                  <span className="px-2 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded">
+                    {ebook.category}
+                  </span>
                 </div>
-                <div className="p-6">
-                  <div className="mb-3">
-                    <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded">
-                      {ebook.category}
-                    </span>
-                  </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 leading-tight">
-                    {ebook.title}
-                  </h3>
-                  <p className="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-2">
-                    {ebook.description}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-gray-500 mb-4">
+                <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                  {ebook.title}
+                </h2>
+                <p className="text-gray-600 mb-6 text-sm leading-relaxed">
+                  {ebook.description}
+                </p>
+                <div className="flex items-center justify-between mb-6">
+                  <div className="flex items-center gap-4 text-sm text-gray-500">
                     <span>By: {ebook.author}</span>
+                    <span>•</span>
+                    <span>{ebook.pages}</span>
+                    <span>•</span>
                     <div className="flex items-center gap-1">
                       <Star className="w-3 h-3 text-yellow-400 fill-current" />
                       <span>{ebook.rating}</span>
                     </div>
                   </div>
-                  <div className="flex items-center justify-between">
-                    <div className="text-xs text-gray-500">
-                      <span>{ebook.pages} • {ebook.downloadCount} downloads</span>
-                    </div>
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors flex items-center gap-1">
-                      <Download className="w-3 h-3" />
-                      Download
-                    </button>
-                  </div>
                 </div>
+                <button 
+                  onClick={() => handleDownload(ebook.pdfUrl, ebook.title)}
+                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 w-fit"
+                >
+                  <Download className="w-4 h-4" />
+                  Download Free
+                </button>
               </div>
-            ))}
+            </div>
           </div>
         </SpiralReveal>
       </div>

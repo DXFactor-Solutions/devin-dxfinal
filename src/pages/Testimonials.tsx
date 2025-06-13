@@ -11,9 +11,8 @@ const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
   
-  // Calculate spiral position based on index
-  const angle = index * 30; // Degrees between each element
-  const radius = index * 5; // Spiral radius increases with index
+  const angle = index * 30;
+  const radius = index * 5;
   const startX = Math.cos(angle * Math.PI / 180) * radius;
   const startY = Math.sin(angle * Math.PI / 180) * radius;
   
@@ -34,7 +33,7 @@ const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
           x: startX,
           y: startY,
           scale: 0.8,
-          rotate: -5 + (index % 3) * 5 // Slight varied rotation
+          rotate: -5 + (index % 3) * 5
         },
         visible: { 
           opacity: 1, 
@@ -57,35 +56,458 @@ const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
   );
 };
 
-// Flip Card Component
-const FlipCard = ({ testimonial, videoSrc }) => {
+// Testimonials data
+const testimonials = [
+    {
+      quote: "DXFactor understands our industry, delivers real results, and moves fast. Their responsiveness and expertise cut costs by 50%—a true game-changer for us!",
+      author: "Don Dickerson",
+      title: "Vice President",
+      company: "Fitness SF",
+      avatar: "/headshots/Don-Dickerson-Fitness-SF.png",
+      logo: "/logos/fitnessSF.svg"
+    },
+    {
+      quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
+      author: "Mike Neff",
+      title: "Executive Vice President",
+      company: "Crunch",
+      avatar: "/headshots/Mike-Neff-Crunch.jpeg",
+      logo: "/logos/crunch.svg"
+    },
+    {
+      quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
+      author: "Rob Koehler",
+      title: "Director of Technology Development",
+      company: "Wisconsin Athletic Club",
+      avatar: "/headshots/Rob-Koehler-WAC.jpeg",
+      logo: "/logos/wac-logo.svg"
+    },
+    {
+      quote: "Not just code—DXFactor brought collaboration, speed, and structure to help us scale our digital platform with confidence.",
+      author: "Jeremy Brutus",
+      title: "Co-Founder",
+      company: "URBN Playground",
+      avatar: "/headshots/Jeremy-Brutus-URBN.jpeg",
+      logo: "/logos/urbn.svg"
+    },
+    {
+      quote: "Click2Save has made my administrative team's life much easier and more productive while saving members at the same time.",
+      author: "Chad Shaw",
+      title: "Chief Operating Officer",
+      company: "Fit Athletic Club",
+      avatar: "/headshots/Chad-Shaw-Fit-Athletic.jpeg",
+      logo: "/logos/fit-athletic.svg"
+    },
+    {
+      quote: "We are excited to partner with DXFactor for their unparalleled expertise in digital transformation which will help us accelerate our member portfolio to ensure that will support the growth of our partners.",
+      author: "Khai Rai",
+      title: "Platform President",
+      company: "ABC",
+      avatar: "/headshots/Khal-Rai-ABC.jpeg",
+      logo: "/logos/abc.svg"
+    },
+    {
+      quote: "Method Gym saved 7% of cancellations & $1.8K in dues in 30 days—thanks to DXFactor's Click2Save. Fast setup, real ROI, better member experience.",
+      author: "Al Noshirvani",
+      title: "Founder",
+      company: "Method Gym",
+      avatar: "/headshots/alno.webp",
+      logo: "/logos/method-gym.svg"
+    },
+    {
+      quote: "DXFactor brings clarity, speed & care—solving problems with you, not just for you. Bold ideas meet practical results.",
+      author: "Chelsea Loren",
+      title: "Associate Partner",
+      company: "ALTA",
+      avatar: "/headshots/Chelsea-Lorenzen-ALTA.jpeg",
+      logo: "/logos/alta.svg"
+    },
+    {
+      quote: "Partnering with DXFactor enhances our ability to offer comprehensive, personalized solutions that drive both member satisfaction and operational efficiency.",
+      author: "John Ford",
+      title: "Chief Product Officer",
+      company: "EGYM",
+      avatar: "/headshots/John-Ford-EGYM.jpeg",
+      logo: "/logos/egym.svg"
+    },
+    {
+      quote: "With AI Agents, we have an opportunity to have a conversation with every prospects to guide them to the correct membership type, to try to get them with personal training, and discuss other things like youth and family programs.",
+      author: "Jon Roberts",
+      title: "Chief Information Officer",
+      company: "In Shape",
+      avatar: "/headshots/Jon-Roberts-InShape.jpeg",
+      logo: "/logos/inshape.svg"
+    },
+    {
+      quote: "We saved 4000 man hours in 12 months due to Dx Factor's Concierge Agent mainly from answering phone calls and front desk questions.",
+      author: "Andrew Brady",
+      title: "VP of Technology",
+      company: "Chuze",
+      avatar: "/headshots/Andrew-Brady-Chuze.jpeg",
+      logo: "/logos/chuze.svg"
+    },
+    {
+      quote: "Since integrating DXFactor's AI-powered agent, we've seen a significant reduction in the time spent on general membership inquiries, saving more than 20 hours each month. This efficiency boost allows us to allocate more resources to member experience and operational improvements.",
+      author: "Jason Breazeale",
+      title: "VP of Technology",
+      company: "Burn Boot Camp",
+      avatar: "/headshots/Jason-Breazeale-BBC.jpeg",
+      logo: "/logos/burn-boot-camp.svg"
+    },
+    {
+      quote: "In less than a month, Method saved 7.03% of members who initiated cancellation, retaining $1,800 in monthly revenue. The result? Not just higher retention and operational savings, but a dramatically improved member experience.",
+      author: "Troy McFarlin",
+      title: "Director of Marketing",
+      company: "Fitness SF",
+      avatar: "/headshots/Troy-Macfarland-FitnessSF.jpg",
+      logo: "/logos/fitnessSF.svg"
+    },
+    {
+      quote: "If you're ready to rethink how your gym handles cancellations — and want to ensure every member feels valued — I can't recommend DXFactor enough.",
+      author: "Al Noshirvani",
+      title: "Founder",
+      company: "Method Gym",
+      avatar: "/headshots/alno.webp",
+      logo: "/logos/method-gym.svg"
+    },
+    {
+      quote: "Special thanks to Michael Semler, Jay Momaya, Harshit Shah, Priyank Shah, and the entire DXFactor team. When you're building something this complex, the right partner makes all the difference.",
+      author: "Al Noshirvani",
+      title: "Founder",
+      company: "Method Gym",
+      avatar: "/headshots/alno.webp",
+      logo: "/logos/method-gym.svg"
+    },
+    {
+      quote: "That's why I'm so grateful to be working with DXFactor - a team whose unmatched commitment to fitness is matched only by their technical expertise.",
+      author: "Al Noshirvani",
+      title: "Founder",
+      company: "Method Gym",
+      avatar: "/headshots/alno.webp",
+      logo: "/logos/method-gym.svg"
+    },
+    {
+      quote: "What sets them apart isn't just their capabilities - it's their flexibility, creativity, and genuine partnership approach.",
+      author: "Al Noshirvani",
+      title: "Founder",
+      company: "Method Gym",
+      avatar: "/headshots/alno.webp",
+      logo: "/logos/method-gym.svg"
+    },
+    {
+      quote: "If you're looking for a strategic engineering partner who thinks beyond the code, DXFactor is the team you want in your corner.",
+      author: "Chelsea Loren",
+      title: "Associate Partner",
+      company: "ALTA",
+      avatar: "/headshots/Chelsea-Lorenzen-ALTA.jpeg",
+      logo: "/logos/alta.svg"
+    },
+    {
+      quote: "Partnering with DXFactor enhances our ability to offer comprehensive, personalized solutions that drive both member satisfaction and operational efficiency.",
+      author: "John Ford",
+      title: "Chief Product Officer",
+      company: "EGYM",
+      avatar: "/headshots/John-Ford-EGYM.jpeg",
+      logo: "/logos/egym.svg"
+    }
+];
+
+const TestimonialsPage = () => {
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
+
+  const videoTestimonials = [
+    // ... video testimonials
+  ];
+
+  return (
+    <div className="min-h-screen bg-gray-50 text-gray-800">
+      <Navbar />
+
+      {/* Hero Section */}
+      <div className="relative bg-black pt-24 pb-16 text-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover opacity-40"
+          >
+            <source src="/futuristicityh.mp4" type="video/mp4" />
+          </video>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
+        </div>
+        
+        <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+            <span className="text-green-400">$2B+</span> in Outcomes.
+            <br />
+            <span className="text-white">100+</span> Success Stories.
+          </h1>
+          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+            From boutique studios to enterprise chains, see how operators like you have transformed their business with DX.
+          </p>
+        
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
+            <div className="text-center">
+              <p className="text-4xl font-extrabold text-green-400 mb-1">120%</p>
+              <p className="text-sm text-gray-300 font-medium">Net Revenue Retention</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-extrabold text-green-400 mb-1">96</p>
+              <p className="text-sm text-gray-300 font-medium">Net Promoter Score</p>
+            </div>
+            <div className="text-center">
+              <p className="text-4xl font-extrabold text-green-400 mb-1">30%</p>
+              <p className="text-sm text-gray-300 font-medium">Faster Decision-Making</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* Featured Success Stories Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SpiralReveal delay={0.1} index={0}>
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Featured Success Stories
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Deep dives into transformational outcomes
+              </p>
+            </div>
+          </SpiralReveal>
+
+          {/* Case Study Cards */}
+          <div className="space-y-16">
+            {/* Crunch Fitness Case Study */}
+            <SpiralReveal delay={0.2} index={1}>
+              <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
+                <div className="flex items-center gap-4 mb-6">
+                  <img src="/logos/crunch.svg" alt="Crunch Fitness" className="h-12 w-auto" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">47% More Leads While Sleeping</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Missed After-Hours Leads</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mb-8 max-w-3xl">
+                  Crunch Fitness was losing 40% of their leads to competitors because they came in after hours. Their front desk couldn't handle the volume during peak times, and overnight inquiries went unanswered.
+                </p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Stats on the left */}
+                  <div className="space-y-4">
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">47%</p>
+                      <p className="text-sm text-gray-600">Lead Increase</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">24/7</p>
+                      <p className="text-sm text-gray-600">Response Time</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">$2.1M</p>
+                      <p className="text-sm text-gray-600">Annual Revenue</p>
+                    </div>
+                    <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
+                      Read Full Case Study →
+                    </button>
+                  </div>
+
+                  {/* Video on the right */}
+                  <div className="relative rounded-xl overflow-hidden bg-gray-900 aspect-video">
+                    <video
+                      className="w-full h-full object-cover"
+                      poster="/thumbnails/crunch-thumb.jpg"
+                      controls
+                    >
+                      <source src="/testimonialvideo/crunch.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </SpiralReveal>
+
+            {/* Wisconsin Athletic Club Case Study */}
+            <SpiralReveal delay={0.3} index={2}>
+              <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
+                <div className="flex items-center gap-4 mb-6">
+                  <img src="/logos/wac-logo.svg" alt="Wisconsin Athletic Club" className="h-12 w-auto" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">68% Reduction in Member Churn</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: High Cancellation Rates</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mb-8 max-w-3xl">
+                  WAC was experiencing 15% monthly churn. Members were cancelling online without any intervention opportunity. They needed a way to save at-risk members before losing them.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-green-600 mb-2">68%</p>
+                    <p className="text-gray-600">Churn Reduction</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-green-600 mb-2">$890K</p>
+                    <p className="text-gray-600">Revenue Saved</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-5xl font-bold text-green-600 mb-2">2 min</p>
+                    <p className="text-gray-600">Avg Save Time</p>
+                  </div>
+                </div>
+                
+                <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2">
+                  Read Full Case Study →
+                </button>
+              </div>
+            </SpiralReveal>
+
+            {/* Fitness SF Case Study */}
+            <SpiralReveal delay={0.4} index={3}>
+              <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
+                <div className="flex items-center gap-4 mb-6">
+                  <img src="/logos/fitnessSF.svg" alt="Fitness SF" className="h-12 w-auto" />
+                  <div>
+                    <h3 className="text-2xl font-bold text-gray-900">From Data Chaos to Intelligence</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Disconnected Systems</p>
+                  </div>
+                </div>
+                
+                <p className="text-gray-600 mb-8 max-w-3xl">
+                  Fitness SF had data in 7 different systems with no unified view. Decision-making was slow, and opportunities were missed. They needed a complete data transformation.
+                </p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  {/* Stats on the left */}
+                  <div className="space-y-4">
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">120%</p>
+                      <p className="text-sm text-gray-600">NRR Achieved</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">7→1</p>
+                      <p className="text-sm text-gray-600">Systems Unified</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-6">
+                      <p className="text-4xl font-bold text-green-600 mb-1">50%</p>
+                      <p className="text-sm text-gray-600">Faster Decisions</p>
+                    </div>
+                    <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
+                      Read Full Case Study →
+                    </button>
+                  </div>
+
+                  {/* Video on the right */}
+                  <div className="relative rounded-xl overflow-hidden bg-gray-900 aspect-video">
+                    <video
+                      className="w-full h-full object-cover"
+                      poster="/thumbnails/fitnesssf-thumb.jpg"
+                      controls
+                    >
+                      <source src="/testimonialvideo/urbn.mp4" type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </SpiralReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* What Operators Are Saying Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              What Operators Are Saying
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Quick wins and transformational stories from the field
+            </p>
+          </div>
+
+          {/* Testimonial Quotes Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
+                <Quote className="w-8 h-8 text-green-600 mb-4" />
+                <p className="text-gray-700 mb-6 italic">
+                  "{testimonial.quote}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <img 
+                    src={testimonial.avatar} 
+                    alt={testimonial.author} 
+                    className="w-12 h-12 rounded-full object-cover"
+                    onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
+                  />
+                  <div>
+                    <p className="font-semibold text-gray-900">{testimonial.author}</p>
+                    <p className="text-sm text-gray-600">{testimonial.title}, {testimonial.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ContactForm />
+      <Footer />
+    </div>
+  );
+};
+
+// Flip Card Component - needs to be defined for the testimonials
+const FlipCard = ({ testimonial, videoSrc, currentlyPlaying, setCurrentlyPlaying }) => {
   const [isFlipped, setIsFlipped] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [videoError, setVideoError] = useState(false);
   const videoRef = useRef(null);
+  const isPlaying = currentlyPlaying === videoSrc;
 
-  const handleVideoToggle = () => {
+  const handleVideoToggle = (e) => {
+    e.stopPropagation();
     if (videoRef.current && !videoError) {
       if (isPlaying) {
         videoRef.current.pause();
+        setCurrentlyPlaying(null);
       } else {
-        videoRef.current.play();
+        setCurrentlyPlaying(videoSrc);
       }
-      setIsPlaying(!isPlaying);
     }
   };
 
   const handleFlip = () => {
-    setIsFlipped(!isFlipped);
-    if (!isFlipped && videoRef.current && !videoError) {
-      // Auto play when flipping to video side
-      setTimeout(() => {
-        videoRef.current.play().catch(() => {
-          console.log('Auto-play prevented');
-        });
-      }, 300); // Wait for flip animation
-    }
+    setIsFlipped(prev => !prev);
   };
+
+  useEffect(() => {
+    if(videoRef.current) {
+      if(isFlipped && !isPlaying) {
+        setCurrentlyPlaying(videoSrc);
+      } else if (!isFlipped && isPlaying) {
+        videoRef.current.pause();
+        setCurrentlyPlaying(null);
+      }
+    }
+  }, [isFlipped, isPlaying, setCurrentlyPlaying, videoSrc]);
+
+  useEffect(() => {
+    if(videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.play().catch(e => console.error("Video play failed", e));
+      } else {
+        videoRef.current.pause();
+      }
+    }
+  }, [isPlaying]);
 
   const handleVideoError = () => {
     console.error('Video failed to load:', videoSrc);
@@ -132,7 +554,6 @@ const FlipCard = ({ testimonial, videoSrc }) => {
         <div className={`flip-card ${isFlipped ? 'flipped' : ''}`}>
           {/* Front Side - Testimonial */}
           <div className="flip-card-front bg-gradient-to-br from-green-50 to-emerald-50 p-6 border border-green-100 hover:shadow-lg transition-shadow cursor-pointer relative">
-            {/* Company Logo */}
             <div className="absolute top-4 right-4">
               <img 
                 src={testimonial.logo} 
@@ -178,13 +599,9 @@ const FlipCard = ({ testimonial, videoSrc }) => {
                   ref={videoRef}
                   className="w-full h-full object-cover"
                   muted={false}
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
                   onError={handleVideoError}
                   controls={false}
                   preload="metadata"
-                  onLoadStart={() => console.log('Video load started:', videoSrc)}
-                  onCanPlay={() => console.log('Video can play:', videoSrc)}
                 >
                   <source src={videoSrc} type="video/mp4" />
                   <source src={videoSrc.replace('.mp4', '.webm')} type="video/webm" />
@@ -192,20 +609,15 @@ const FlipCard = ({ testimonial, videoSrc }) => {
                   Your browser does not support the video tag.
                 </video>
                 
-                {/* Video Controls Overlay */}
                 <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleVideoToggle();
-                    }}
+                    onClick={handleVideoToggle}
                     className="bg-white/90 hover:bg-white text-gray-900 p-4 rounded-full transition-all duration-200 shadow-lg hover:scale-110"
                   >
                     {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
                   </button>
                 </div>
 
-                {/* Video Info Overlay */}
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
                   <div className="text-white">
                     <p className="font-semibold text-lg mb-1">{testimonial.author}</p>
@@ -215,7 +627,6 @@ const FlipCard = ({ testimonial, videoSrc }) => {
                 </div>
               </>
             ) : (
-              // Video Error Fallback
               <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center p-6">
                 <div className="text-center text-white">
                   <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mb-4 mx-auto">
@@ -238,581 +649,6 @@ const FlipCard = ({ testimonial, videoSrc }) => {
         </div>
       </div>
     </>
-  );
-};
-
-// Video Carousel Card Component
-const VideoCarouselCard = ({ video, index }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
-  const [videoError, setVideoError] = useState(false);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  const videoRef = useRef(null);
-
-  const handlePlay = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    console.log('Playing video:', video.src);
-    setVideoError(false);
-    setShowVideo(true);
-    setTimeout(() => {
-      if (videoRef.current) {
-        videoRef.current.play().catch(error => {
-          console.error('Video play error:', error);
-          setVideoError(true);
-        });
-        setIsPlaying(true);
-      }
-    }, 100);
-  };
-
-  const handlePause = () => {
-    if (videoRef.current) {
-      videoRef.current.pause();
-      setIsPlaying(false);
-    }
-  };
-
-  const handleVideoError = () => {
-    console.error('Video loading error:', video.src);
-    setVideoError(true);
-  };
-
-  const handleVideoLoaded = () => {
-    console.log('Video loaded successfully:', video.src);
-    setVideoLoaded(true);
-  };
-
-  return (
-    <div className="flex-shrink-0 w-80 h-64 relative group cursor-pointer select-none" 
-         onClick={handlePlay}
-         onTouchStart={handlePlay}
-         style={{ touchAction: 'manipulation' }}>
-      {!showVideo ? (
-        // Video Thumbnail/Preview
-        <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative border-2 border-transparent hover:border-green-500/50">
-          {/* Thumbnail Background */}
-          <div className="absolute inset-0 bg-black/60"></div>
-          
-          {/* Author Image as Background */}
-          <img 
-            src={video.thumbnail}
-            alt={video.author}
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = 'none';
-              console.log('Thumbnail failed to load:', video.thumbnail);
-            }}
-          />
-          
-          {/* Play Button Overlay */}
-          <div className="absolute inset-0 flex items-center justify-center z-10">
-            <div className="w-16 h-16 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 border-2 border-green-500/20 hover:border-green-500">
-              <Play className="w-8 h-8 text-gray-900 ml-1" />
-            </div>
-          </div>
-          
-          {/* Click instruction overlay */}
-          <div className="absolute inset-0 bg-black/0 hover:bg-black/20 transition-all duration-300 flex items-center justify-center">
-            <div className="bg-black/80 text-white text-xs px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mt-20">
-              Click to play video
-            </div>
-          </div>
-          
-          {/* Video Info */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent">
-            <h3 className="text-white font-bold text-lg mb-1">{video.title}</h3>
-            <p className="text-white/80 text-sm mb-2">{video.subtitle}</p>
-            <div className="flex items-center space-x-2">
-              <img 
-                src={video.thumbnail}
-                alt={video.author}
-                className="w-6 h-6 rounded-full border border-white/30"
-                onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
-              />
-              <span className="text-white/90 text-xs">{video.author} • {video.company}</span>
-            </div>
-          </div>
-          
-          {/* Duration Badge */}
-          <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
-            2:30
-          </div>
-        </div>
-      ) : (
-        // Full Video Player
-        <div className="w-full h-full bg-black rounded-xl overflow-hidden shadow-lg relative">
-          {!videoError ? (
-            <video
-              ref={videoRef}
-              className="w-full h-full object-cover"
-              controls
-              onPlay={() => setIsPlaying(true)}
-              onPause={() => setIsPlaying(false)}
-              onError={handleVideoError}
-              onLoadedData={handleVideoLoaded}
-              onEnded={() => {
-                setIsPlaying(false);
-                setShowVideo(false);
-              }}
-              preload="metadata"
-            >
-              <source src={video.src} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          ) : (
-            // Error fallback
-            <div className="w-full h-full bg-gray-800 flex items-center justify-center text-white p-6">
-              <div className="text-center">
-                <div className="text-red-400 mb-2">⚠️</div>
-                <p className="text-sm">Video unavailable</p>
-                <p className="text-xs opacity-70 mt-1">{video.title}</p>
-              </div>
-            </div>
-          )}
-          
-          {/* Close Button */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setShowVideo(false);
-              setIsPlaying(false);
-              if (videoRef.current) {
-                videoRef.current.pause();
-              }
-            }}
-            className="absolute top-4 right-4 w-8 h-8 bg-black/60 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-colors z-10"
-          >
-            ✕
-          </button>
-        </div>
-      )}
-    </div>
-  );
-};
-
-const TestimonialsPage = () => {
-  const testimonials = [
-    {
-      quote: "DXFactor understands our industry, delivers real results, and moves fast. Their responsiveness and expertise cut costs by 50%—a true game-changer for us!",
-      author: "Don Dickerson",
-      title: "Vice President",
-      company: "Fitness SF",
-      avatar: "/headshots/Don-Dickerson-Fitness-SF.png",
-      logo: "/logos/fitnessSF.svg",
-      featured: true,
-      hasVideo: true,
-      videoSrc: "/testimonialvideo/urbn.mp4"
-    },
-    {
-      quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
-      author: "Rob Koehler",
-      title: "Director of Technology Development",
-      company: "Wisconsin Athletic Club",
-      avatar: "/headshots/Rob-Koehler-WAC.jpeg",
-      logo: "/logos/wac-logo.svg",
-      featured: true,
-      hasVideo: false
-    },
-    {
-      quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
-      author: "Mike Neff",
-      title: "Executive Vice President",
-      company: "Crunch",
-      avatar: "/headshots/Mike-Neff-Crunch.jpeg",
-      logo: "/logos/crunch.svg",
-      featured: true,
-      hasVideo: true,
-      videoSrc: "/testimonialvideo/crunch.mp4"
-    },
-    {
-      quote: "Not just code—DXFactor brought collaboration, speed, and structure to help us scale our digital platform with confidence.",
-      author: "Jeremy Brutus",
-      title: "Co-Founder",
-      company: "URBN Playground",
-      avatar: "/headshots/Jeremy-Brutus-URBN.jpeg",
-      logo: "/logos/URBN Playground.png"
-    },
-    {
-      quote: "Click2Save has made my administrative team's life much easier and more productive while saving members at the same time.",
-      author: "Chad Shaw",
-      title: "Chief Operating Officer",
-      company: "Fit Athletic Club",
-      avatar: "/headshots/Chad-Shaw-Fit-Athletic.jpeg",
-      logo: "/logos/Fit-athletic.svg"
-    },
-    {
-      quote: "We are excited to partner with DXFactor for their unparalleled expertise in digital transformation which will push our combined portfolio into new and exciting areas that will support the growth of our partners.",
-      author: "Khal Rai",
-      title: "Platform President",
-      company: "ABC",
-      avatar: "/headshots/Khal-Rai-ABC.jpeg"
-    },
-    {
-      quote: "Method Gym saved 7% of cancellations & $1.8K in dues in 30 days—thanks to DXFactor's Click to Save. Fast setup, real ROI, better member experience.",
-      author: "Al Noshirvani",
-      title: "Founder",
-      company: "Method Gym",
-      avatar: "/headshots/alno.webp",
-      logo: "/logos/method-gym.png"
-    },
-    {
-      quote: "DXFactor brings clarity, speed & care—solving problems with you, not just for you. Bold ideas need partners like this.",
-      author: "Chelsea Lorenzo",
-      title: "Associate Partner",
-      company: "ALTA",
-      avatar: "/headshots/Chelsea-Lorenzen-ALTA.jpeg"
-    },
-    {
-      quote: "Partnering with DXFactor enhances our ability to offer comprehensive, personalized solutions that drive both member satisfaction and operational efficiency.",
-      author: "John Ford",
-      title: "Chief Product Officer",
-      company: "EGYM",
-      avatar: "/headshots/John-Ford-EGYM.jpeg"
-    },
-    {
-      quote: "With AI Agents, we have an opportunity to have a conversation with every prospects to guide them to the correct membership type, to try to upsell them with personal training, and discuss other things like goals as they come into the club.",
-      author: "Jon Roberts",
-      title: "Chief Information Officer",
-      company: "In Shape",
-      avatar: "/headshots/Jon-Roberts-InShape.jpeg"
-    },
-    {
-      quote: "We saved 4000 man hours in 12 months due to Dx Factor's Concierge Agent mainly from answering phone calls and front desk questions.",
-      author: "Don Dickerson",
-      title: "President",
-      company: "Fitness SF - Agent",
-      avatar: "/headshots/Don-Dickerson-Fitness-SF.png",
-      logo: "/logos/fitnessSF.svg"
-    },
-    {
-      quote: "Since integrating DXFactor's AI-powered agent, we've seen a significant reduction in the time spent on general membership inquiries, saving roughly 20 hours each month. This efficiency boost allows us to allocate more resources to member experience and operational improvements.",
-      author: "Troy McFarland",
-      title: "Director of Operations",
-      company: "Fitness SF - Agent",
-      avatar: "/headshots/Troy-Macfarland-FitnessSF.jpg",
-      logo: "/logos/fitnessSF.svg"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center">
-              <div className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium mb-6">
-                <Quote className="w-3 h-3 mr-1" />
-                CLIENT TESTIMONIALS
-              </div>
-              <h1 className="text-4xl md:text-6xl font-black text-gray-900 leading-tight mb-6">
-                What Our Clients
-                <br />
-                <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
-                  Say About Us
-                </span>
-              </h1>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Don't just take our word for it. Hear from fitness industry leaders who have transformed their businesses with DXFactor's AI solutions.
-              </p>
-            </div>
-          </SpiralReveal>
-        </div>
-      </section>
-
-      {/* Featured Testimonials */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Featured Success Stories
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Industry leaders share their experiences working with DXFactor
-              </p>
-            </div>
-          </SpiralReveal>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-            {testimonials.filter(t => t.featured).map((testimonial, index) => (
-              <SpiralReveal key={index} delay={0.2 + index * 0.1} index={index + 1}>
-                {testimonial.hasVideo ? (
-                  <FlipCard testimonial={testimonial} videoSrc={testimonial.videoSrc} />
-                ) : (
-                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-6 rounded-xl border border-green-100 hover:shadow-lg transition-shadow h-80 relative">
-                    {/* Company Logo */}
-                    <div className="absolute top-4 right-4">
-                      <img 
-                        src={testimonial.logo} 
-                        alt={`${testimonial.company} logo`}
-                        className="h-8 w-auto opacity-70 hover:opacity-100 transition-opacity"
-                        onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
-                      />
-                    </div>
-                    
-                    <div className="flex items-center mb-4">
-                      <Quote className="w-6 h-6 text-green-600" />
-                    </div>
-                    <p className="text-gray-700 leading-relaxed mb-6 italic text-base line-clamp-4">
-                      "{testimonial.quote}"
-                    </p>
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <div className="flex items-center">
-                        <img 
-                          src={testimonial.avatar} 
-                          alt={testimonial.author}
-                          className="w-10 h-10 rounded-full mr-3 border-2 border-white shadow-sm"
-                        />
-                        <div>
-                          <div className="font-bold text-gray-900 text-sm">{testimonial.author}</div>
-                          <div className="text-xs text-gray-600">{testimonial.title}</div>
-                          <div className="text-xs font-medium text-green-600">{testimonial.company}</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </SpiralReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Video Carousel Section */}
-      <section className="py-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                Client Success Stories
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Watch real testimonials from industry leaders sharing their transformation journeys
-              </p>
-            </div>
-          </SpiralReveal>
-
-          {/* Video Carousel */}
-          <div className="relative">
-            <div className="overflow-x-auto scrollbar-hide">
-              <div className="flex space-x-6 pb-4" style={{ width: 'max-content' }}>
-                {[
-                  {
-                    src: "/testimonialvideo/crunch.mp4",
-                    title: "Crunch Fitness Success",
-                    subtitle: "Scalable Platform Delivery",
-                    thumbnail: "/headshots/Mike-Neff-Crunch.jpeg",
-                    author: "Mike Neff",
-                    company: "Crunch"
-                  },
-                  {
-                    src: "/testimonialvideo/urbn.mp4",
-                    title: "URBN Playground Growth",
-                    subtitle: "Team Flexibility & Speed",
-                    thumbnail: "/headshots/Jeremy-Brutus-URBN.jpeg",
-                    author: "Jeremy Brutus", 
-                    company: "URBN Playground"
-                  },
-                  {
-                    src: "/testimonialvideo/Crunch _ DX Factor  Quick Finish.mp4",
-                    title: "Quick Project Delivery",
-                    subtitle: "Crunch Fitness Experience",
-                    thumbnail: "/headshots/Mike-Neff-Crunch.jpeg",
-                    author: "Crunch Team",
-                    company: "Crunch Fitness"
-                  },
-                  {
-                    src: "/testimonialvideo/Fitness SF _ Dharmesh  Industry Understanding.mp4",
-                    title: "Industry Understanding",
-                    subtitle: "Fitness SF Partnership",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "Dharmesh",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/Fitness SF _ Sales team adoption.mp4",
-                    title: "Sales Team Adoption",
-                    subtitle: "Fitness SF Success",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "Sales Team",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/FSF_ Native App Launch.mp4",
-                    title: "Native App Launch",
-                    subtitle: "Fitness SF Innovation",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "FSF Team",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/FSF_ Smooth Launch Success.mp4",
-                    title: "Smooth Launch Success",
-                    subtitle: "Fitness SF Results",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "FSF Team",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/FSF_ Staff Happy  Costs Reduced (1).mp4",
-                    title: "Cost Reduction Success",
-                    subtitle: "Staff Satisfaction & Savings",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "FSF Team",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/SF _ Choosing DX Factor.mp4",
-                    title: "Choosing DX Factor",
-                    subtitle: "Decision Process",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "SF Team",
-                    company: "Fitness SF"
-                  },
-                  {
-                    src: "/testimonialvideo/SF _ DX  Results  Not Sales.mp4",
-                    title: "Results Not Sales",
-                    subtitle: "Real Outcomes Focus",
-                    thumbnail: "/headshots/Don-Dickerson-Fitness-SF.png",
-                    author: "SF Team",
-                    company: "Fitness SF"
-                  }
-                ].map((video, index) => (
-                  <VideoCarouselCard key={index} video={video} index={index} />
-                ))}
-              </div>
-            </div>
-
-            {/* Scroll Indicators */}
-            <div className="flex justify-center mt-6 space-x-2">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="w-2 h-2 bg-gray-300 rounded-full"></div>
-              ))}
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center mt-12">
-            <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
-                Ready to Share Your Success Story?
-              </h3>
-              <p className="text-gray-600 mb-6">
-                Join these industry leaders and transform your business with DXFactor's AI solutions
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors shadow-lg">
-                  Schedule Demo
-                </button>
-                <button className="border-2 border-green-600 text-green-600 hover:bg-green-50 px-8 py-3 rounded-lg font-semibold transition-colors">
-                  View All Case Studies
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-20 h-20 bg-green-500 rounded-full blur-xl"></div>
-          <div className="absolute top-32 right-20 w-16 h-16 bg-blue-500 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-32 w-24 h-24 bg-emerald-500 rounded-full blur-xl"></div>
-          <div className="absolute bottom-32 right-10 w-18 h-18 bg-green-400 rounded-full blur-xl"></div>
-        </div>
-
-        <style dangerouslySetInnerHTML={{ __html: `
-          .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-          }
-          .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-          }
-        `}} />
-      </section>
-
-      {/* All Testimonials Grid */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SpiralReveal delay={0.1} index={0}>
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                More Client Success Stories
-              </h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Discover how fitness businesses across the industry are achieving remarkable results
-              </p>
-            </div>
-          </SpiralReveal>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.filter(t => !t.featured).map((testimonial, index) => (
-              <SpiralReveal key={index} delay={0.2 + index * 0.1} index={index + 1}>
-                <div className="bg-white p-6 rounded-xl border border-gray-200 hover:shadow-lg transition-shadow h-full flex flex-col relative">
-                  {/* Company Logo */}
-                  <div className="absolute top-4 right-4">
-                    <img 
-                      src={testimonial.logo} 
-                      alt={`${testimonial.company} logo`}
-                      className="h-6 w-auto opacity-60 hover:opacity-100 transition-opacity"
-                      onError={(e) => (e.target as HTMLImageElement).style.display = 'none'}
-                    />
-                  </div>
-                  
-                  <div className="flex-1">
-                    <Quote className="w-6 h-6 text-green-600 mb-4" />
-                    <p className="text-gray-600 leading-relaxed mb-6 italic">
-                      "{testimonial.quote}"
-                    </p>
-                  </div>
-                  <div className="flex items-center mt-auto">
-                    <img 
-                      src={testimonial.avatar} 
-                      alt={testimonial.author}
-                      className="w-10 h-10 rounded-full mr-3"
-                    />
-                    <div>
-                      <div className="font-bold text-gray-900 text-sm">{testimonial.author}</div>
-                      <div className="text-xs text-gray-600">{testimonial.title}</div>
-                      <div className="text-xs font-medium text-green-600">{testimonial.company}</div>
-                    </div>
-                  </div>
-                </div>
-              </SpiralReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-emerald-500">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <SpiralReveal delay={0.1} index={0}>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Ready to Join Our Success Stories?
-            </h2>
-            <p className="text-xl text-green-100 mb-8 leading-relaxed">
-              Let's discuss how DXFactor can transform your fitness business with proven AI solutions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-green-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
-                Schedule Your Demo
-              </button>
-              <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors">
-                View Case Studies
-              </button>
-            </div>
-          </SpiralReveal>
-        </div>
-      </section>
-      
-      <ContactForm />
-      <Footer />
-    </div>
   );
 };
 

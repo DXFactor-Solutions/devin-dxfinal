@@ -5,6 +5,7 @@ import MicroagentCommunity from '../components/MicroagentCommunity';
 import AgentsSection from '../components/AgentsSection';
 import DXFactorSection from '../components/DXFactorSection';
 import ContactForm from '../components/ContactForm';
+import FeaturedSuccessStories from '../components/FeaturedSuccessStories';
 
 import TrustedByBelt from '../components/TrustedByBelt';
 // import AIMapSection from '../components/AIMapSection'; 
@@ -173,6 +174,10 @@ const Index = () => {
       
       <div className="relative z-10">
         <DXFactorSection />
+      </div>
+      
+      <div className="relative z-10">
+        <FeaturedSuccessStories />
       </div>
       
       <div className="relative z-10">

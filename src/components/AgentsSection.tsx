@@ -189,8 +189,8 @@ const AgentsSection: React.FC = () => {
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
               <div className="absolute top-0 left-1/4 w-64 h-64 bg-green-500/5 rounded-full blur-3xl"></div>
               <div className="absolute top-16 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl"></div>
-            </div>
-            
+        </div>
+        
             {/* Main heading with enhanced typography */}
             <div className="relative z-10 mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-gray-900 mb-3 sm:mb-4 leading-tight">
@@ -210,7 +210,7 @@ const AgentsSection: React.FC = () => {
                 <div className="w-8 sm:w-12 h-px bg-gradient-to-r from-transparent to-green-500"></div>
                 <div className="mx-3 sm:mx-4 w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full"></div>
                 <div className="w-8 sm:w-12 h-px bg-gradient-to-l from-transparent to-green-500"></div>
-            </div>
+        </div>
 
               <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-700 mb-3 sm:mb-4">
                 Not Just Another AI Tool.{" "}
@@ -248,11 +248,11 @@ const AgentsSection: React.FC = () => {
                         <div className="flex items-start mb-3 sm:mb-4">
                           <div className="w-8 sm:w-10 h-8 sm:h-10 bg-green-100 rounded-xl flex items-center justify-center mr-2 sm:mr-3 flex-shrink-0">
                             {React.createElement(agent.icon, { className: "w-4 sm:w-5 h-4 sm:h-5 text-green-600" })}
-                          </div>
-                          <div className="flex-1 min-w-0">
+                    </div>
+                    <div className="flex-1 min-w-0">
                             <span className={`inline-block px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-semibold rounded-md mb-1 sm:mb-2 ${getCategoryColor(agent.category)}`}>
-                              {agent.category}
-                            </span>
+                        {agent.category}
+                      </span>
                             <h3 className="text-base sm:text-lg font-bold text-gray-900 leading-tight">{agent.name}</h3>
                           </div>
                         </div>
@@ -316,9 +316,9 @@ const AgentsSection: React.FC = () => {
                         </div>
                         
                         <p className="text-gray-600 mb-4 text-xs sm:text-sm leading-relaxed flex-1">
-                          {agent.description}
-                        </p>
-                        
+                  {agent.description}
+                </p>
+                
                         <div className="text-center mt-auto">
                           <p className="text-xs text-green-600 font-semibold hover:text-green-700 transition-colors">Click to flip back</p>
                         </div>
