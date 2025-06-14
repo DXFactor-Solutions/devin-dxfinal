@@ -6,7 +6,7 @@ import { TubelightNavBar } from './ui/tubelight-navbar';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Outcome Agents Platform', url: '#microagentcommunity', icon: Home },
+  { name: 'Outcome Agents Platform', url: '/outcomes-platform', icon: Home },
   { name: 'Solutions', url: '/solutions', icon: Bot },
   { name: 'Testimonials', url: '/testimonials', icon: Star },
   { 

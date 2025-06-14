@@ -7,6 +7,7 @@ import ScrollToTop from "@/components/ScrollToTop";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import WhyUs from "./pages/WhyUs";
+import OutcomesPlat from "./pages/OutcomesPlat";
 import Solutions from "./pages/Solutions";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/blog/[slug]";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/why-us" element={<WhyUs />} />
+          <Route path="/outcomes-platform" element={<OutcomesPlat />} />
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
