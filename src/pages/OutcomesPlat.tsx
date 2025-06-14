@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
-import { motion } from 'framer-motion';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   TrendingUp, Zap, Star, Play, ArrowRight, CheckCircle, 
   Calculator, Users, Clock, Target, BarChart3, Sparkles
@@ -15,26 +16,17 @@ const OutcomesPlat = () => {
     {
       id: 'growth',
       title: 'Growth',
-      description: 'Drive revenue, capture more leads, and expand your member base with agents that work 24/7 to grow your business.',
-      agentsCount: '5 agents available',
-      gradient: 'from-red-500 to-pink-600',
-      bgGradient: 'from-red-50 to-pink-50'
+      description: 'Drive revenue, capture more leads, and maximize retention with AI agents that convert prospects, recover payments, and save at-risk members.'
     },
     {
       id: 'efficiency',
       title: 'Efficiency',
-      description: 'Automate operations, reduce costs, and free your staff to focus on what matters most - your members.',
-      agentsCount: '7 agents available',
-      gradient: 'from-yellow-500 to-orange-600',
-      bgGradient: 'from-yellow-50 to-orange-50'
+      description: 'Automate operations 24/7, reduce costs by 70%, and let AI agents do the work of 5+ employees while your staff focuses on what matters most - your members.'
     },
     {
       id: 'experience',
       title: 'Experience',
-      description: 'Delight members at every touchpoint with AI that understands their needs and delivers personalized service.',
-      agentsCount: '6 agents available',
-      gradient: 'from-purple-500 to-indigo-600',
-      bgGradient: 'from-purple-50 to-indigo-50'
+      description: 'Delight members at every touchpoint with AI that understands their needs and delivers personalized service.'
     }
   ];
 
@@ -81,7 +73,7 @@ const OutcomesPlat = () => {
     },
     {
       category: 'EFFICIENCY',
-      name: 'MRM Configuration',
+      name: 'Configurator',
       description: 'Enable non-technical users to customize workflows, branding, and integrations through an easy-to-use interface.',
       metric: '70%',
       metricLabel: 'FASTER SETUP',
@@ -91,7 +83,7 @@ const OutcomesPlat = () => {
     },
     {
       category: 'EXPERIENCE',
-      name: 'Fitness LLM',
+      name: 'Prompt Analytics',
       description: 'Ask data questions in plain English and get instant, accurate reports without SQL or technical skills.',
       metric: '95%+',
       metricLabel: 'ANSWER ACCURACY',
@@ -112,45 +104,160 @@ const OutcomesPlat = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-              The DX Outcomes Agent Platform
-            </h1>
-            <p className="text-xl text-green-600 font-semibold mb-4">
-              Deploy from our growing library of specialized agents. Each one battle-tested, ROI-proven, and ready to work.
-            </p>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto mb-8">
-              Start with one agent or deploy dozens. Our platform orchestrates unlimited agents that work together to transform every aspect of your operation.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
-                Start Free with Concierge Agent
-                <ArrowRight className="w-5 h-5" />
-              </button>
-              <button className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
-                <Play className="w-5 h-5" />
-                See the Outcomes Agent Platform in Action
-              </button>
-            </div>
+      <section className="relative pt-20 pb-12 min-h-[50vh] flex items-center overflow-hidden">
+        {/* Futuristic City Video Background */}
+        <div className="absolute inset-0 z-0">
+          {/* Video background */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 w-full h-full object-cover"
+            onError={(e) => console.error('Video failed to load:', e)}
+            onLoadStart={() => console.log('Video loading started')}
+            onCanPlay={() => console.log('Video can play')}
+          >
+            <source src="/videos/futurecityh.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          {/* Gradient overlays for depth and readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-green-900/5 to-transparent"></div>
+          
+          {/* Animated grid overlay */}
+          <div className="absolute inset-0 opacity-10">
+            <div 
+              className="absolute inset-0 animate-pulse"
+              style={{
+                backgroundImage: `
+                  linear-gradient(rgba(34, 197, 94, 0.2) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(34, 197, 94, 0.2) 1px, transparent 1px)
+                `,
+                backgroundSize: '50px 50px'
+              }}
+            ></div>
+          </div>
+          
+          {/* Floating particles */}
+          <div className="absolute inset-0">
+            {[...Array(8)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-1 h-1 bg-green-500 rounded-full opacity-40 animate-pulse"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 3}s`,
+                  animationDuration: `${2 + Math.random() * 2}s`
+                }}
+              />
+            ))}
+          </div>
+        </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-2xl mx-auto">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">20+</div>
-                <div className="text-sm text-gray-600">Agents Available</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">100+</div>
-                <div className="text-sm text-gray-600">Deployments</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
-                <div className="text-sm text-gray-600">Always Working</div>
-              </div>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          <div className="text-center">
+            {/* Badge */}
+            <motion.div 
+              className="inline-flex items-center gap-2 px-3 py-1 bg-green-600/90 backdrop-blur-sm border border-green-500 rounded-full mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+              <span className="text-white text-xs font-bold uppercase tracking-wider">
+                Next-Gen AI Platform
+              </span>
+            </motion.div>
+
+            {/* Main Title */}
+            <motion.h1 
+              className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 leading-tight"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+            >
+              <span className="text-white">The </span>
+              <span className="text-green-500 font-black">
+                DX Outcomes
+              </span>
+              <br />
+              <span className="text-white">Agent </span>
+              <span className="text-green-500 font-black">
+                Platform
+              </span>
+            </motion.h1>
+
+            {/* Subtitle */}
+            <motion.p 
+              className="text-base md:text-lg text-green-500 font-bold mb-2 leading-relaxed max-w-2xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              Deploy from our growing library of specialized agents.
+              <br />
+              <span className="text-white font-semibold">Each one battle-tested, ROI-proven, and ready to work.</span>
+            </motion.p>
+
+            {/* Description */}
+            <motion.p 
+              className="text-sm text-white/90 mb-6 leading-relaxed max-w-xl mx-auto font-medium"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              Start with one agent or deploy dozens. Our platform orchestrates unlimited agents that work together to transform every aspect of your operation.
+            </motion.p>
+            
+            {/* CTA Buttons */}
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-3 justify-center mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.7 }}
+            >
+              <button className="group relative bg-green-600 hover:bg-green-700 text-white px-6 py-2.5 rounded-lg font-bold transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-green-600/30 transform hover:scale-105 justify-center border-2 border-green-500">
+                <span>Start Free with Concierge Agent</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button className="group relative border-2 border-white/80 hover:border-green-500 text-white hover:text-green-500 px-6 py-2.5 rounded-lg font-bold transition-all duration-300 flex items-center gap-2 backdrop-blur-sm bg-black/20 hover:bg-black/30 justify-center">
+                <Play className="w-4 h-4" />
+                <span>See Platform in Action</span>
+              </button>
+            </motion.div>
+
+            {/* Compact Stats */}
+            <motion.div 
+              className="grid grid-cols-3 gap-6 max-w-lg mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+            >
+              {[
+                { value: '20+', label: 'AI Agents' },
+                { value: '100+', label: 'Deployments' },
+                { value: '24/7', label: 'Always Working' }
+              ].map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  className="text-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.9 + index * 0.1 }}
+                >
+                  <div className="text-2xl md:text-3xl font-black text-green-500 mb-1">
+                    {stat.value}
+                  </div>
+                  <div className="text-white text-xs font-semibold">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
@@ -206,26 +313,26 @@ const OutcomesPlat = () => {
               {outcomes.map((outcome, index) => (
                 <motion.div
                   key={outcome.id}
-                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border border-gray-100 hover:border-green-200 overflow-hidden"
+                  className="group relative bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer border-2 border-gray-100 hover:border-green-500 overflow-hidden"
                   whileHover={{ scale: 1.05, y: -10 }}
                   whileTap={{ scale: 0.98 }}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
                 >
-                  {/* Enhanced gradient background overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${outcome.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  {/* Enhanced background overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   
-                  {/* Animated border with outcome-specific gradient */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${outcome.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[2px]`}>
+                  {/* Animated border with green theme */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-[2px]">
                     <div className="w-full h-full bg-white rounded-2xl"></div>
                   </div>
                   
                   <div className="relative z-10">
-                    {/* Enhanced title with gradient text effect */}
+                    {/* Enhanced title with green accent */}
                     <div className="mb-6">
-                      <div className={`w-full h-1 bg-gradient-to-r ${outcome.gradient} rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
-                      <h4 className={`text-3xl font-bold bg-gradient-to-r ${outcome.gradient} bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300`}>
+                      <div className="w-full h-1 bg-gradient-to-r from-green-500 to-green-600 rounded-full mb-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+                      <h4 className="text-3xl font-bold text-gray-900 group-hover:text-green-600 transition-colors duration-300">
                         {outcome.title}
                       </h4>
                     </div>
@@ -233,23 +340,17 @@ const OutcomesPlat = () => {
                     <p className="text-gray-600 mb-6 leading-relaxed text-base group-hover:text-gray-700 transition-colors duration-300">
                       {outcome.description}
                     </p>
-                    
-                    {/* Enhanced agent count badge */}
-                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-50 to-green-100 rounded-full border border-green-200 group-hover:from-green-100 group-hover:to-green-200 transition-all duration-300">
-                      <div className={`w-2 h-2 bg-gradient-to-r ${outcome.gradient} rounded-full animate-pulse`}></div>
-                      <span className="text-sm font-semibold text-green-700">{outcome.agentsCount}</span>
-                    </div>
                   </div>
                   
-                  {/* Enhanced hover glow effect with outcome-specific colors */}
-                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${outcome.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl`}></div>
+                  {/* Enhanced hover glow effect with green colors */}
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-xl"></div>
                   
                   {/* Floating elements for visual interest */}
                   <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className={`w-3 h-3 bg-gradient-to-r ${outcome.gradient} rounded-full animate-bounce`} style={{ animationDelay: '0.5s' }}></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: '0.5s' }}></div>
                   </div>
                   <div className="absolute bottom-4 left-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    <div className={`w-2 h-2 bg-gradient-to-r ${outcome.gradient} rounded-full animate-pulse`} style={{ animationDelay: '1s' }}></div>
+                    <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                   </div>
                 </motion.div>
               ))}
@@ -338,49 +439,12 @@ const OutcomesPlat = () => {
         </div>
       </section>
 
-      {/* CTA Section with Contact Form */}
-      <section className="py-16 bg-gradient-to-br from-green-50 to-green-100/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Transform Your Business with the DX Outcomes Agent Platform
-            </h2>
-            <p className="text-lg text-gray-600 mb-8">
-              Join 100+ fitness operations already seeing results. Deploy AI agents that deliver 24/7 to automate, optimize, and accelerate your business goals.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-              <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors">
-                Start Free with Concierge Agent
-              </button>
-              <button className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold transition-colors flex items-center gap-2">
-                <Play className="w-5 h-5" />
-                See the Outcomes Agent Platform in Action
-              </button>
-            </div>
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto text-sm text-gray-600">
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>120% Net Revenue Retention</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>100+ Deployments</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>24/7 Operation</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>ROI from Day One</span>
-              </div>
-            </div>
-          </div>
-          
-          <ContactForm />
-        </div>
+      {/* CTA Section with Contact Form */}
+      <section className="py-16 bg-white">
+        <ContactForm />
       </section>
 
       <Footer />

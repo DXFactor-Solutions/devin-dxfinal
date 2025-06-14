@@ -62,5 +62,21 @@ export const blogPosts = [
     description: 'Provide around-the-clock service to your members without increasing your overhead.',
     html: '/docz/24_7-Service-Without-the-Overhead__.html',
     content: '',
+  },
+  {
+    slug: 'from-leads-to-lifelong-members',
+    title: 'From Leads to Lifelong Members',
+    image: '/blogo/Leads to Members.jpg',
+    description: 'Transform your lead generation strategy into a member retention powerhouse with AI-driven insights.',
+    html: '/docz/From-Leads-to-Lifelong-Members.html',
+    content: '',
+  },
+  {
+    slug: 'unleashing-generative-ai-fitness',
+    title: 'Unleashing the Potential of Generative AI in Fitness',
+    image: '/blogo/Generative AI Fitness.jpg',
+    description: 'Discover how generative AI is revolutionizing fitness operations and member experiences.',
+    html: '/docz/Unleashing-the-Potential-of-Generative-AI-in-Fitness.html',
+    content: '',
   }
 ];

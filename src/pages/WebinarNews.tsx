@@ -3,6 +3,7 @@ import { Play, Calendar, Clock, User, TrendingUp, Search, ExternalLink, Video, N
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // Animation component for spiral effect
@@ -477,6 +478,7 @@ const WebinarNewsPage = () => {
         </SpiralReveal>
       </div>
       
+      <FeaturedSuccessStories />
       <ContactForm />
       <Footer />
     </div>

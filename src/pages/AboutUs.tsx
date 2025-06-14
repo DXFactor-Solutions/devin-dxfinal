@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView, useScroll } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -819,6 +820,9 @@ const AboutUs = () => {
           </Button>
         </div>
       </section>
+      
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
       
       {/* Full-width Contact Form */}
       <ContactForm />

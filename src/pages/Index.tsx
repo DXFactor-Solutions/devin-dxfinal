@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import HeroSection from '../components/HeroSection';
 import MicroagentCommunity from '../components/MicroagentCommunity';
@@ -6,11 +7,12 @@ import AgentsSection from '../components/AgentsSection';
 import DXFactorSection from '../components/DXFactorSection';
 import ContactForm from '../components/ContactForm';
 import FeaturedSuccessStories from '../components/FeaturedSuccessStories';
-
 import TrustedByBelt from '../components/TrustedByBelt';
 // import AIMapSection from '../components/AIMapSection'; 
 // import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
+import SpiralReveal from '../components/SpiralReveal';
+import { ArrowRight, CheckCircle, Star, Users, TrendingUp, Zap } from 'lucide-react';
 
 // CSS for scroll animations
 const scrollAnimationStyles = `

@@ -1,13 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from './ui/button';
-import { Menu, X, Home, Bot, Star, FileText, Info, ChevronDown } from 'lucide-react';
+import { Menu, X, Home, Bot, Star, FileText, Info, ChevronDown, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TubelightNavBar } from './ui/tubelight-navbar';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
-  { name: 'Outcome Agents Platform', url: '/outcomes-platform', icon: Home },
   { name: 'Solutions', url: '/solutions', icon: Bot },
+  { name: 'Outcome Agents Platform', url: '/outcomes-platform', icon: Zap },
   { name: 'Testimonials', url: '/testimonials', icon: Star },
   { 
     name: 'Resources', 

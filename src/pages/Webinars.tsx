@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Play, Calendar, Clock, User, TrendingUp, Search, ExternalLink, Video } from 'lucide-react';
+import { Play, Calendar, Clock, User, TrendingUp, Search, ExternalLink, Video, ArrowRight, BookOpen, FileText, Newspaper } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { webinars } from '../lib/webinar-data';
 
@@ -160,6 +161,9 @@ const WebinarsPage = () => {
           </div>
         </div>
       </div>
+
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
 
       <ContactForm />
       <Footer />

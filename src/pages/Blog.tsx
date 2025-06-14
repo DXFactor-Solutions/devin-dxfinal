@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, Video, FileText, Newspaper, Calendar, User, Clock
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { blogPosts } from '../lib/blog-data';
 
@@ -156,10 +157,13 @@ const BlogPage = () => {
                   </div>
                 </div>
               </Link>
-          </SpiralReveal>
-        ))}
+            </SpiralReveal>
+          ))}
         </div>
       </div>
+      
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
       
       <ContactForm />
       <Footer />

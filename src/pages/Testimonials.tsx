@@ -234,7 +234,7 @@ const TestimonialsPage = () => {
             playsInline
             className="absolute inset-0 w-full h-full object-cover opacity-40"
           >
-            <source src="/futuristicityh.mp4" type="video/mp4" />
+            <source src="/videos/futurecityh.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
         </div>

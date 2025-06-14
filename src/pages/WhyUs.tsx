@@ -3,6 +3,7 @@ import { Target, Zap, Users, Award, TrendingUp, Shield, Clock, Lightbulb, CheckC
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 

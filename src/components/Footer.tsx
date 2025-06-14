@@ -149,10 +149,10 @@ const Footer = () => {
             <h3 className="text-green-400 text-sm font-bold uppercase tracking-wider mb-6">Certifications</h3>
             <div className="space-y-6">
               <div className="flex items-center justify-center">
-                <img src="/logos/isocert.png" alt="ISO 27001:2013 Certification" className="h-16 w-auto object-contain" />
+                <img src="/logos/isocertif.png" alt="ISO 27001:2013 Certification" className="h-16 w-auto object-contain" />
                 </div>
               <div className="flex items-center justify-center">
-                <img src="/logos/gptwcert.webp" alt="Great Place to Work Certification" className="h-14 w-auto object-contain" />
+                <img src="/logos/greatcertif.png" alt="Great Place to Work Certification" className="h-14 w-auto object-contain" />
               </div>
             </div>
           </div>

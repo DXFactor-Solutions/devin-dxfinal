@@ -3,6 +3,7 @@ import { Download, BookOpen, Star, Clock, User, TrendingUp, Search } from 'lucid
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView } from 'framer-motion';
 
 // Animation component for spiral effect
@@ -185,6 +186,9 @@ const EbookPage = () => {
           </div>
         </SpiralReveal>
       </div>
+      
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
       
       <ContactForm />
       <Footer />

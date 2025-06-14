@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
+import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import DXFactorSection from '@/components/DXFactorSection';
 import { motion } from 'framer-motion';
 import { 
@@ -52,50 +53,6 @@ const Solutions = () => {
       special: true
     }
   ];
-
-  const videoTestimonials = [
-    {
-      video: "/testimonialvideo/crunch.mp4",
-      duration: "2:30",
-      title: "Mobile App Success",
-      subtitle: "Custom Crunch Fitness App",
-      author: "Mike Neff",
-      company: "Crunch",
-      avatar: "/headshots/Mike-Neff-Crunch.jpeg"
-    },
-    {
-      video: "/testimonialvideo/urbn.mp4",
-      duration: "2:50",
-      title: "Data Transformation",
-      subtitle: "URBN Business Intelligence",
-      author: "Jeremy Brutus",
-      company: "URBN Playground",
-      avatar: "/headshots/Jeremy-Brutus-URBN.jpeg"
-    },
-    {
-      video: "/testimonialvideo/Fitness SF _ Dharmesh  Industry Understanding.mp4",
-      duration: "2:00",
-      title: "Industry Understanding",
-      subtitle: "Why DXFactor Gets Fitness",
-      author: "Don Dickerson",
-      company: "Fitness SF",
-      avatar: "/headshots/Don-Dickerson-Fitness-SF.png"
-    }
-  ];
-
-  // Add refs and state for single video play
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
-  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
-
-  // Pause all other videos when one starts playing
-  const handlePlay = (index: number) => {
-    setPlayingIndex(index);
-    videoRefs.current.forEach((video, i) => {
-      if (video && i !== index) {
-        video.pause();
-      }
-    });
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -207,50 +164,12 @@ const Solutions = () => {
         </div>
       </section>
 
-      {/* Video Testimonials Section */}
-      <section id="video-testimonials" className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Real Operators. Real Solutions.
-            </h2>
-            <p className="text-xl text-gray-600">
-              See how we've transformed operations with custom mobile apps, data warehouses, and AI solutions
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {videoTestimonials.map((testimonial, index) => (
-              <div key={index} className="relative bg-black rounded-xl overflow-hidden group aspect-video">
-                <video
-                  className="w-full h-full object-cover"
-                  controls
-                  preload="metadata"
-                  ref={el => videoRefs.current[index] = el}
-                  onPlay={() => handlePlay(index)}
-                >
-                  <source src={testimonial.video} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 text-white pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <h3 className="font-semibold text-sm">{testimonial.title}</h3>
-                  <p className="text-xs opacity-80">{testimonial.subtitle}</p>
-                  <div className="flex items-center gap-2 text-xs mt-1">
-                    <img src={testimonial.avatar} alt={testimonial.author} className="w-5 h-5 rounded-full" />
-                    <span className="opacity-90">{testimonial.author} • {testimonial.company}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
 
       {/* CTA Section */}
       <section id="contact" className="py-20 bg-gradient-to-br from-green-50 to-green-100/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ContactForm />
-        </div>
+        <ContactForm />
       </section>
 
       <Footer />

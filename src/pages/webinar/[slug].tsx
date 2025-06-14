@@ -4,6 +4,7 @@ import { webinars } from '../../lib/webinar-data';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ContactForm from '../../components/ContactForm';
+import FeaturedSuccessStories from '../../components/FeaturedSuccessStories';
 
 const WebinarPostPage = () => {
   const { slug } = useParams();
@@ -25,6 +26,10 @@ const WebinarPostPage = () => {
           </div>
         </div>
       </div>
+      
+      {/* Featured Success Stories */}
+      <FeaturedSuccessStories />
+      
       <ContactForm />
       <Footer />
     </div>

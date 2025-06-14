@@ -96,8 +96,8 @@ const AgentsSection: React.FC = () => {
       additionalStat: 'Reduction in staff hours calling members'
     },
     {
-      id: 'mrm-configuration',
-      name: 'MRM Configuration',
+      id: 'Configurator ',
+      name: 'Configurator ',
       oneLiner: 'Enable non-technical users to customize workflows, branding, and integrations through a no-code interface.',
       description: 'Enables non-technical users to customize workflows, branding, and integrations through a no-code interface. Outcome: Faster implementations & Go-Live, less IT dependency, and tailored platform experiences.',
       category: 'EFFICIENCY',
@@ -110,7 +110,7 @@ const AgentsSection: React.FC = () => {
     },
     {
       id: 'fitness-llm',
-      name: 'Fitness LLM',
+      name: 'Prompt Analytics',
       oneLiner: 'Ask data questions in plain English and get instant, accurate reports without SQL or technical skills.',
       description: 'Allows any user to ask data questions in plain English and get instant, accurate reports without SQL or technical skills. Outcome: Democratized analytics, faster insights, and empowered teams.',
       category: 'EXPERIENCE',
