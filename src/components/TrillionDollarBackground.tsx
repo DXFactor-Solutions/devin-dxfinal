@@ -1,290 +1,442 @@
 import React, { useEffect, useRef } from 'react';
 
-interface LuxuryLine {
-  startX: number;
-  startY: number;
-  endX: number;
-  endY: number;
-  width: number;
-  color: string;
-  alpha: number;
-  speed: number;
-}
-
 const TrillionDollarBackground = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const animationRef = useRef<number>();
-  const luxuryLinesRef = useRef<LuxuryLine[]>([]);
-  const timeRef = useRef<number>(0);
-  const scrollRef = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    // Set canvas size with pixel ratio for crisp rendering
-    const setCanvasSize = () => {
-      const dpr = window.devicePixelRatio || 1;
-      canvas.width = window.innerWidth * dpr;
-      canvas.height = window.innerHeight * dpr;
-      canvas.style.width = `${window.innerWidth}px`;
-      canvas.style.height = `${window.innerHeight}px`;
-      ctx.scale(dpr, dpr);
-    };
-    
-    setCanvasSize();
-    window.addEventListener('resize', setCanvasSize);
-
-    // Premium color palette
-    const colors = {
-      primary: ['rgba(34, 197, 94, 0.8)', 'rgba(74, 222, 128, 0.7)', 'rgba(134, 239, 172, 0.6)'],
-      accent: ['rgba(34, 197, 94, 0.5)', 'rgba(74, 222, 128, 0.4)', 'rgba(134, 239, 172, 0.3)'],
-      gold: ['rgba(251, 191, 36, 0.4)', 'rgba(252, 211, 77, 0.3)', 'rgba(253, 230, 138, 0.2)'],
-      silver: ['rgba(148, 163, 184, 0.3)', 'rgba(100, 116, 139, 0.2)', 'rgba(71, 85, 105, 0.1)'],
-    };
-
-    // Initialize luxury accent lines
-    const initLuxuryLines = () => {
-      luxuryLinesRef.current = [];
-      const numLines = Math.max(12, Math.floor(window.innerWidth / 180));
+    // Create refined particles
+    const createParticles = () => {
+      const particlesContainer = containerRef.current?.querySelector('#particles');
+      if (!particlesContainer) return;
       
-      for (let i = 0; i < numLines; i++) {
-        const isHorizontal = Math.random() > 0.4;
-        const isDiagonal = Math.random() > 0.8;
-        const isGold = Math.random() > 0.7;
+      for (let i = 0; i < 30; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDelay = Math.random() * 15 + 's';
+        particle.style.animationDuration = (10 + Math.random() * 10) + 's';
         
-        let startX, startY, endX, endY;
+        // Vary particle sizes slightly
+        const size = 2 + Math.random() * 3;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
         
-        if (isDiagonal) {
-          startX = Math.random() * window.innerWidth * 0.3;
-          startY = Math.random() * window.innerHeight * 0.3;
-          endX = startX + (Math.random() * 0.4 + 0.3) * window.innerWidth;
-          endY = startY + (Math.random() * 0.4 + 0.3) * window.innerHeight;
-        } else if (isHorizontal) {
-          startX = 0;
-          startY = Math.random() * window.innerHeight;
-          endX = window.innerWidth;
-          endY = startY;
-        } else {
-          startX = Math.random() * window.innerWidth;
-          startY = 0;
-          endX = startX;
-          endY = window.innerHeight;
-        }
-        
-        luxuryLinesRef.current.push({
-          startX,
-          startY,
-          endX,
-          endY,
-          width: Math.random() * 0.8 + 0.2,
-          color: isGold ? colors.gold[0] : colors.primary[Math.floor(Math.random() * colors.primary.length)],
-          alpha: Math.random() * 0.2 + 0.05,
-          speed: Math.random() * 0.03 + 0.01
-        });
+        particlesContainer.appendChild(particle);
       }
     };
 
-    initLuxuryLines();
-
-    // Scroll tracking
+    // Smooth parallax effect on scroll
     const handleScroll = () => {
-      scrollRef.current = window.scrollY;
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    // Enhanced curve with scroll-based distortion
-    const drawLuxuryCurve = (ctx: CanvasRenderingContext2D, time: number) => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.3;
       
-      ctx.save();
+      const gradient = containerRef.current?.querySelector('.gradient-bg') as HTMLElement;
+      const grid = containerRef.current?.querySelector('.grid-overlay') as HTMLElement;
+      const blobs = containerRef.current?.querySelectorAll('.blob') as NodeListOf<HTMLElement>;
       
-      // Scroll-based distortion
-      const scrollDistortion = Math.sin(scrollRef.current * 0.001) * 15;
+      if (gradient) gradient.style.transform = `translateY(${rate}px)`;
+      if (grid) grid.style.transform = `translate(${rate * 0.1}px, ${rate * 0.1}px)`;
       
-      ctx.beginPath();
-      ctx.moveTo(0, height * 0.7 + Math.sin(time * 0.2) * 20);
-      
-      const cp1x = width * 0.25;
-      const cp1y = height * 0.6 + Math.sin(time * 0.2 + 1) * 40 + scrollDistortion;
-      const cp2x = width * 0.75;
-      const cp2y = height * 0.8 + Math.sin(time * 0.2 + 2) * 40 - scrollDistortion;
-      
-      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, height * 0.75 + Math.sin(time * 0.2 + 3) * 20);
-      ctx.lineTo(width, height);
-      ctx.lineTo(0, height);
-      ctx.closePath();
-      
-      // Dynamic gradient
-      const gradient = ctx.createLinearGradient(0, height * 0.7, width, height);
-      const baseIntensity = 0.05;
-      gradient.addColorStop(0, `rgba(34, 197, 94, ${baseIntensity})`);
-      gradient.addColorStop(0.5, `rgba(74, 222, 128, ${baseIntensity + 0.02})`);
-      gradient.addColorStop(1, `rgba(134, 239, 172, ${baseIntensity + 0.04})`);
-      
-      ctx.fillStyle = gradient;
-      ctx.fill();
-      
-      // Enhanced accent line
-      ctx.beginPath();
-      ctx.moveTo(0, height * 0.7 + Math.sin(time * 0.2) * 20);
-      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, width, height * 0.75 + Math.sin(time * 0.2 + 3) * 20);
-      
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = `rgba(34, 197, 94, 0.3)`;
-      ctx.shadowColor = 'rgba(34, 197, 94, 0.5)';
-      ctx.shadowBlur = 5;
-      ctx.stroke();
-      
-      ctx.restore();
-    };
-
-    // Enhanced luxury lines
-    const drawLuxuryLines = (ctx: CanvasRenderingContext2D, time: number) => {
-      luxuryLinesRef.current.forEach((line, index) => {
-        ctx.save();
-        
-        const alpha = Math.max(0.02, line.alpha * (0.8 + 0.2 * Math.sin(time * line.speed + index)));
-        
-        ctx.globalAlpha = alpha;
-        ctx.lineWidth = line.width;
-        ctx.strokeStyle = line.color;
-        
-        ctx.beginPath();
-        ctx.moveTo(line.startX, line.startY);
-        ctx.lineTo(line.endX, line.endY);
-        ctx.stroke();
-        
-        ctx.restore();
+      blobs.forEach((blob, index) => {
+        const speed = 0.2 + (index * 0.1);
+        blob.style.transform = `translateY(${rate * speed}px)`;
       });
     };
 
-    // Draw luxury gradient background
-    const drawLuxuryBackground = (ctx: CanvasRenderingContext2D) => {
-      ctx.save();
+    // Enhanced mouse interaction
+    const handleMouseMove = (e: MouseEvent) => {
+      const cursor = { x: e.clientX, y: e.clientY };
+      const shapes = containerRef.current?.querySelectorAll('.shape') as NodeListOf<HTMLElement>;
+      const glowAreas = containerRef.current?.querySelectorAll('.glow-area') as NodeListOf<HTMLElement>;
       
-      // Dynamic background based on scroll
-      const scrollEffect = Math.sin(scrollRef.current * 0.0005) * 0.02;
-      
-      const gradient = ctx.createRadialGradient(
-        window.innerWidth * 0.5, window.innerHeight * 0.3, 0,
-        window.innerWidth * 0.5, window.innerHeight * 0.3, window.innerWidth * 0.8
-      );
-      
-      gradient.addColorStop(0, `rgba(255, 255, 255, ${1 - scrollEffect})`);
-      gradient.addColorStop(0.7, `rgba(249, 250, 251, ${1 - scrollEffect * 0.5})`);
-      gradient.addColorStop(1, `rgba(243, 244, 246, ${1 - scrollEffect * 0.3})`);
-      
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-      
-      ctx.restore();
-    };
-
-    // Enhanced topographic pattern
-    const drawTopographicPattern = (ctx: CanvasRenderingContext2D, time: number) => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const scale = Math.min(width, height) / 1000;
-      
-      ctx.save();
-      ctx.globalAlpha = 0.04 + Math.sin(time * 0.1) * 0.01;
-      ctx.strokeStyle = 'rgba(34, 197, 94, 0.8)';
-      
-      const lines = 20;
-      const spacing = height / lines;
-      
-      for (let i = 0; i < lines; i++) {
-        ctx.beginPath();
+      shapes.forEach((shape) => {
+        const rect = shape.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
         
-        for (let x = 0; x < width; x += 3) {
-          const baseY = i * spacing;
+        const distance = Math.sqrt(
+          Math.pow(cursor.x - centerX, 2) + 
+          Math.pow(cursor.y - centerY, 2)
+        );
+        
+        if (distance < 300) {
+          const intensity = (300 - distance) / 300;
+          const moveX = (cursor.x - centerX) * intensity * 0.1;
+          const moveY = (cursor.y - centerY) * intensity * 0.1;
           
-          const noise = Math.sin((x / width) * Math.PI * 6 + time * 0.15) * 
-                       Math.sin((i / lines) * Math.PI * 3 + time * 0.08) * 
-                       spacing * 0.15;
-          
-          const y = baseY + noise;
-          
-          if (x === 0) {
-            ctx.moveTo(x, y);
-          } else {
-            ctx.lineTo(x, y);
-          }
+          shape.style.transform = `translate(${moveX}px, ${moveY}px) scale(${1 + intensity * 0.1})`;
+          shape.style.boxShadow = `0 ${intensity * 20}px ${intensity * 40}px rgba(123,201,110,${intensity * 0.3})`;
+        } else {
+          shape.style.transform = 'translate(0px, 0px) scale(1)';
+          shape.style.boxShadow = '0 8px 32px rgba(123,201,110,0.1)';
         }
+      });
+      
+      // Interactive glow areas
+      glowAreas.forEach(glow => {
+        const rect = glow.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
         
-        ctx.lineWidth = scale * 0.5;
-        ctx.stroke();
-      }
-      
-      ctx.restore();
+        const distance = Math.sqrt(
+          Math.pow(cursor.x - centerX, 2) + 
+          Math.pow(cursor.y - centerY, 2)
+        );
+        
+        if (distance < 200) {
+          const intensity = (200 - distance) / 200;
+          glow.style.opacity = String(0.3 + (intensity * 0.5));
+          glow.style.transform = `scale(${1 + intensity * 0.3})`;
+        }
+      });
     };
 
-    // Main animation loop
-    let lastTime = 0;
-    const animate = (timestamp: number) => {
-      const deltaTime = Math.min((timestamp - lastTime) / 1000, 0.016); // Cap at 60fps
-      lastTime = timestamp;
-      
-      const time = timestamp * 0.001;
-      timeRef.current = time;
-      
-      ctx.clearRect(0, 0, canvas.width / window.devicePixelRatio, canvas.height / window.devicePixelRatio);
-      
-      // Draw layers
-      drawLuxuryBackground(ctx);
-      drawTopographicPattern(ctx, time);
-      drawLuxuryLines(ctx, time);
-      drawLuxuryCurve(ctx, time);
-      
-      animationRef.current = requestAnimationFrame(animate);
-    };
+    // Initialize
+    createParticles();
+    
+    // Add event listeners
+    window.addEventListener('scroll', handleScroll);
+    document.addEventListener('mousemove', handleMouseMove);
 
-    animationRef.current = requestAnimationFrame(animate);
+    // Add some random movement to particles
+    const particleInterval = setInterval(() => {
+      const particles = containerRef.current?.querySelectorAll('.particle') as NodeListOf<HTMLElement>;
+      particles.forEach(particle => {
+        if (Math.random() > 0.95) {
+          particle.style.animationDuration = (8 + Math.random() * 12) + 's';
+        }
+      });
+    }, 3000);
 
+    // Cleanup
     return () => {
-      window.removeEventListener('resize', setCanvasSize);
       window.removeEventListener('scroll', handleScroll);
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
-      }
+      document.removeEventListener('mousemove', handleMouseMove);
+      clearInterval(particleInterval);
     };
   }, []);
 
+  const styles = `
+    .hero-container {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Clean gradient background */
+    .gradient-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        #f8fffe 0%,
+        #f0fdf4 20%,
+        #e8f5e8 40%,
+        #d1f2d1 60%,
+        #bbf7d0 80%,
+        #a7f3d0 100%
+      );
+    }
+
+    /* Floating geometric shapes */
+    .floating-shapes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(123,201,110,0.15), rgba(168,230,163,0.25));
+      animation: float 20s ease-in-out infinite;
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(123,201,110,0.2);
+      box-shadow: 0 8px 32px rgba(123,201,110,0.1);
+    }
+
+    .shape:nth-child(1) {
+      width: 400px;
+      height: 400px;
+      top: 5%;
+      left: 10%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      top: 50%;
+      right: 15%;
+      animation-delay: 8s;
+      animation-duration: 30s;
+    }
+
+    .shape:nth-child(3) {
+      width: 300px;
+      height: 300px;
+      bottom: 15%;
+      left: 20%;
+      animation-delay: 16s;
+      animation-duration: 22s;
+    }
+
+    .shape:nth-child(4) {
+      width: 150px;
+      height: 150px;
+      top: 20%;
+      right: 30%;
+      animation-delay: 24s;
+      animation-duration: 28s;
+    }
+
+    .shape:nth-child(5) {
+      width: 250px;
+      height: 250px;
+      top: 70%;
+      left: 60%;
+      animation-delay: 12s;
+      animation-duration: 26s;
+    }
+
+    @keyframes float {
+      0%, 100% { 
+        transform: translateY(0px) translateX(0px) scale(1);
+        opacity: 0.6;
+      }
+      25% { 
+        transform: translateY(-30px) translateX(20px) scale(1.05);
+        opacity: 0.8;
+      }
+      50% { 
+        transform: translateY(-20px) translateX(-15px) scale(0.95);
+        opacity: 1;
+      }
+      75% { 
+        transform: translateY(10px) translateX(25px) scale(1.02);
+        opacity: 0.7;
+      }
+    }
+
+    /* Refined particle system */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(123,201,110,0.6);
+      border-radius: 50%;
+      animation: particleFloat 15s linear infinite;
+      box-shadow: 0 0 6px rgba(123,201,110,0.4);
+    }
+
+    @keyframes particleFloat {
+      0% {
+        transform: translateY(110vh) translateX(0px);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      90% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) translateX(200px);
+        opacity: 0;
+      }
+    }
+
+    /* Subtle grid pattern */
+    .grid-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(rgba(123,201,110,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(123,201,110,0.03) 1px, transparent 1px);
+      background-size: 100px 100px;
+      animation: gridShift 30s ease-in-out infinite;
+    }
+
+    @keyframes gridShift {
+      0%, 100% { 
+        transform: translate(0, 0);
+        opacity: 0.5;
+      }
+      50% { 
+        transform: translate(20px, 20px);
+        opacity: 0.8;
+      }
+    }
+
+    /* Organic blob shapes */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(168,230,163,0.2), rgba(187,247,208,0.3));
+      filter: blur(40px);
+      animation: blobMove 25s ease-in-out infinite;
+    }
+
+    .blob:nth-child(1) {
+      width: 500px;
+      height: 300px;
+      top: 10%;
+      right: 20%;
+      animation-delay: 0s;
+    }
+
+    .blob:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      bottom: 20%;
+      left: 10%;
+      animation-delay: 10s;
+    }
+
+    .blob:nth-child(3) {
+      width: 300px;
+      height: 200px;
+      top: 60%;
+      right: 40%;
+      animation-delay: 20s;
+    }
+
+    @keyframes blobMove {
+      0%, 100% { 
+        transform: translate(0, 0) rotate(0deg) scale(1);
+      }
+      33% { 
+        transform: translate(50px, -30px) rotate(120deg) scale(1.1);
+      }
+      66% { 
+        transform: translate(-30px, 40px) rotate(240deg) scale(0.9);
+      }
+    }
+
+    /* Subtle wave animation */
+    .wave-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(123,201,110,0.05) 25%,
+        rgba(168,230,163,0.08) 50%,
+        rgba(123,201,110,0.05) 75%,
+        transparent 100%
+      );
+      animation: waveMove 20s ease-in-out infinite;
+      transform: skewY(-3deg);
+    }
+
+    @keyframes waveMove {
+      0%, 100% { 
+        transform: translateX(-100%) skewY(-3deg);
+      }
+      50% { 
+        transform: translateX(100%) skewY(3deg);
+      }
+    }
+
+    /* Interactive glow areas */
+    .glow-area {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(123,201,110,0.1) 0%, transparent 70%);
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .glow-area-1 {
+      width: 300px;
+      height: 300px;
+      top: 25%;
+      left: 25%;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    .glow-area-2 {
+      width: 200px;
+      height: 200px;
+      bottom: 30%;
+      right: 25%;
+      animation: pulse 10s ease-in-out infinite;
+      animation-delay: 4s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { 
+        opacity: 0.3;
+        transform: scale(1);
+      }
+      50% { 
+        opacity: 0.7;
+        transform: scale(1.2);
+      }
+    }
+  `;
+
   return (
-    <div className="absolute inset-0 overflow-hidden bg-white">
-      {/* High-resolution interactive canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 cursor-pointer"
-        style={{ width: '100%', height: '100%' }}
-      />
-      
-      {/* Enhanced texture overlay */}
-      <div className="absolute inset-0 opacity-[0.015] mix-blend-overlay pointer-events-none" 
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 11c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9zm48 25c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='%2322c55e' fill-opacity='0.04' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-        }}
-      />
-      
-      {/* Dynamic vignette */}
-      <div className="absolute inset-0 pointer-events-none transition-opacity duration-1000" 
-        style={{
-          background: 'radial-gradient(circle at center, transparent 50%, rgba(0, 0, 0, 0.02) 80%, rgba(0, 0, 0, 0.05) 100%)',
-        }}
-      />
-      
-      {/* Interactive hint overlay */}
-      <div className="absolute bottom-4 right-4 text-xs text-green-500/40 pointer-events-none font-mono">
-        Interactive • Move • Click • Scroll
+    <div className="absolute inset-0 overflow-hidden" style={{ background: '#f8fffe' }} ref={containerRef}>
+      <style>{styles}</style>
+      <div className="hero-container">
+        {/* Clean gradient background */}
+        <div className="gradient-bg"></div>
+        
+        {/* Grid overlay */}
+        <div className="grid-overlay"></div>
+        
+        {/* Organic blob shapes */}
+        <div className="blob"></div>
+        <div className="blob"></div>
+        <div className="blob"></div>
+        
+        {/* Wave overlay */}
+        <div className="wave-overlay"></div>
+        
+        {/* Floating shapes */}
+        <div className="floating-shapes">
+          <div className="shape"></div>
+          <div className="shape"></div>
+          <div className="shape"></div>
+          <div className="shape"></div>
+          <div className="shape"></div>
+        </div>
+        
+        {/* Glow areas */}
+        <div className="glow-area glow-area-1"></div>
+        <div className="glow-area glow-area-2"></div>
+        
+        {/* Particles */}
+        <div className="particles" id="particles"></div>
       </div>
     </div>
   );
 };
 
-export default TrillionDollarBackground; 
+export default TrillionDollarBackground;

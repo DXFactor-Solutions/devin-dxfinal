@@ -21,7 +21,7 @@ const DXFactorSection = () => {
       icon: <Smartphone className="w-6 h-6" />,
       title: "Mobile App Development",
       description: "Engaging mobile experiences with AI-powered features that drive member engagement and retention.",
-      impact: "3 Week Delivery",
+      impact: "3 Month Delivery",
       testimonial: {
         quote: "DXFactor was critical in delivering a reliable and scalable streaming platform for CRUNCH+ on time and within budget, transforming our digital content delivery.",
         author: "Mike Neff",
@@ -98,13 +98,20 @@ const DXFactorSection = () => {
         <SimpleReveal delay={1}>
           <div className="text-center mb-8 sm:mb-12">
             <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-black text-black mb-4 animate-on-scroll fade-up">
-          Built on Proven Foundations. 
+          Full-Service Partner
             <span className="block bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-            Transformed by AI.
+            AI Powered Advantage
             </span>
           </h2>
             <p className="text-sm sm:text-base text-gray-600 max-w-4xl mx-auto animate-on-scroll fade-up delay-100">
-          The DX Outcomes Agent Platform wasn't built overnight. It's powered by years of delivering real solutions for operators like you. From custom apps to complete data transformations – we still offer every service that made us the trusted partner for <span className="text-green-600 font-bold">$2B+</span> in outcomes. Now with AI making everything faster, smarter, and more affordable.
+            While others offer basic digital services, we
+deliver complete fitness & wellness
+transformation. Custom apps, data solutions,
+strategic consulting – everything that's
+generated $2B+ in outcomes.​
+
+The difference? AI now powers everything we
+do.
           </p>
         </div>
         </SimpleReveal>

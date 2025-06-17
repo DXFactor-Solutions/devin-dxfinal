@@ -18,6 +18,7 @@ import WebinarPostPage from "./pages/webinar/[slug]";
 import News from "./pages/News";
 import Testimonials from "./pages/Testimonials";
 import Careers from "./pages/Careers";
+import ISOCertification from "./pages/ISOCertification";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/news" element={<News />} />
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/careers" element={<Careers />} />
+          <Route path="/iso-certification" element={<ISOCertification />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

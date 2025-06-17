@@ -6,8 +6,8 @@ import { TubelightNavBar } from './ui/tubelight-navbar';
 import { useNavigate } from 'react-router-dom';
 
 const navLinks = [
+  { name: 'OMAP', url: '/outcomes-platform', icon: Zap },
   { name: 'Solutions', url: '/solutions', icon: Bot },
-  { name: 'Outcome Agents Platform', url: '/outcomes-platform', icon: Zap },
   { name: 'Testimonials', url: '/testimonials', icon: Star },
   { 
     name: 'Resources', 
@@ -36,12 +36,31 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navigate = useNavigate();
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const navbarRef = useRef<HTMLElement>(null);
+
+  // Determine if we should use white logo based on current path
+  const shouldUseWhiteLogo = () => {
+    if (typeof window === 'undefined') return false;
+    const path = window.location.pathname;
+    const pagesWithVideoBackground = [
+      '/solutions',
+      '/outcomes-platform', 
+      '/testimonials',
+      '/about',
+      '/why-us',
+      '/careers',
+      '/blog',
+      '/ebook',
+      '/webinars',
+      '/news'
+    ];
+    return pagesWithVideoBackground.includes(path);
+  };
 
   // Handle click outside to close dropdown
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (navbarRef.current && !navbarRef.current.contains(event.target as Node)) {
         setOpenDropdown(null);
       }
     };
@@ -83,11 +102,11 @@ const Navbar = () => {
   };
 
   const handleDropdownToggle = (itemName: string) => {
-    setOpenDropdown(openDropdown === itemName ? null : itemName);
+    setOpenDropdown(prev => prev === itemName ? null : itemName);
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 w-full">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full" ref={navbarRef}>
       <nav className="w-full max-w-[1800px] mx-auto px-8 py-3 flex items-center justify-between">
         {/* Logo */}
           <div className="flex items-center">
@@ -96,7 +115,10 @@ const Navbar = () => {
               src="/factor.svg" 
               alt="DX FACTOR Logo" 
               className="h-9 w-auto" 
-              style={{ minWidth: 110 }}
+              style={{ 
+                minWidth: 110,
+                filter: shouldUseWhiteLogo() ? 'brightness(0) invert(1)' : 'none'
+              }}
             />
             </a>
           </div>
@@ -108,7 +130,7 @@ const Navbar = () => {
               <div key={item.name} className="relative">
                 {item.subPages ? (
                   // Dropdown Item
-                  <div className="relative" ref={dropdownRef}>
+                  <div className="relative">
                     <button
                       onClick={() => handleDropdownToggle(item.name)}
                       className="flex items-center gap-1 cursor-pointer text-sm font-semibold px-6 py-2 rounded-full transition-colors text-gray-700 hover:text-black hover:bg-gray-50"

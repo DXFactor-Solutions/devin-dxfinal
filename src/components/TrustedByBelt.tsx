@@ -58,7 +58,7 @@ const TrustedByBelt = () => {
       
       <div className="w-full">
         {/* Logo belt container with better mobile support */}
-        <div className="relative overflow-hidden py-2 sm:py-4 md:py-6 w-full bg-white/90 backdrop-blur-sm border-y border-gray-200 shadow-sm">
+        <div className="relative overflow-hidden py-2 sm:py-4 md:py-6 w-full">
           {/* Logos container with animation */}
           <div className="flex logo-belt">
             {brands.map((brand, idx) => (

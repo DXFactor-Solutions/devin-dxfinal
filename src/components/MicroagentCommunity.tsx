@@ -146,7 +146,7 @@ const MicroagentCommunity = () => {
             {/* Clean, simple heading */}
             <div className="mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2 sm:mb-3">
-                DX Outcomes Agent Platform
+                DX Outcomes Micro-Agent Platform
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-green-600 mb-2 sm:mb-3">$2B+ in Outcomes. One Platform.</p>
             </div>
@@ -157,17 +157,21 @@ const MicroagentCommunity = () => {
 
               </p>
               <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed">
-              Your agents are only as smart as
+              Your micro-agents are only as powerful as
               the platform behind them.  
                 <span className="font-medium text-green-600"> The DX Outcomes Agent Platform</span>, 
-              is built
-              on years of real-world experience
-              with Fitness & Wellness operators.
-              From member growth to operations
-              and retention – every agent is
-              designed to drive outcomes that
-              matter. That's why they deliver from
-              day one.
+                the platform behind
+them. Built on years of real-world
+experience with fitness & wellness
+operators, our platform ensures
+every agent works in perfect
+harmony – from member
+acquisition to retention, from
+operations to experience. That's
+why they deliver measurable
+outcomes from day one.
+
+​
               </p>
             </div>
           </div>
@@ -177,26 +181,11 @@ const MicroagentCommunity = () => {
       {/* Dashboard Preview Container */}
       <SimpleReveal delay={2}>
         <div className="container mx-auto px-4 flex-grow flex items-center justify-center">
-          {/* Three column layout: Real-Time | Dashboard | Integrated */}
-          <div className="w-full max-w-[100rem] mx-auto flex flex-col lg:flex-row items-center lg:items-start gap-4 sm:gap-6">
+          {/* Single Dashboard Layout */}
+          <div className="w-full max-w-5xl mx-auto flex items-center justify-center">
             
-            {/* Real-Time Card - Left Side */}
-            <SimpleReveal delay={3}>
-              <div className="w-full max-w-sm lg:w-56 bg-white rounded-xl p-4 sm:p-5 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 lg:mt-16 order-1 lg:order-none">
-                <div className="text-center mb-3 sm:mb-4">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                    <Eye className="w-5 sm:w-6 h-5 sm:h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-600 mb-1 sm:mb-2">Real-Time</h3>
-                </div>
-                <p className="text-gray-600 text-center text-xs sm:text-sm leading-relaxed">
-                  Monitor agent performance and business metrics live
-                </p>
-              </div>
-            </SimpleReveal>
-
-            {/* Dashboard Container - Center */}
-            <div className="w-full lg:flex-[2] max-w-none transform origin-top relative animate-on-scroll scale-in order-2 lg:order-none">
+            {/* Dashboard Container - Full Width */}
+            <div className="w-full max-w-none transform origin-top relative animate-on-scroll scale-in">
               {/* Shadow effect for depth */}
               <div className="absolute -inset-4 bg-gradient-to-b from-gray-900/5 to-gray-900/10 rounded-3xl blur-xl -z-10 hidden sm:block"></div>
               
@@ -256,14 +245,68 @@ const MicroagentCommunity = () => {
                   {/* Main Content */}
                   <main className="flex-1 overflow-y-auto bg-white animate-on-scroll slide-right">
                     <div className="p-3 sm:p-4 lg:p-6 max-w-7xl mx-auto">
-                      {/* Dashboard Header */}
-                      <div className="mb-4 sm:mb-6">
-                        <h1 className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900 mb-0.5 sm:mb-1">
-                          Welcome back, Sarah!
-                        </h1>
-                        <p className="text-xs sm:text-sm text-gray-600">
-                          Your AI agents are performing exceptionally well today
-                        </p>
+                      {/* Dashboard Header with Real-Time and Integrated indicators */}
+                      <div className="mb-4 sm:mb-6 flex justify-between items-start">
+                        <div>
+                          <h1 className="text-base sm:text-lg lg:text-2xl font-bold text-gray-900 mb-0.5 sm:mb-1">
+                            Welcome back, Sarah!
+                          </h1>
+                          <p className="text-xs sm:text-sm text-gray-600">
+                            Your AI agents are performing exceptionally well today
+                          </p>
+                        </div>
+                        
+                        {/* Status indicators - Real-Time and Integrated */}
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          {/* Real-Time indicator with hover card */}
+                          <div className="relative group">
+                            <div className="flex items-center gap-2 bg-green-50 px-3 py-1.5 rounded-lg border border-green-200 cursor-pointer hover:bg-green-100 transition-colors animate-pulse hover:animate-none">
+                              <Eye className="w-4 h-4 text-green-600 animate-pulse" />
+                              <span className="text-xs sm:text-sm font-semibold text-green-700">Real-Time</span>
+                            </div>
+                            
+                            {/* Hover card */}
+                            <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                              <div className="text-center mb-3">
+                                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                  <Eye className="w-4 h-4 text-green-600" />
+                                </div>
+                                <h3 className="text-sm font-bold text-green-700 mb-1">Real-Time</h3>
+                              </div>
+                              <p className="text-xs text-gray-600 leading-relaxed text-center">
+                                Monitor agent performance and business metrics live. Get instant insights into member interactions, conversion rates, and system performance as they happen.
+                              </p>
+                              
+                              {/* Arrow pointing up */}
+                              <div className="absolute -top-2 right-4 w-4 h-4 bg-white border-l border-t border-gray-200 transform rotate-45"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Integrated indicator with hover card */}
+                          <div className="relative group">
+                            <div className="flex items-center gap-2 bg-blue-50 px-3 py-1.5 rounded-lg border border-blue-200 cursor-pointer hover:bg-blue-100 transition-colors">
+                              <Link className="w-4 h-4 text-blue-600 animate-bounce" style={{ animationDuration: '2s' }} />
+                              <span className="text-xs sm:text-sm font-semibold text-blue-700">Integrated</span>
+                              <div className="absolute -top-1 -right-1 w-2 h-2 bg-blue-400 rounded-full animate-ping"></div>
+                            </div>
+                            
+                            {/* Hover card */}
+                            <div className="absolute top-full right-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                              <div className="text-center mb-3">
+                                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                  <Link className="w-4 h-4 text-blue-600" />
+                                </div>
+                                <h3 className="text-sm font-bold text-blue-700 mb-1">Integrated</h3>
+                              </div>
+                              <p className="text-xs text-gray-600 leading-relaxed text-center">
+                                Seamlessly connects with your existing systems like ABC, Ignite, Glofox, Club Automation, MOSO, ASF, Hubspot, Gymsales and many more
+                              </p>
+                              
+                              {/* Arrow pointing up */}
+                              <div className="absolute -top-2 right-4 w-4 h-4 bg-white border-l border-t border-gray-200 transform rotate-45"></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       {/* Stats Grid - Mobile optimized */}
@@ -388,22 +431,6 @@ const MicroagentCommunity = () => {
                 </div>
               </div>
             </div>
-
-            {/* Integrated Card - Right Side */}
-            <SimpleReveal delay={4}>
-              <div className="w-full max-w-sm lg:w-56 bg-white rounded-xl p-4 sm:p-5 shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-300 lg:mt-16 order-3 lg:order-none">
-                <div className="text-center mb-3 sm:mb-4">
-                  <div className="w-10 sm:w-12 h-10 sm:h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2 sm:mb-3">
-                    <Link className="w-5 sm:w-6 h-5 sm:h-6 text-green-600" />
-                  </div>
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-green-600 mb-1 sm:mb-2">Integrated</h3>
-                </div>
-                <p className="text-gray-600 text-center text-xs sm:text-sm leading-relaxed">
-                  Seamlessly connects with your existing systems like ABC, DAXCO, Jonas, Hubspot, and many more!
-                </p>
-              </div>
-            </SimpleReveal>
-
           </div>
         </div>
       </SimpleReveal>

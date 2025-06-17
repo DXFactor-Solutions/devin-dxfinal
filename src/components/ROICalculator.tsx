@@ -84,7 +84,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={cancelRequests}
                 onChange={(e) => setCancelRequests(Number(e.target.value))}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-base sm:text-lg"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-base sm:text-lg text-black"
                 aria-label="Average cancel requests per month"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -144,7 +144,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={membershipFee}
                 onChange={(e) => setMembershipFee(Number(e.target.value))}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-base sm:text-lg"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-base sm:text-lg text-black"
                 aria-label="Membership fees"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -177,7 +177,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={hoursPerWeek}
                 onChange={(e) => {}} // Read-only for now
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg bg-gray-50 text-base sm:text-lg"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-3 border border-gray-300 rounded-lg bg-gray-50 text-base sm:text-lg text-black"
                 aria-label="Hours spent on cancellations"
                 readOnly
               />
@@ -253,7 +253,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={numAgents}
                 onChange={(e) => setNumAgents(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Number of support agents"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -285,7 +285,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={avgSalary}
                 onChange={(e) => setAvgSalary(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Average annual salary per agent"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -317,7 +317,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={supportRequests}
                 onChange={(e) => setSupportRequests(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Average number of support requests per month"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -349,7 +349,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={handlingTime}
                 onChange={(e) => setHandlingTime(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Average handling time per request in minutes"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -458,7 +458,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={outstandingBalance}
                 onChange={(e) => setOutstandingBalance(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Monthly outstanding balance"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -517,7 +517,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={collectionHours}
                 onChange={(e) => setCollectionHours(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Hours spent on collections"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -549,7 +549,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={collectorRate}
                 onChange={(e) => setCollectorRate(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Staff hourly rate"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -632,7 +632,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={monthlyLeads}
                 onChange={(e) => setMonthlyLeads(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Monthly lead volume"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -690,7 +690,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={avgMembershipDues}
                 onChange={(e) => setAvgMembershipDues(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Average membership dues"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -722,7 +722,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={salesHoursSaved}
                 onChange={(e) => setSalesHoursSaved(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Hours saved on lead follow-up"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -807,7 +807,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={monthlyHires}
                 onChange={(e) => setMonthlyHires(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Average new hires per month"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -839,7 +839,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={trainingHours}
                 onChange={(e) => setTrainingHours(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Training hours per new hire"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -871,7 +871,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={trainerRate}
                 onChange={(e) => setTrainerRate(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Trainer hourly rate"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -952,7 +952,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={additionalCheckIns}
                 onChange={(e) => setAdditionalCheckIns(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Additional class check-ins per month"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -984,7 +984,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
                 type="number"
                 value={classValue}
                 onChange={(e) => setClassValue(Number(e.target.value))}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg"
+                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 text-lg text-black"
                 aria-label="Value per class session"
               />
               <div className="absolute right-2 top-1/2 -translate-y-1/2 flex flex-col">
@@ -1051,7 +1051,7 @@ const ROICalculator: React.FC<ROICalculatorProps> = ({ isOpen, onClose, agentNam
 
   return (
     <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4">
-      <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden">
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden text-black">
         {/* Header */}
         <div className="bg-gray-50 px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-200 flex items-center justify-between">
           <h2 className="text-base sm:text-xl font-bold text-gray-900 pr-2">{agentName} ROI Calculator</h2>

@@ -163,38 +163,6 @@ const testimonials = [
       logo: "/logos/fitnessSF.svg"
     },
     {
-      quote: "If you're ready to rethink how your gym handles cancellations — and want to ensure every member feels valued — I can't recommend DXFactor enough.",
-      author: "Al Noshirvani",
-      title: "Founder",
-      company: "Method Gym",
-      avatar: "/headshots/alno.webp",
-      logo: "/logos/method-gym.svg"
-    },
-    {
-      quote: "Special thanks to Michael Semler, Jay Momaya, Harshit Shah, Priyank Shah, and the entire DXFactor team. When you're building something this complex, the right partner makes all the difference.",
-      author: "Al Noshirvani",
-      title: "Founder",
-      company: "Method Gym",
-      avatar: "/headshots/alno.webp",
-      logo: "/logos/method-gym.svg"
-    },
-    {
-      quote: "That's why I'm so grateful to be working with DXFactor - a team whose unmatched commitment to fitness is matched only by their technical expertise.",
-      author: "Al Noshirvani",
-      title: "Founder",
-      company: "Method Gym",
-      avatar: "/headshots/alno.webp",
-      logo: "/logos/method-gym.svg"
-    },
-    {
-      quote: "What sets them apart isn't just their capabilities - it's their flexibility, creativity, and genuine partnership approach.",
-      author: "Al Noshirvani",
-      title: "Founder",
-      company: "Method Gym",
-      avatar: "/headshots/alno.webp",
-      logo: "/logos/method-gym.svg"
-    },
-    {
       quote: "If you're looking for a strategic engineering partner who thinks beyond the code, DXFactor is the team you want in your corner.",
       author: "Chelsea Loren",
       title: "Associate Partner",
@@ -232,35 +200,36 @@ const TestimonialsPage = () => {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-40"
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
           >
-            <source src="/videos/futurecityh.mp4" type="video/mp4" />
+            <source src="/videos/abstract2.mp4" type="video/mp4" />
           </video>
-          <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50"></div>
+          {/* Dark overlay for better text visibility */}
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4">
+          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight mb-4 drop-shadow-lg">
             <span className="text-green-400">$2B+</span> in Outcomes.
             <br />
             <span className="text-white">100+</span> Success Stories.
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+          <p className="text-lg md:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed mb-8 drop-shadow-md font-medium">
             From boutique studios to enterprise chains, see how operators like you have transformed their business with DX.
           </p>
         
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-            <div className="text-center">
-              <p className="text-4xl font-extrabold text-green-400 mb-1">120%</p>
-              <p className="text-sm text-gray-300 font-medium">Net Revenue Retention</p>
+            <div className="text-center bg-black/30 backdrop-blur-sm rounded-lg p-4">
+              <p className="text-4xl font-extrabold text-green-400 mb-1 drop-shadow-lg">120%</p>
+              <p className="text-sm text-white font-semibold drop-shadow-md">Net Revenue Retention</p>
             </div>
-            <div className="text-center">
-              <p className="text-4xl font-extrabold text-green-400 mb-1">96</p>
-              <p className="text-sm text-gray-300 font-medium">Net Promoter Score</p>
+            <div className="text-center bg-black/30 backdrop-blur-sm rounded-lg p-4">
+              <p className="text-4xl font-extrabold text-green-400 mb-1 drop-shadow-lg">96</p>
+              <p className="text-sm text-white font-semibold drop-shadow-md">Net Promoter Score</p>
             </div>
-            <div className="text-center">
-              <p className="text-4xl font-extrabold text-green-400 mb-1">30%</p>
-              <p className="text-sm text-gray-300 font-medium">Faster Decision-Making</p>
+            <div className="text-center bg-black/30 backdrop-blur-sm rounded-lg p-4">
+              <p className="text-4xl font-extrabold text-green-400 mb-1 drop-shadow-lg">30%</p>
+              <p className="text-sm text-white font-semibold drop-shadow-md">Faster Decision-Making</p>
             </div>
           </div>
         </div>
@@ -293,24 +262,24 @@ const TestimonialsPage = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-8 max-w-3xl">
+                <p className="text-gray-800 mb-8 max-w-3xl font-medium">
                   Crunch Fitness was losing 40% of their leads to competitors because they came in after hours. Their front desk couldn't handle the volume during peak times, and overnight inquiries went unanswered.
                 </p>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Stats on the left */}
                   <div className="space-y-4">
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">47%</p>
-                      <p className="text-sm text-gray-600">Lead Increase</p>
+                      <p className="text-sm text-gray-800 font-semibold">Lead Increase</p>
                     </div>
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">24/7</p>
-                      <p className="text-sm text-gray-600">Response Time</p>
+                      <p className="text-sm text-gray-800 font-semibold">Response Time</p>
                     </div>
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">$2.1M</p>
-                      <p className="text-sm text-gray-600">Annual Revenue</p>
+                      <p className="text-sm text-gray-800 font-semibold">Annual Revenue</p>
                     </div>
                     <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →
@@ -343,22 +312,22 @@ const TestimonialsPage = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-8 max-w-3xl">
+                <p className="text-gray-800 mb-8 max-w-3xl font-medium">
                   WAC was experiencing 15% monthly churn. Members were cancelling online without any intervention opportunity. They needed a way to save at-risk members before losing them.
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                  <div className="text-center">
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
                     <p className="text-5xl font-bold text-green-600 mb-2">68%</p>
-                    <p className="text-gray-600">Churn Reduction</p>
+                    <p className="text-gray-800 font-semibold">Churn Reduction</p>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
                     <p className="text-5xl font-bold text-green-600 mb-2">$890K</p>
-                    <p className="text-gray-600">Revenue Saved</p>
+                    <p className="text-gray-800 font-semibold">Revenue Saved</p>
                   </div>
-                  <div className="text-center">
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
                     <p className="text-5xl font-bold text-green-600 mb-2">2 min</p>
-                    <p className="text-gray-600">Avg Save Time</p>
+                    <p className="text-gray-800 font-semibold">Avg Save Time</p>
                   </div>
                 </div>
                 
@@ -379,24 +348,24 @@ const TestimonialsPage = () => {
                   </div>
                 </div>
                 
-                <p className="text-gray-600 mb-8 max-w-3xl">
+                <p className="text-gray-800 mb-8 max-w-3xl font-medium">
                   Fitness SF had data in 7 different systems with no unified view. Decision-making was slow, and opportunities were missed. They needed a complete data transformation.
                 </p>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   {/* Stats on the left */}
                   <div className="space-y-4">
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">120%</p>
-                      <p className="text-sm text-gray-600">NRR Achieved</p>
+                      <p className="text-sm text-gray-800 font-semibold">NRR Achieved</p>
                     </div>
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">7→1</p>
-                      <p className="text-sm text-gray-600">Systems Unified</p>
+                      <p className="text-sm text-gray-800 font-semibold">Systems Unified</p>
                     </div>
-                    <div className="bg-white rounded-lg p-6">
+                    <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">50%</p>
-                      <p className="text-sm text-gray-600">Faster Decisions</p>
+                      <p className="text-sm text-gray-800 font-semibold">Faster Decisions</p>
                     </div>
                     <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →

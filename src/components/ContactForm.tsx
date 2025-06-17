@@ -6,16 +6,14 @@ const ContactForm = () => {
     fullName: '',
     companyEmail: '',
     message: '',
-    interestedIn: 'Outcomes Agents',
-    robotCheck: false,
+    interestedIn: 'Concierge (Free)',
     agreeToTerms: false
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [focusedField, setFocusedField] = useState('');
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     const checked = (e.target as HTMLInputElement).checked;
     setFormData(prev => ({
@@ -35,22 +33,22 @@ const ContactForm = () => {
     }, 2000);
   };
 
-  const services = [
-    { id: 'AI Agents', icon: <Sparkles className="w-3 h-3" /> },
-    { id: 'Click2Save', icon: <Target className="w-3 h-3" /> },
-    { id: 'Custom Solution', icon: <Zap className="w-3 h-3" /> },
-    { id: 'Other', icon: <TrendingUp className="w-3 h-3" /> }
+  const agentOptions = [
+    'Concierge (Free)',
+    'Click2Save',
+    'Member Concierge',
+    'Not Sure / Recommend One'
   ];
 
   return (
-    <section id="contact" className="relative py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <section id="contact" className="relative py-4 sm:py-6 lg:py-8 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-30"></div>
         <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-100 rounded-full blur-3xl opacity-30"></div>
       </div>
 
-      <div className="relative mx-auto px-4 sm:px-6 lg:px-16 py-8 sm:py-12 w-full">
+      <div className="relative mx-auto px-4 sm:px-6 lg:px-16 py-4 sm:py-6 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 sm:gap-10 items-center">
           
           {/* Left Side - Content */}
@@ -61,14 +59,15 @@ const ContactForm = () => {
             </div>
             
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 sm:mb-3 leading-tight">
-              Transform Your Business with the{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">
-                DX Outcomes Agent Platform
-              </span>
+              Ready to Launch?
             </h1>
             
             <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-              Join operators who've driven $2B+ in outcomes. Deploy AI agents that work 24/7 to grow revenue, cut costs, and delight members — with proven ROI from day one.
+              Start with a free AI Agent—or tell us what you're looking for.
+            </p>
+            
+            <p className="text-sm text-gray-600 mb-4 sm:mb-6 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+              Deploy Concierge Agent instantly, or request a custom solution like Click2Save. We'll match you to the right agent.
             </p>
             
             {/* Stats - Horizontal */}
@@ -95,113 +94,76 @@ const ContactForm = () => {
             </div>
           </div>
 
-          {/* Right Side - Compact Form */}
+          {/* Right Side - Form */}
           <div className="lg:col-span-2">
             <div className="relative">
               {/* Glow Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-green-500 rounded-2xl blur-xl opacity-30 scale-95"></div>
               
-              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-4 sm:p-5 border border-green-100">
-                <div className="space-y-3">
-                  {/* Form Header */}
-                  <div className="text-center mb-3">
-                    <h2 className="text-base sm:text-lg font-bold text-gray-900">See Your Outcomes in Action</h2>
-                    <p className="text-xs text-gray-600">Deploy Agents in 5 minutes, see ROI from day one</p>
-                  </div>
-
-                  {/* Service Selection - 2x2 Grid */}
-                  <div className="grid grid-cols-2 gap-2">
-                    <button
-                      type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Outcomes Agents' }))}
-                      className={`relative py-1.5 px-2 rounded-lg text-xs font-medium transition-all duration-300 flex items-center justify-center gap-1 ${
-                        formData.interestedIn === 'Outcomes Agents'
-                          ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-md'
-                          : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                      }`}
+              <div className="relative bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg p-6 border border-green-100">
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  
+                  {/* Agent Selection Dropdown */}
+                  <div>
+                    <label htmlFor="interestedIn" className="block text-sm font-medium text-gray-700 mb-2">
+                      Which agent are you interested in?
+                    </label>
+                    <select
+                      id="interestedIn"
+                      name="interestedIn"
+                      value={formData.interestedIn}
+                      onChange={handleChange}
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none text-sm text-black appearance-none cursor-pointer"
+                      style={{ color: 'black' }}
                     >
-                      <span>Outcomes Agents</span>
-                    </button>
-                    
-                      <button
-                        type="button"
-                      onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Solutions' }))}
-                        className={`relative py-1.5 px-2 rounded-lg text-xs font-medium transition-all duration-300 flex items-center justify-center gap-1 ${
-                        formData.interestedIn === 'Solutions'
-                            ? 'bg-gradient-to-r from-green-600 to-green-500 text-white shadow-md'
-                            : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                        }`}
-                      >
-                      <span>Solutions</span>
-                      </button>
+                      {agentOptions.map((option) => (
+                        <option key={option} value={option} className="text-black bg-white">
+                          {option}
+                        </option>
+                      ))}
+                    </select>
                   </div>
 
-                  {/* Start Free with Concierge Agent Button */}
-                  <button
-                    type="button"
-                    onClick={() => setFormData(prev => ({ ...prev, interestedIn: 'Concierge Agent' }))}
-                    className="w-full bg-white text-green-600 border-2 border-green-600 py-2.5 px-4 rounded-lg font-medium text-xs sm:text-sm hover:bg-green-50 transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-md"
-                  >
-                    Start Free with Concierge Agent
-                  </button>
-
-                  {/* Click2Save Option */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setFormData(prev => ({ ...prev, interestedIn: 'Click2Save' }));
-                      // You can add navigation or form submission logic here if needed
-                    }}
-                    className={`w-full py-2 px-4 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                      formData.interestedIn === 'Click2Save'
-                        ? 'bg-gray-800 text-white'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
-                  >
-                    Click2Save
-                  </button>
-
-                  {/* Two-column input layout */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    <div className="relative">
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none text-xs"
-                        placeholder="Full Name"
-                      />
-                    </div>
-
-                    <div className="relative">
-                      <input
-                        type="email"
-                        name="companyEmail"
-                        value={formData.companyEmail}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none text-xs"
-                        placeholder="Company Email"
-                      />
-                    </div>
+                  {/* Full Name */}
+                  <div>
+                    <input
+                      type="text"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none text-sm"
+                      placeholder="Full Name"
+                    />
                   </div>
 
-                  {/* Message - full width but shorter */}
+                  {/* Company Email */}
+                  <div>
+                    <input
+                      type="email"
+                      name="companyEmail"
+                      value={formData.companyEmail}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none text-sm"
+                      placeholder="Company Email"
+                    />
+                  </div>
+
+                  {/* Message */}
                   <div>
                     <textarea
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      rows={2}
-                      className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none resize-none text-xs"
-                      placeholder="Tell us about your project (optional)"
+                      rows={3}
+                      className="w-full px-3 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:bg-white focus:border-green-500 transition-all duration-300 outline-none resize-none text-sm"
+                      placeholder="Tell us more about your project or goals"
                     />
                   </div>
 
-                  {/* Checkbox and Submit in one row */}
-                  <div className="space-y-3">
+                  {/* Terms and Submit */}
+                  <div className="space-y-4">
                     <label className="flex items-start gap-2 cursor-pointer">
                       <input
                         type="checkbox"
@@ -212,29 +174,28 @@ const ContactForm = () => {
                       />
                       <span className="text-xs text-gray-600">
                         I agree to the{' '}
-                        <a href="#" className="text-green-600 hover:underline">Terms</a> and{' '}
-                        <a href="#" className="text-green-600 hover:underline">Privacy Policy</a>
+                        <a href="#" className="text-green-600 hover:underline">Terms and Privacy Policy</a>
                       </span>
-                      </label>
+                    </label>
 
                     <button
                       type="submit"
                       disabled={!formData.agreeToTerms || isSubmitting}
-                      className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-2.5 px-4 rounded-lg font-medium text-xs sm:text-sm hover:from-green-700 hover:to-green-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] shadow-md"
+                      className="w-full bg-gradient-to-r from-green-600 to-green-500 text-white py-3 px-4 rounded-lg font-medium text-sm hover:from-green-700 hover:to-green-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed transform hover:scale-[1.02] active:scale-[0.98] shadow-md"
                     >
-                        {isSubmitting ? (
+                      {isSubmitting ? (
                         <span className="flex items-center justify-center gap-2">
                           <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                            </svg>
+                          </svg>
                           Processing...
                         </span>
-                        ) : (
+                      ) : (
                         <span className="flex items-center justify-center gap-2">
                           Get Started
-                          <ArrowRight className="w-3 h-3" />
-                      </span>
+                          <ArrowRight className="w-4 h-4" />
+                        </span>
                       )}
                     </button>
                   </div>
@@ -250,7 +211,11 @@ const ContactForm = () => {
                       <span>24hr Response</span>
                     </div>
                   </div>
-                </div>
+
+                  <div className="text-center">
+                    <p className="text-xs text-gray-500">We'll reach out in 24 hours. No spam.</p>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
