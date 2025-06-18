@@ -201,7 +201,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
 </span>
               </span>
               <br />
-              Agent Platform
+          
             </h2>
             
 {/* Decorative elements */}

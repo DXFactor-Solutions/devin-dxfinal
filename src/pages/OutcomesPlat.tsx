@@ -334,9 +334,9 @@ const OutcomesPlat = () => {
                 DX Outcomes Micro-Agent Platform
               </span>
               <br />
-              <span className="text-white">Agent </span>
+              <span className="text-white"> </span>
               <span className="text-green-500 font-black">
-                Platform
+                
               </span>
             </motion.h1>
 

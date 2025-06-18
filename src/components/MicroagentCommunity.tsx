@@ -397,33 +397,82 @@ outcomes from day one.
                         </div>
                       </section>
 
-                      {/* Recent Activity Section - Mobile optimized */}
+                      {/* Integrated and Real Time Cards Section - Mobile optimized */}
                       <section className="animate-on-scroll fade-up delay-400">
-                        <div className="flex justify-between items-center mb-3 sm:mb-4">
-                          <h2 className="text-sm sm:text-base lg:text-lg font-bold text-gray-900">Recent Activity</h2>
-                          <button className="text-[10px] sm:text-xs font-semibold text-gray-600 hover:text-gray-900 flex items-center gap-0.5 sm:gap-1 transition-colors">
-                            View all <ArrowUpRight className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                          </button>
-                        </div>
-                        
-                        <div className="space-y-2 sm:space-y-3">
-                          {activities.map((activity) => {
-                            const Icon = activity.icon;
-                            return (
-                              <div key={activity.id} className="flex items-start gap-2 sm:gap-3 p-2 sm:p-3 hover:bg-gray-50 rounded-lg transition-colors">
-                                <div className={`p-1.5 sm:p-2 rounded-full ${getActivityColor(activity.type)}`}>
-                                  <Icon className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                          {/* Integrated Card */}
+                          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 sm:p-6 border border-blue-200 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                            <div className="flex items-center justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="bg-blue-500 p-2 sm:p-3 rounded-lg group-hover:scale-110 transition-transform">
+                                  <Link className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                                 </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-xs sm:text-sm text-gray-800 font-medium truncate">{activity.title}</p>
-                                  <div className="flex items-center gap-0.5 sm:gap-1 mt-0.5 sm:mt-1">
-                                    <Clock className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-gray-400" />
-                                    <span className="text-[10px] sm:text-xs text-gray-500">{activity.time}</span>
-                                  </div>
+                                <div>
+                                  <h3 className="text-lg sm:text-xl font-bold text-blue-900">Integrated</h3>
+                                  <p className="text-xs sm:text-sm text-blue-700">Seamlessly Connected</p>
                                 </div>
                               </div>
-                            );
-                          })}
+                              <div className="bg-blue-500 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full">
+                                LIVE
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3 mb-4">
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-blue-800">Active Integrations</span>
+                                <span className="font-bold text-blue-900">12</span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-blue-800">Data Synced Today</span>
+                                <span className="font-bold text-blue-900">2.4K</span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-blue-800">Sync Success Rate</span>
+                                <span className="font-bold text-blue-900">99.8%</span>
+                              </div>
+                            </div>
+                            
+                            <p className="text-xs sm:text-sm text-blue-700 leading-relaxed">
+                              Connected with ABC, Ignite, Glofox, Club Automation, MOSO, ASF, Hubspot, Gymsales and more
+                            </p>
+                          </div>
+                          
+                          {/* Real Time Card */}
+                          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 sm:p-6 border border-green-200 hover:shadow-lg transition-all duration-300 cursor-pointer group">
+                            <div className="flex items-center justify-between mb-4">
+                              <div className="flex items-center gap-3">
+                                <div className="bg-green-500 p-2 sm:p-3 rounded-lg group-hover:scale-110 transition-transform">
+                                  <Eye className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg sm:text-xl font-bold text-green-900">Real Time</h3>
+                                  <p className="text-xs sm:text-sm text-green-700">Live Monitoring</p>
+                                </div>
+                              </div>
+                              <div className="bg-green-500 text-white text-xs sm:text-sm font-bold px-2 sm:px-3 py-1 rounded-full animate-pulse">
+                                ACTIVE
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3 mb-4">
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-green-800">Live Interactions</span>
+                                <span className="font-bold text-green-900">47</span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-green-800">Response Time</span>
+                                <span className="font-bold text-green-900">0.3s</span>
+                              </div>
+                              <div className="flex items-center justify-between">
+                                <span className="text-sm text-green-800">Uptime Today</span>
+                                <span className="font-bold text-green-900">100%</span>
+                              </div>
+                            </div>
+                            
+                            <p className="text-xs sm:text-sm text-green-700 leading-relaxed">
+                              Monitor agent performance and business metrics live with instant insights and alerts
+                            </p>
+                          </div>
                         </div>
                       </section>
                     </div>
