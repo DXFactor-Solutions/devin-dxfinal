@@ -83,10 +83,10 @@ const DXFactorSection = () => {
       description: "Advanced analytics and predictive modeling to unlock hidden insights in your business data.",
       impact: "35% Churn Reduction",
       testimonial: {
-        quote: "Method Gym saved 7% of cancellations & $1.8K in dues in 30 days—thanks to DXFactor's Click to Save. Fast setup, real ROI, better member experience.",
-        author: "Al Noshirvani",
-        role: "Founder",
-        company: "Method Gym"
+        quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
+        author: "Rob Koehler",
+        role: "Director of Technology Development",
+        company: "Wisconsin Athletic Club"
       }
     }
   ];

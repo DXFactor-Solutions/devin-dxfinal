@@ -159,7 +159,7 @@ const MicroagentCommunity = () => {
               <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed">
               Your micro-agents are only as powerful as
               the platform behind them.  
-                <span className="font-medium text-green-600"> The DX Outcomes Agent Platform</span>, 
+                <span className="font-medium text-green-600"> The DX Outcomes Micro-Agent Platform</span>, 
                 the platform behind
 them. Built on years of real-world
 experience with fitness & wellness

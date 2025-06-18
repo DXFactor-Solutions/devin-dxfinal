@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="mb-6">
               <img src="/factor.svg" alt="DXFactor Logo" className="h-8 w-auto mb-3" style={{filter: 'brightness(0) invert(1)'}} />
               <p className="text-gray-300 leading-relaxed max-w-sm text-sm mb-4">
-                DXFactor delivers the industry's only Outcomes Agent Platform built from $2B+ in proven results for Fitness & Wellness operators.
+                DXFactor delivers the industry's only Outcomes Micro-Agent Platform built from $2B+ in proven results for Fitness & Wellness operators.
               </p>
               
               {/* Social links */}

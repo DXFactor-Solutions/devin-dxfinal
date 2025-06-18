@@ -331,7 +331,7 @@ const OutcomesPlat = () => {
             >
               <span className="text-white">The </span>
               <span className="text-green-500 font-black">
-                DX Outcomes
+                DX Outcomes Micro-Agent Platform
               </span>
               <br />
               <span className="text-white">Agent </span>

@@ -197,7 +197,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
               Meet the{" "}
 <span className="relative">
               <span className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 bg-clip-text text-transparent">
-                DX Outcomes
+                DX Outcomes Micro-Agent Platform
 </span>
               </span>
               <br />
@@ -236,16 +236,16 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
             <SimpleReveal key={agent.id} delay={3 + index}>
               <div 
                 className={`flip-card ${flippedCards.has(agent.id) ? 'flipped' : ''}`}
-                style={{ minHeight: '520px' }}
+                style={{ minHeight: '350px' }}
                 onClick={() => handleCardFlip(agent.id)}
               >
                 <div className="flip-card-inner h-full">
                   {/* Front of card */}
                   <div className="flip-card-front h-full">
                 <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col cursor-pointer">
-                                    <div className="p-6 flex-1 flex flex-col">
+                                    <div className="p-4 flex-1 flex flex-col">
                       {/* Simple header */}
-                      <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center justify-between mb-2">
                         <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                           {React.createElement(agent.icon, { className: "w-5 h-5 text-green-600" })}
                         </div>
@@ -255,11 +255,11 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                           </div>
 
                         {/* Title */}
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">{agent.name}</h3>
+                        <h3 className="text-base font-semibold text-gray-900 mb-1">{agent.name}</h3>
                         
                         {/* Description */}
-                        <div className="flex-1 mb-4">
-                          <p className="text-sm text-gray-600 leading-relaxed">
+                        <div className="flex-1 mb-2">
+                          <p className="text-xs text-gray-600 leading-relaxed">
 {agent.oneLiner}
 </p>
                                               </div>
@@ -267,15 +267,15 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                       {/* Bottom section - always at bottom */}
                       <div className="mt-auto">
                         {/* Simple stats */}
-                          <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                          <div className="flex items-baseline gap-2 mb-2">
-                            <span className="text-2xl font-bold text-green-600">{agent.stats.value}</span>
-                            <span className="text-xs text-gray-500 uppercase font-medium">
+                          <div className="bg-gray-50 rounded-lg p-3 mb-2">
+                          <div className="flex items-baseline gap-2 mb-1">
+                            <span className="text-xl font-bold text-black">{agent.stats.value}</span>
+                            <span className="text-[10px] text-black uppercase font-medium">
                               {agent.stats.label}
 </span>
                             </div>
                           {agent.additionalStat && (
-                              <p className="text-sm text-green-700 font-medium">
+                              <p className="text-xs text-green-700 font-medium">
                                 {agent.additionalStat}
                               </p>
 )}
@@ -283,7 +283,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
 
                       {/* Simple button */}
                                               <button
-                                                    className="w-full bg-green-600 text-white rounded-lg py-2.5 text-sm font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
+                                                    className="w-full bg-green-600 text-white rounded-lg py-2 text-xs font-medium hover:bg-green-700 transition-colors flex items-center justify-center gap-2"
                             onClick={(e) => {
                               e.stopPropagation();
                               handleROIClick(agent.name);
@@ -294,7 +294,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                         </button>
                         
                         {/* Flip hint */}
-                          <p className="text-xs text-gray-400 text-center mt-3">Click to flip</p>
+                          <p className="text-[10px] text-gray-400 text-center mt-2">Click to flip</p>
                         </div>
                       </div>
                     </div>
@@ -303,9 +303,9 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                   {/* Back of card */}
                                       <div className="flip-card-back h-full">
                         <div className="bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col cursor-pointer">
-                      <div className="p-6 flex-1 flex flex-col">
+                      <div className="p-4 flex-1 flex flex-col">
                               {/* Simple header */}
-                                <div className="flex items-center justify-between mb-4">
+                                <div className="flex items-center justify-between mb-2">
                                   <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                             {React.createElement(agent.icon, { className: "w-5 h-5 text-green-600" })}
                                                       </div>
@@ -315,15 +315,15 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                                                       </div>
 
                         {/* Title */}
-                        <h3 className="text-lg font-semibold text-gray-900 mb-3">{agent.name}</h3>
+                        <h3 className="text-base font-semibold text-gray-900 mb-1">{agent.name}</h3>
                         
                         {/* Detailed description */}
-                        <p className="text-sm text-gray-600 leading-relaxed flex-1">
+                        <p className="text-xs text-gray-600 leading-relaxed flex-1">
                           {agent.description}
                         </p>
                         
                         {/* Flip hint */}
-                        <p className="text-xs text-gray-400 text-center mt-4">Click to flip back</p>
+                        <p className="text-[10px] text-gray-400 text-center mt-2">Click to flip back</p>
                       </div>
                     </div>
                   </div>
@@ -347,7 +347,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                 </button>
                 <button type="button" className="w-full sm:w-auto border border-green-600 hover:border-green-700 text-green-600 hover:text-white hover:bg-green-600 hover:scale-105 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm group">
                   <Play className="mr-2 w-3 sm:w-4 h-3 sm:h-4 group-hover:scale-110 transition-transform" />
-                  <span className="hidden sm:inline">See the Outcomes Agent Platform in Action</span>
+                  <span className="hidden sm:inline">See the Outcomes Micro-Agent Platform in Action</span>
                   <span className="sm:hidden">Watch Demo</span>
                 </button>
               </div>
