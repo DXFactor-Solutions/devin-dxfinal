@@ -229,10 +229,11 @@ const AboutUs = () => {
             playsInline
             style={{ 
               filter: 'brightness(0.7)',
-              mixBlendMode: 'normal'
+              mixBlendMode: 'normal',
+              objectPosition: 'center 20%'
             }}
           >
-            <source src="/videos/abstract2.mp4" type="video/mp4" />
+            <source src="/videos/postworkout.mp4" type="video/mp4" />
           </video>
           <div className="absolute inset-0 bg-gradient-to-b from-gray-900/30 to-gray-900/50 mix-blend-multiply"></div>
         </div>

@@ -200,12 +200,13 @@ const TestimonialsPage = () => {
             loop
             muted
             playsInline
-            className="absolute inset-0 w-full h-full object-cover opacity-60"
+            className="absolute inset-0 w-full h-full object-cover opacity-80"
+            style={{ objectPosition: 'center 20%' }}
           >
-            <source src="/videos/abstract2.mp4" type="video/mp4" />
+            <source src="/videos/postworkout.mp4" type="video/mp4" />
           </video>
           {/* Dark overlay for better text visibility */}
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

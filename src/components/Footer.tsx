@@ -71,7 +71,7 @@ const Footer = () => {
               <li>
                 <a href="/outcomes-platform" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>Outcome Agents Platform</span>
+                  <span>Outcomes Micro-Agents Platform</span>
                 </a>
               </li>
               <li>
