@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Download, BookOpen, Star, Clock, User, TrendingUp, Search } from 'lucide-react';
+import { Download, BookOpen, Star, Clock, User, TrendingUp, Search, CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
@@ -68,7 +68,19 @@ const EbookPage = () => {
     rating: "4.9",
     category: "AI Strategy",
     image: "/logos/Ebook_GenAI.png",
-    pdfUrl: "/docz/ebook.pdf"
+    pdfUrl: "/docz/eboook.pdf"
+  };
+
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: ''
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleDownload = (pdfUrl: string, title: string) => {
@@ -78,6 +90,16 @@ const EbookPage = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const handleFormSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (formData.firstName && formData.lastName && formData.email) {
+      setIsSubmitted(true);
+      // Here you would typically send the data to your backend
+      console.log('Form submitted:', formData);
+      handleDownload(ebook.pdfUrl, ebook.title);
+    }
   };
 
   return (
@@ -174,13 +196,56 @@ const EbookPage = () => {
                     </div>
                   </div>
                 </div>
-                <button 
-                  onClick={() => handleDownload(ebook.pdfUrl, ebook.title)}
-                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 w-fit"
-                >
-                  <Download className="w-4 h-4" />
-                  Download Free
-                </button>
+                
+                {isSubmitted ? (
+                  <div className="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 rounded-md flex items-center">
+                    <CheckCircle className="w-6 h-6 mr-3" />
+                    <div>
+                      <p className="font-bold">Thank you for your interest!</p>
+                      <p>Your download should begin automatically. If not, <a href={ebook.pdfUrl} download={ebook.title.replace(/\s+/g, '-') + '.pdf'} className="underline hover:text-green-800">click here</a>.</p>
+                    </div>
+                  </div>
+                ) : (
+                  <form onSubmit={handleFormSubmit} className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <input 
+                        type="text"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                      />
+                      <input 
+                        type="text"
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                      />
+                    </div>
+                    <input 
+                      type="email"
+                      name="email"
+                      placeholder="Email Address"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      required
+                      className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-green-500 focus:border-green-500"
+                    />
+                    <button 
+                      type="submit"
+                      className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg font-medium transition-colors flex items-center gap-2 w-full justify-center disabled:bg-gray-400"
+                      disabled={!formData.firstName || !formData.lastName || !formData.email}
+                    >
+                      <Download className="w-4 h-4" />
+                      Download Free
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>

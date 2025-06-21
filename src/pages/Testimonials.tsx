@@ -256,10 +256,10 @@ const TestimonialsPage = () => {
             <SpiralReveal delay={0.2} index={1}>
               <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
                 <div className="flex items-center gap-4 mb-6">
-                  <img src="/logos/crunch.svg" alt="Crunch Fitness" className="h-12 w-auto" />
+                  <img src="/logos/fit.svg" alt="Crunch Fitness" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">300+ Hours Saved. Every Month.</h3>
-                    <p className="text-sm text-green-600 font-medium">Front Desk Overload & Missed Member Questions</p>
+                    <h3 className="text-2xl font-bold text-gray-900">160 Saves. $288k Retained</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Manual cancellations</p>
                   </div>
                 </div>
                 
@@ -271,16 +271,16 @@ const TestimonialsPage = () => {
                   {/* Stats on the left */}
                   <div className="space-y-4">
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">4000+</p>
-                      <p className="text-sm text-gray-800 font-semibold">Hours Saved Annually</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">12.34%</p>
+                      <p className="text-sm text-gray-800 font-semibold">Canceling members saved</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">24/7</p>
-                      <p className="text-sm text-gray-800 font-semibold"> Member support coverage</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">$288k</p>
+                      <p className="text-sm text-gray-800 font-semibold">Annual revenue retained</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">1000+</p>
-                      <p className="text-sm text-gray-800 font-semibold">Inquiries Handled</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">20%</p>
+                      <p className="text-sm text-gray-800 font-semibold">Improvement in administrative efficiency</p>
                     </div>
                     <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →
@@ -306,29 +306,36 @@ const TestimonialsPage = () => {
             <SpiralReveal delay={0.3} index={2}>
               <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
                 <div className="flex items-center gap-4 mb-6">
-                  <img src="/logos/wac-logo.svg" alt="Wisconsin Athletic Club" className="h-12 w-auto" />
+                  <img src="/logos/Chuze.jpg" alt="Wisconsin Athletic Club" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">160 Saves. $288k Retained​</h3>
-                    <p className="text-sm text-green-600 font-medium">Challenge: Manual cancellations</p>
+                    <h3 className="text-2xl font-bold text-gray-900">From Long Lines to Self-Service​</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Front-Desk Overload & App
+                    Limitations</p>
                   </div>
                 </div>
                 
                 <p className="text-gray-800 mb-8 max-w-3xl font-medium">
-                  WAC was experiencing 15% monthly churn. Members were cancelling online without any intervention opportunity. They needed a way to save at-risk members before losing them.
+                Chuze needed to move joins, upgrades, and
+cancels out of the club and into the app — all
+while meeting the FTC’s Click-to-Cancel
+deadline. But their legacy tech was holding
+them back, and key features like Buddy
+Passes and Rewards were scattered across
+separate systems. 
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
                   <div className="text-center bg-white rounded-lg p-6 shadow-sm">
-                    <p className="text-5xl font-bold text-green-600 mb-2">68%</p>
-                    <p className="text-gray-800 font-semibold">Churn Reduction</p>
+                    <p className="text-5xl font-bold text-green-600 mb-2">37%</p>
+                    <p className="text-gray-800 font-semibold">Of new memberships now originate in-app</p>
                   </div>
                   <div className="text-center bg-white rounded-lg p-6 shadow-sm">
-                    <p className="text-5xl font-bold text-green-600 mb-2">$890K</p>
-                    <p className="text-gray-800 font-semibold">Revenue Saved</p>
+                    <p className="text-5xl font-bold text-green-600 mb-2">70% </p>
+                    <p className="text-gray-800 font-semibold">Reduction in manual cancel/upgrade work</p>
                   </div>
                   <div className="text-center bg-white rounded-lg p-6 shadow-sm">
-                    <p className="text-5xl font-bold text-green-600 mb-2">2 min</p>
-                    <p className="text-gray-800 font-semibold">Avg Save Time</p>
+                    <p className="text-5xl font-bold text-green-600 mb-2">3x</p>
+                    <p className="text-gray-800 font-semibold">Growth in Buddy activity through the app</p>
                   </div>
                 </div>
                 

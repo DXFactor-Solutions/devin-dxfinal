@@ -204,7 +204,7 @@ const HeroSection = () => {
             <SimpleReveal delay={2}>
               <div className="mb-6 sm:mb-8 md:mb-16">
                 <p className="max-w-3xl mx-auto text-xs sm:text-sm md:text-lg text-gray-700 leading-relaxed font-light animate-in fade-in slide-in-from-bottom-5 duration-1000 delay-[1000ms] px-4 sm:px-0">
-                  <strong>DXOutcomes Micro Agent Platform</strong> — proven across <strong>100s of fitness operators</strong>.<br />
+                  <strong>DXOutcomes Microagent Platform</strong> — proven across <strong>100s of fitness operators</strong>.<br />
                   Each Agent delivers <strong>measurable results</strong> for your biggest challenges:<br />
                   <strong>revenue growth, operations efficiency, and customer experience</strong>.
                 </p>
@@ -226,7 +226,7 @@ const HeroSection = () => {
                     className="w-full sm:w-auto border-green-600 hover:border-green-700 text-green-600 hover:text-white bg-white/80 hover:bg-green-600 rounded-md px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 text-sm sm:text-base md:text-lg shadow-md hover:shadow-lg transition-all duration-300 h-auto"
               >
                     <Play className="mr-2 w-4 sm:w-5 h-4 sm:h-5" />
-                    <span className="hidden sm:inline">See the Outcomes Micro Agent
+                    <span className="hidden sm:inline">See the Outcomes Microagent
                     Platform (OMAP) in Action</span>
                     <span className="sm:hidden">Watch Demo</span>
               </Button>

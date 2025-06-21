@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   Github, 
   Linkedin, 
-  Twitter, 
+  Youtube, 
   Instagram, 
   Mail, 
   MapPin, 
@@ -50,14 +50,14 @@ const Footer = () => {
               <div>
                 <p className="text-green-400 text-xs uppercase tracking-wider mb-2 font-medium">Stay Connected</p>
                 <div className="flex space-x-2">
-                  <a href="#" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
-                    <Linkedin className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  <a href="https://www.linkedin.com/company/dxfactor" target="_blank" rel="noopener noreferrer" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-blue-500/20 hover:border-blue-400/50 transition-all duration-300">
+                    <Linkedin className="h-4 w-4 text-gray-300 group-hover:text-blue-400 transition-colors" />
                   </a>
-                  <a href="#" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
-                    <Instagram className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  <a href="https://www.instagram.com/dx.factor/?hl=en" target="_blank" rel="noopener noreferrer" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-pink-500/20 hover:border-pink-400/50 transition-all duration-300">
+                    <Instagram className="h-4 w-4 text-gray-300 group-hover:text-pink-400 transition-colors" />
                   </a>
-                  <a href="#" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-green-500/20 hover:border-green-400/50 transition-all duration-300">
-                    <Twitter className="h-4 w-4 text-gray-300 group-hover:text-green-400 transition-colors" />
+                  <a href="https://www.youtube.com/@dx.factor" target="_blank" rel="noopener noreferrer" className="group relative w-9 h-9 rounded-lg bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center hover:bg-red-500/20 hover:border-red-400/50 transition-all duration-300">
+                    <Youtube className="h-4 w-4 text-gray-300 group-hover:text-red-400 transition-colors" />
                   </a>
                 </div>
               </div>
@@ -155,7 +155,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="flex items-center justify-center">
-                <img src="/dist/logos/gptw2025.png" alt="Great Place to Work Certification" className="h-14 w-19" />
+                <img src="/logos/greatcertif.png" alt="Great Place to Work Certification" className="h-20 w-auto" />
               </div>
             </div>
           </div>

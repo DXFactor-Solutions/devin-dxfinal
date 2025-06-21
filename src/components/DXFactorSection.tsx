@@ -35,26 +35,45 @@ const DXFactorSection = () => {
         role: "Executive Vice President, Member Services",
         company: "Crunch"
       },
-      backContent: "Delivering mobile-first experiences that boost retention and member satisfaction—with fully native iOS and Android apps, UI/UX built for engagement and in-app automation features."
+      backContent: {
+        subtitle: "Engage Users Everywhere.",
+        description: "Create intuitive, user-friendly mobile experiences with cross-platform capabilities to enhance customer engagement and boost productivity.",
+        features: [
+          "Cross-Platform Development",
+          "Native API Integrations",
+          "Scalable Microservices Architecture",
+          "Continuous Integration and Delivery (CI/CD)"
+        ]
+      }
     },
     {
       icon: <Database className="w-6 h-6" />,
       title: "Data Warehousing & BI",
       description: "Scalable data infrastructure that powers intelligent decision-making and real-time business insights.",
-      impact: "2x Data Lake Growth",
+      impact: "90% Faster Reporting​",
       testimonial: {
         quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
         author: "Rob Koehler",
         role: "Director of Technology Development",
         company: "Wisconsin Athletic Club"
       },
-      backContent: "Unify member, operations, and marketing data into one source of truth—empowering leaders with dashboard-ready insights and faster decision-making."
+      backContent: {
+        subtitle: "Store, Manage & Scale Your Data Seamlessly.",
+        description: "Empower your business with real-time data insights and scalable solutions that drive faster decision-making and operational efficiency.",
+        features: [
+          "Cloud-Based Scalability",
+          "Real-Time Data Processing",
+          "ETL Optimization",
+          "Data Security and Compliance",
+          "Multi-source Data Integration"
+        ]
+      }
     },
     {
       icon: <Users className="w-6 h-6" />,
       title: "Dedicated Engineering Teams",
       description: "On-demand access to specialized engineering talent, augmented with AI tools for faster delivery.",
-      impact: "50% Faster Delivery",
+      impact: "Scales Fast, Delivers On Time​",
       testimonial: {
         quote: "Not just code—DXFactor brought collaboration, speed, and structure to help us scale our digital platform with confidence.",
         author: "Jeremy Brutus",
@@ -65,42 +84,71 @@ const DXFactorSection = () => {
     },
     {
       icon: <Brain className="w-6 h-6" />,
-      title: "AI Development",
+      title: "Agentic AI Development",
       description: "Custom AI agents tailored to your specific business needs, integrated seamlessly with existing systems.",
-      impact: "3x Faster Operations",
+      impact: "Automates Work. Saves Hours.​",
       testimonial: {
         quote: "With AI Agents, we have an opportunity to have a conversation with every prospect to guide them to the correct membership type, to try to upsell them with personal training, and discuss other things like goals as they come into the club. We saved 4000 man hours in 12 months due to DxFactor's Concierge Agent mainly from answering phone calls and front desk questions.",
         author: "Don Dickerson",
         role: "President, Fitness SF",
         company: "Fitness SF"
       },
-      backContent: "Build customized AI solutions—chatbots, predictive models, and automations—that accelerate workflows, reduce friction, and deliver measurable ROI."
+      backContent: {
+        subtitle: "Empower AI to Act Autonomously.",
+        description: "Develop self-learning AI systems that go beyond automation—AI Agents that perceive, reason, and take proactive actions to optimize workflows, decision-making, and customer interactions.",
+        features: [
+          "Autonomous AI Agents for Task Execution",
+          "Context-Aware Decision-Making Models",
+          "Self-Improving AI with Continuous Learning",
+          "Seamless API Integrations & Data Connectivity",
+          "AI-Driven Personalization & Engagement"
+        ]
+      }
     },
     {
       icon: <Link2 className="w-6 h-6" />,
-      title: "System Integrations",
+      title: "Custom Software Development & Integrations",
       description: "Seamless connections between your MRM, ERP, marketing, and operational systems for unified data flow.",
-      impact: "24/7 Workers",
+      impact: "All Systems. One Workflow.​",
       testimonial: {
         quote: "Partnering with DXFactor enhances our ability to offer comprehensive, personalized solutions that drive both member satisfaction and operational efficiency.",
         author: "John Ford",
         role: "Chief Product Officer",
         company: "EGYM"
       },
-      backContent: "Connect your tech stack—CRM, billing, scheduling, and more—into one seamless ecosystem that eliminates manual entry and syncs in real time."
+      backContent: {
+        subtitle: "Tailored Tech for Unique Needs.",
+        description: "Deliver customized software solutions that ensure flexibility, scalability, and future-proofing for growing businesses.",
+        features: [
+          "API-Driven Architecture",
+          "Microservices and Containerization",
+          "Legacy System Modernization",
+          "Automated Testing Frameworks",
+          "Third-Party Systems Integration"
+        ]
+      }
     },
     {
       icon: <BarChart3 className="w-6 h-6" />,
-      title: "Data Science & Analytics",
+      title: "Business Intelligence",
       description: "Advanced analytics and predictive modeling to unlock hidden insights in your business data.",
-      impact: "35% Churn Reduction",
+      impact: "Insights That Drive Retention.​",
       testimonial: {
         quote: "The technology integration has streamlined our operations, giving us a unified view of our data and enabling faster, more informed decisions.",
         author: "Rob Koehler",
         role: "Director of Technology Development",
         company: "Wisconsin Athletic Club"
       },
-      backContent: "Transform raw data into actionable strategies—predict member churn, optimize pricing, and uncover growth opportunities using advanced analytics."
+      backContent: {
+        subtitle: "Transform Raw Data into Actionable Insights.",
+        description: "Enhance workflows and drive smarter decisions with business intelligence solutions tailored to your unique business needs.",
+        features: [
+          "Automated Reporting",
+          "Predictive Analytics",
+          "Self-Service Analytics",
+          "Data Governance"
+        ]
+      }
     }
   ];
 
@@ -280,28 +328,45 @@ do.
                   </div>
                 </div>
 
-                {/* Back Side - Simple paragraph content */}
+                {/* Back Side - Now with structured content */}
                 <div className="service-flip-card-back">
                   <div className="h-full bg-gradient-to-br from-gray-900 to-gray-800 text-white p-6 sm:p-8 md:p-12 flex flex-col justify-center min-h-[500px]">
-                    <div className="max-w-4xl mx-auto text-center">
-                      <div className="inline-flex items-center justify-center w-16 h-16 bg-green-500 rounded-2xl mb-6">
-                        {React.cloneElement(services[selectedService].icon, { className: "w-8 h-8 text-white" })}
+                    <div className="max-w-4xl mx-auto text-left">
+                      <div className="inline-flex items-center justify-center w-12 h-12 bg-green-500 rounded-2xl mb-6">
+                        {React.cloneElement(services[selectedService].icon, { className: "w-7 h-7 text-white" })}
                       </div>
                       
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-6">
+                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">
                         {services[selectedService].title}
                       </h3>
                       
-                      <div className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed mb-8 max-w-3xl mx-auto">
-                        {services[selectedService].backContent || "Content to be added..."}
-                      </div>
+                      {typeof services[selectedService].backContent === 'object' ? (
+                        <>
+                          <p className="text-lg sm:text-xl text-green-400 font-medium mb-4">{services[selectedService].backContent.subtitle}</p>
+                          <p className="text-base text-gray-300 leading-relaxed mb-6">
+                            {services[selectedService].backContent.description}
+                          </p>
+                          <ul className="space-y-3 text-left">
+                            {services[selectedService].backContent.features.map((feature, i) => (
+                              <li key={i} className="flex items-start">
+                                <ChevronRight className="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" />
+                                <span className="text-gray-200">{feature}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </>
+                      ) : (
+                        <div className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed text-center">
+                          {services[selectedService].backContent}
+                        </div>
+                      )}
 
                       <button 
                         onClick={handleLearnMoreClick}
-                        className="inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-all text-sm"
+                        className="mt-8 inline-flex items-center justify-center gap-2 bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-all text-sm"
                       >
                         Flip Back
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rotate-180" />
+                        <ArrowRight className="w-4 h-4 transition-transform rotate-180" />
                       </button>
                     </div>
                   </div>

@@ -417,22 +417,7 @@ outcomes from day one.
                               </div>
                             </div>
                             
-                            <div className="space-y-3 mb-4">
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-blue-800">Active Integrations</span>
-                                <span className="font-bold text-blue-900">12</span>
-                              </div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-blue-800">Data Synced Today</span>
-                                <span className="font-bold text-blue-900">2.4K</span>
-                              </div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-blue-800">Sync Success Rate</span>
-                                <span className="font-bold text-blue-900">99.8%</span>
-                              </div>
-                            </div>
-                            
-                            <p className="text-xs sm:text-sm text-blue-700 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-blue-700 leading-relaxed mt-4">
                               Connected with ABC, Ignite, Glofox, Club Automation, MOSO, ASF, Hubspot, Gymsales and more
                             </p>
                         </div>
@@ -454,22 +439,7 @@ outcomes from day one.
                               </div>
                             </div>
                             
-                            <div className="space-y-3 mb-4">
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-green-800">Live Interactions</span>
-                                <span className="font-bold text-green-900">47</span>
-                              </div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-green-800">Response Time</span>
-                                <span className="font-bold text-green-900">0.3s</span>
-                              </div>
-                              <div className="flex items-center justify-between">
-                                <span className="text-sm text-green-800">Uptime Today</span>
-                                <span className="font-bold text-green-900">100%</span>
-                              </div>
-                            </div>
-                            
-                            <p className="text-xs sm:text-sm text-green-700 leading-relaxed">
+                            <p className="text-xs sm:text-sm text-green-700 leading-relaxed mt-4">
                               Monitor agent performance and business metrics live with instant insights and alerts
                             </p>
                           </div>

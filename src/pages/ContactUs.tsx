@@ -388,6 +388,27 @@ const ContactUs = () => {
                         </div>
                       </div>
 
+                      {/* Terms and Privacy */}
+                      <div className="flex items-start">
+                        <input
+                          id="agreeToTerms"
+                          name="agreeToTerms"
+                          type="checkbox"
+                          checked={formData.agreeToTerms}
+                          onChange={handleChange}
+                          required
+                          className="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500 mt-0.5"
+                        />
+                        <div className="ml-3 text-sm">
+                          <label htmlFor="agreeToTerms" className="text-gray-600">
+                            I agree to the{' '}
+                            <a href="/legal" target="_blank" rel="noopener noreferrer" className="font-medium text-green-600 hover:text-green-700 underline">
+                              Terms and Privacy Policy
+                            </a>
+                          </label>
+                        </div>
+                      </div>
+
                       {/* Required fields note */}
                       <p className="text-xs text-red-600">* Required fields</p>
 

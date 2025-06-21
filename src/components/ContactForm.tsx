@@ -174,7 +174,7 @@ const ContactForm = () => {
                       />
                       <span className="text-xs text-gray-600">
                         I agree to the{' '}
-                        <a href="#" className="text-green-600 hover:underline">Terms and Privacy Policy</a>
+                        <a href="/legal" target="_blank" rel="noopener noreferrer" className="text-green-600 hover:underline">Terms and Privacy Policy</a>
                       </span>
                     </label>
 
