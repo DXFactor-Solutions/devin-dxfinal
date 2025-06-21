@@ -155,7 +155,7 @@ const Footer = () => {
                 </Link>
               </div>
               <div className="flex items-center justify-center">
-                <img src="/logos/greatcertif.png" alt="Great Place to Work Certification" className="h-10 w-auto object-contain" />
+                <img src="/dist/logos/gptw2025.png" alt="Great Place to Work Certification" className="h-14 w-19" />
               </div>
             </div>
           </div>
@@ -169,9 +169,9 @@ const Footer = () => {
             </p>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#privacy" className="text-gray-400 hover:text-green-400 transition-colors">Privacy</a>
+            <a href="/privacy" className="text-gray-400 hover:text-green-400 transition-colors">Privacy</a>
             <span className="text-gray-600">•</span>
-            <a href="#terms" className="text-gray-400 hover:text-green-400 transition-colors">Terms</a>
+            <a href="/terms" className="text-gray-400 hover:text-green-400 transition-colors">Terms</a>
             <span className="text-gray-600">•</span>
             <a href="#cookies" className="text-gray-400 hover:text-green-400 transition-colors">Cookies</a>
           </div>

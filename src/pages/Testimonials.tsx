@@ -116,7 +116,7 @@ const testimonials = [
     },
     {
       quote: "DXFactor brings clarity, speed & care—solving problems with you, not just for you. Bold ideas meet practical results.",
-      author: "Chelsea Loren",
+      author: "Chelsea Lorenzen",
       title: "Associate Partner",
       company: "ALTA",
       avatar: "/headshots/Chelsea-Lorenzen-ALTA.jpeg",
@@ -156,7 +156,7 @@ const testimonials = [
     },
     {
       quote: "In less than a month, Method saved 7.03% of members who initiated cancellation, retaining $1,800 in monthly revenue. The result? Not just higher retention and operational savings, but a dramatically improved member experience.",
-      author: "Troy McFarlin",
+      author: "Troy McFarland",
       title: "Director of Marketing",
       company: "Fitness SF",
       avatar: "/headshots/Troy-Macfarland-FitnessSF.jpg",
@@ -164,7 +164,7 @@ const testimonials = [
     },
     {
       quote: "If you're looking for a strategic engineering partner who thinks beyond the code, DXFactor is the team you want in your corner.",
-      author: "Chelsea Loren",
+      author: "Chelsea Lorenzen",
       title: "Associate Partner",
       company: "ALTA",
       avatar: "/headshots/Chelsea-Lorenzen-ALTA.jpeg",
@@ -258,8 +258,8 @@ const TestimonialsPage = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <img src="/logos/crunch.svg" alt="Crunch Fitness" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">47% More Leads While Sleeping</h3>
-                    <p className="text-sm text-green-600 font-medium">Challenge: Missed After-Hours Leads</p>
+                    <h3 className="text-2xl font-bold text-gray-900">300+ Hours Saved. Every Month.</h3>
+                    <p className="text-sm text-green-600 font-medium">Front Desk Overload & Missed Member Questions</p>
                   </div>
                 </div>
                 
@@ -271,16 +271,16 @@ const TestimonialsPage = () => {
                   {/* Stats on the left */}
                   <div className="space-y-4">
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">47%</p>
-                      <p className="text-sm text-gray-800 font-semibold">Lead Increase</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">4000+</p>
+                      <p className="text-sm text-gray-800 font-semibold">Hours Saved Annually</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
                       <p className="text-4xl font-bold text-green-600 mb-1">24/7</p>
-                      <p className="text-sm text-gray-800 font-semibold">Response Time</p>
+                      <p className="text-sm text-gray-800 font-semibold"> Member support coverage</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">$2.1M</p>
-                      <p className="text-sm text-gray-800 font-semibold">Annual Revenue</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">1000+</p>
+                      <p className="text-sm text-gray-800 font-semibold">Inquiries Handled</p>
                     </div>
                     <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →
@@ -308,8 +308,8 @@ const TestimonialsPage = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <img src="/logos/wac-logo.svg" alt="Wisconsin Athletic Club" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">68% Reduction in Member Churn</h3>
-                    <p className="text-sm text-green-600 font-medium">Challenge: High Cancellation Rates</p>
+                    <h3 className="text-2xl font-bold text-gray-900">160 Saves. $288k Retained​</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Manual cancellations</p>
                   </div>
                 </div>
                 
@@ -344,7 +344,7 @@ const TestimonialsPage = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <img src="/logos/fitnessSF.svg" alt="Fitness SF" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">From Data Chaos to Intelligence</h3>
+                    <h3 className="text-2xl font-bold text-gray-900">300+ Hours Saved. Every Month.</h3>
                     <p className="text-sm text-green-600 font-medium">Challenge: Disconnected Systems</p>
                   </div>
                 </div>
@@ -357,16 +357,16 @@ const TestimonialsPage = () => {
                   {/* Stats on the left */}
                   <div className="space-y-4">
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">120%</p>
-                      <p className="text-sm text-gray-800 font-semibold">NRR Achieved</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">4000+</p>
+                      <p className="text-sm text-gray-800 font-semibold">Hours Saved Annually</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">7→1</p>
-                      <p className="text-sm text-gray-800 font-semibold">Systems Unified</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">24/7</p>
+                      <p className="text-sm text-gray-800 font-semibold">Member Concierge Support</p>
                     </div>
                     <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">50%</p>
-                      <p className="text-sm text-gray-800 font-semibold">Faster Decisions</p>
+                      <p className="text-4xl font-bold text-green-600 mb-1">1000+</p>
+                      <p className="text-sm text-gray-800 font-semibold">Inquiries Handled</p>
                     </div>
                     <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →

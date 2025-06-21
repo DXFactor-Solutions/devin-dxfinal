@@ -19,6 +19,9 @@ import News from "./pages/News";
 import Testimonials from "./pages/Testimonials";
 import Careers from "./pages/Careers";
 import ISOCertification from "./pages/ISOCertification";
+import ContactUs from "./pages/ContactUs";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,6 +49,9 @@ const App = () => (
           <Route path="/testimonials" element={<Testimonials />} />
           <Route path="/careers" element={<Careers />} />
           <Route path="/iso-certification" element={<ISOCertification />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/terms" element={<Terms />} />
+          <Route path="/privacy" element={<Privacy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

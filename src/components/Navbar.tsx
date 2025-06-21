@@ -27,7 +27,8 @@ const navLinks = [
     subPages: [
       { name: 'About Us', url: '/about' },
       { name: 'Why Us', url: '/why-us' },
-      { name: 'Careers', url: '/careers' }
+      { name: 'Careers', url: '/careers' },
+      { name: 'Contact Us', url: '/contact' }
     ]
   },
 ];

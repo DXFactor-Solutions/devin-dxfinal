@@ -435,8 +435,8 @@ outcomes from day one.
                             <p className="text-xs sm:text-sm text-blue-700 leading-relaxed">
                               Connected with ABC, Ignite, Glofox, Club Automation, MOSO, ASF, Hubspot, Gymsales and more
                             </p>
-                          </div>
-                          
+                        </div>
+                        
                           {/* Real Time Card */}
                           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 sm:p-6 border border-green-200 hover:shadow-lg transition-all duration-300 cursor-pointer group">
                             <div className="flex items-center justify-between mb-4">
