@@ -197,7 +197,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
               Meet the{" "}
 <span className="relative">
               <span className="bg-gradient-to-r from-green-600 via-green-500 to-emerald-500 bg-clip-text text-transparent">
-                DX Outcomes Micro-Agent Platform
+                DX Outcomes Microagent Platform
 </span>
               </span>
               <br />
@@ -347,7 +347,7 @@ oneLiner: 'Ask data questions in plain English and get instant, accurate reports
                 </button>
                 <button type="button" className="w-full sm:w-auto border border-green-600 hover:border-green-700 text-green-600 hover:text-white hover:bg-green-600 hover:scale-105 px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg font-medium transition-all duration-300 inline-flex items-center justify-center text-xs sm:text-sm group">
                   <Play className="mr-2 w-3 sm:w-4 h-3 sm:h-4 group-hover:scale-110 transition-transform" />
-                  <span className="hidden sm:inline">See the Outcomes Micro-Agent Platform in Action</span>
+                  <span className="hidden sm:inline">See the Outcomes Microagent Platform in Action</span>
                   <span className="sm:hidden">Watch Demo</span>
                 </button>
               </div>

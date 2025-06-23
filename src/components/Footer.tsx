@@ -43,7 +43,7 @@ const Footer = () => {
             <div className="mb-6">
               <img src="/factor.svg" alt="DXFactor Logo" className="h-8 w-auto mb-3" style={{filter: 'brightness(0) invert(1)'}} />
               <p className="text-gray-300 leading-relaxed max-w-sm text-sm mb-4">
-                DXFactor delivers the industry's only Outcomes Micro-Agent Platform built from $2B+ in proven results for Fitness & Wellness operators.
+                DXFactor delivers the industry's only Outcomes Microagent Platform built from $2B+ in proven results for Fitness & Wellness operators.
               </p>
               
               {/* Social links */}
@@ -71,7 +71,7 @@ const Footer = () => {
               <li>
                 <a href="/outcomes-platform" className="text-gray-300 hover:text-white flex items-center group text-sm transition-colors">
                   <ArrowRight className="w-3 h-3 mr-2 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-                  <span>Outcomes Micro-Agents Platform</span>
+                  <span>Outcomes Microagent Platform</span>
                 </a>
               </li>
               <li>

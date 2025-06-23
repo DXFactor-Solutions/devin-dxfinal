@@ -146,7 +146,7 @@ const MicroagentCommunity = () => {
             {/* Clean, simple heading */}
             <div className="mb-4 sm:mb-6">
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 mb-2 sm:mb-3">
-                DX Outcomes Micro-Agent Platform
+                DX Outcomes Microagent Platform
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-green-600 mb-2 sm:mb-3">$2B+ in Outcomes. One Platform.</p>
             </div>
@@ -157,9 +157,9 @@ const MicroagentCommunity = () => {
 
               </p>
               <p className="text-xs sm:text-sm lg:text-base text-gray-600 leading-relaxed">
-              Your micro-agents are only as powerful as
+              Your Microagents are only as powerful as
               the platform behind them.  
-                <span className="font-medium text-green-600"> The DX Outcomes Micro-Agent Platform</span>, 
+                <span className="font-medium text-green-600"> The DX Outcomes Microagent Platform</span>, 
                 the platform behind
 them. Built on years of real-world
 experience with fitness & wellness
