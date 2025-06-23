@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { Quote, Star, Users, TrendingUp, Play, Pause } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 // Animation component for spiral effect
 const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
@@ -302,11 +303,11 @@ const TestimonialsPage = () => {
               </div>
             </SpiralReveal>
 
-            {/* Wisconsin Athletic Club Case Study */}
+            {/* Chuze Fitness Case Study */}
             <SpiralReveal delay={0.3} index={2}>
               <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
                 <div className="flex items-center gap-4 mb-6">
-                  <img src="/logos/Chuze.jpg" alt="Wisconsin Athletic Club" className="h-12 w-auto" />
+                  <img src="/logos/Chuze.jpg" alt="Chuze Fitness" className="h-12 w-auto" />
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900">From Long Lines to Self-Service​</h3>
                     <p className="text-sm text-green-600 font-medium">Challenge: Front-Desk Overload & App
@@ -317,7 +318,7 @@ const TestimonialsPage = () => {
                 <p className="text-gray-800 mb-8 max-w-3xl font-medium">
                 Chuze needed to move joins, upgrades, and
 cancels out of the club and into the app — all
-while meeting the FTC’s Click-to-Cancel
+while meeting the FTC's Click-to-Cancel
 deadline. But their legacy tech was holding
 them back, and key features like Buddy
 Passes and Rewards were scattered across
@@ -339,9 +340,9 @@ separate systems.
                   </div>
                 </div>
                 
-                <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2">
+                <Link to="/case-studies/dxf-chuze-fitness" className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2">
                   Read Full Case Study →
-                </button>
+                </Link>
               </div>
             </SpiralReveal>
 

@@ -15,6 +15,7 @@ const navLinks = [
     icon: FileText,
     subPages: [
       { name: 'Blog', url: '/blog' },
+      { name: 'Case Studies', url: '/case-studies' },
       { name: 'Ebook', url: '/ebook' },
       { name: 'Webinars', url: '/webinars' },
       { name: 'News', url: '/news' }

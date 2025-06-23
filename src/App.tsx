@@ -11,6 +11,8 @@ import OutcomesPlat from "./pages/OutcomesPlat";
 import Solutions from "./pages/Solutions";
 import Blog from "./pages/Blog";
 import BlogPostPage from "./pages/blog/[slug]";
+import CaseStudiesPage from "./pages/CaseStudies";
+import CaseStudyPage from "./pages/case-studies/[slug]";
 import Ebook from "./pages/Ebook";
 import WebinarNews from "./pages/WebinarNews";
 import Webinars from "./pages/Webinars";
@@ -42,6 +44,8 @@ const App = () => (
           <Route path="/solutions" element={<Solutions />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
+          <Route path="/case-studies" element={<CaseStudiesPage />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
           <Route path="/ebook" element={<Ebook />} />
           <Route path="/webinar-news" element={<WebinarNews />} />
           <Route path="/webinars" element={<Webinars />} />
