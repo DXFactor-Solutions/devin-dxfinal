@@ -253,53 +253,39 @@ const TestimonialsPage = () => {
 
           {/* Case Study Cards */}
           <div className="space-y-16">
-            {/* Crunch Fitness Case Study */}
+            {/* Fit Athletic Club Case Study */}
             <SpiralReveal delay={0.2} index={1}>
               <div className="bg-gray-50 rounded-2xl p-8 md:p-12">
                 <div className="flex items-center gap-4 mb-6">
-                  <img src="/logos/Fit-athletic.svg" alt="Crunch Fitness" className="h-12 w-auto" />
+                  <img src="/logos/Fit-athletic.svg" alt="Fit Athletic Club" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">160 Saves. $288k Retained</h3>
-                    <p className="text-sm text-green-600 font-medium">Challenge: Manual cancellations</p>
+                    <h3 className="text-2xl font-bold text-gray-900">160 Saves. $288k Retained.</h3>
+                    <p className="text-sm text-green-600 font-medium">Challenge: Manual cancellations & Retention</p>
                   </div>
                 </div>
                 
                 <p className="text-gray-800 mb-8 max-w-3xl font-medium">
-                  Crunch Fitness was losing 40% of their leads to competitors because they came in after hours. Their front desk couldn't handle the volume during peak times, and overnight inquiries went unanswered.
+                  Fit Athletic Club was facing challenges with manual cancellation processes and member retention. They needed a solution to save members at the point of cancellation and improve administrative efficiency.
                 </p>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-                  {/* Stats on the left */}
-                  <div className="space-y-4">
-                    <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">12.34%</p>
-                      <p className="text-sm text-gray-800 font-semibold">Canceling members saved</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">$288k</p>
-                      <p className="text-sm text-gray-800 font-semibold">Annual revenue retained</p>
-                    </div>
-                    <div className="bg-white rounded-lg p-6 shadow-sm">
-                      <p className="text-4xl font-bold text-green-600 mb-1">20%</p>
-                      <p className="text-sm text-gray-800 font-semibold">Improvement in administrative efficiency</p>
-                    </div>
-                    <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
-                      Read Full Case Study →
-                    </button>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
+                    <p className="text-5xl font-bold text-green-600 mb-2">12%</p>
+                    <p className="text-gray-800 font-semibold">Canceling Members Saved</p>
                   </div>
-
-                  {/* Video on the right */}
-                  <div className="relative rounded-xl overflow-hidden bg-gray-900 aspect-video">
-                    <video
-                      className="w-full h-full object-cover"
-                      poster="/thumbnails/crunch-thumb.jpg"
-                      controls
-                    >
-                      <source src="/testimonialvideo/crunch.mp4" type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
+                    <p className="text-5xl font-bold text-green-600 mb-2">$15K</p>
+                    <p className="text-gray-800 font-semibold">Monthly Revenue Retained</p>
+                  </div>
+                  <div className="text-center bg-white rounded-lg p-6 shadow-sm">
+                    <p className="text-5xl font-bold text-green-600 mb-2">20%</p>
+                    <p className="text-gray-800 font-semibold">Improvement in Admin Efficiency</p>
                   </div>
                 </div>
+                
+                <Link to="/case-studies/cancellation-save-fit-athletic_03-jul-2024_v1" className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2">
+                  Read Full Case Study →
+                </Link>
               </div>
             </SpiralReveal>
 
@@ -309,7 +295,7 @@ const TestimonialsPage = () => {
                 <div className="flex items-center gap-4 mb-6">
                   <img src="/logos/Chuze.jpg" alt="Chuze Fitness" className="h-12 w-auto" />
                   <div>
-                    <h3 className="text-2xl font-bold text-gray-900">From Long Lines to Self-Service​</h3>
+                    <h3 className="text-2xl font-bold text-gray-900">From Long Lines to Self-Service</h3>
                     <p className="text-sm text-green-600 font-medium">Challenge: Front-Desk Overload & App
                     Limitations</p>
                   </div>
@@ -376,9 +362,9 @@ separate systems.
                       <p className="text-4xl font-bold text-green-600 mb-1">1000+</p>
                       <p className="text-sm text-gray-800 font-semibold">Inquiries Handled</p>
                     </div>
-                    <button className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
+                    <Link to="/case-studies/a-next-gen-data-solution-delivers-750000-savings-in-infrastructure-and-reconciliation-costs" className="text-green-600 font-medium hover:text-green-700 transition-colors flex items-center gap-2 mt-6">
                       Read Full Case Study →
-                    </button>
+                    </Link>
                   </div>
 
                   {/* Video on the right */}

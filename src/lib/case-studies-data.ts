@@ -40,5 +40,19 @@ export const caseStudies = [
     description: `A deep dive into how Chuze Fitness leveraged DXFactor's AI solutions to enhance member engagement and streamline operations.`,
     html: `/CASEStudies/DXF - Case Study - Chuze Fitness.docx`,
     category: 'AI & Fitness'
+  },
+  {
+    slug: `cancellation-save-fit-athletic03-jul-2024v1`,
+    title: `Fit Athletic Boosts Retention with Cancellation Save`,
+    description: `An in-depth look at how Fit Athletic implemented a cancellation-save strategy to improve member retention and reduce churn.`,
+    html: `/CASEStudies/Case Study - Cancellation Save - Fit Athletic_03-Jul-2024_V1.docx`,
+    category: 'Retention'
+  },
+  {
+    slug: `csjoinonlinecardio_20250225_v2`,
+    title: `CardiO Fitness Streamlines Online Member Enrollment`,
+    description: `Learn how CardiO Fitness implemented a seamless online joining process, boosting conversions and member satisfaction.`,
+    html: `/CASEStudies/CS_JoinOnlineCardiO_20250225_V2.docx`,
+    category: 'Onboarding'
   }
 ]; 
