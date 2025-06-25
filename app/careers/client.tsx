@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import { MapPin, Clock, Users, TrendingUp, Heart, Zap, Code, Headphones, BarChart3 } from 'lucide-react'
 
 export default function CareersClient() {

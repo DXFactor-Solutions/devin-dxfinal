@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import { CheckCircle, TrendingUp, Users, Shield, Zap, Target, Award, Clock, DollarSign } from 'lucide-react'
 
 export default function WhyUsClient() {

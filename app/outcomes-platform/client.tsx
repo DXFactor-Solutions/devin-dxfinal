@@ -1,8 +1,8 @@
 'use client'
 
 import React from 'react'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import { Zap, Target, TrendingUp, Users, BarChart3, CheckCircle } from 'lucide-react'
 
 export default function OutcomesPlatformClient() {

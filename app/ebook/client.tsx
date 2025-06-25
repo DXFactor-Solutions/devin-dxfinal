@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useState } from 'react'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import { Download, CheckCircle, BookOpen, Users, TrendingUp, Target, Mail, User, Building } from 'lucide-react'
 
 export default function EbookClient() {
