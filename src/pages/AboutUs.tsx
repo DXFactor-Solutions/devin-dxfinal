@@ -6,6 +6,8 @@ import FeaturedSuccessStories from '@/components/FeaturedSuccessStories';
 import { motion, useAnimation, useInView, useScroll } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import SEOHead from '@/components/SEO/SEOHead';
+import { LocalBusinessStructuredData } from '@/components/SEO/StructuredData';
 
 // Animation component for spiral effect
 const SpiralReveal = ({ children, delay = 0, index = 0 }) => {
@@ -209,6 +211,16 @@ const AboutUs = () => {
 
   return (
     <div className="relative min-h-screen bg-gray-50 overflow-hidden" ref={containerRef}>
+      <SEOHead
+        title="About DXFactor Solutions | AI-Powered Fitness & Wellness Technology Leaders"
+        description="Learn about DXFactor's mission to transform fitness and wellness businesses through AI technology. We've generated $2B+ in outcomes for operators with our revenue-focused approach."
+        keywords="DXFactor about, fitness technology company, AI wellness solutions, fitness business transformation, revenue machines, fitness industry experts"
+        url="/about"
+        type="website"
+      />
+      
+      <LocalBusinessStructuredData />
+      
       <Navbar />
       
       {/* Fixed Progress Bar */}

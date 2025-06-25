@@ -11,8 +11,9 @@ import TrustedByBelt from '../components/TrustedByBelt';
 // import AIMapSection from '../components/AIMapSection'; 
 // import CTASection from '../components/CTASection';
 import Footer from '../components/Footer';
-import SpiralReveal from '../components/SpiralReveal';
 import { ArrowRight, CheckCircle, Star, Users, TrendingUp, Zap } from 'lucide-react';
+import SEOHead from '../components/SEO/SEOHead';
+import { LocalBusinessStructuredData, ServiceStructuredData } from '../components/SEO/StructuredData';
 
 // CSS for scroll animations
 const scrollAnimationStyles = `
@@ -146,6 +147,30 @@ const Index = () => {
   
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title="DX Web2 – AI-Powered Genesis Deck | The First Agentic Platform for Fitness & Wellness"
+        description="Transform your fitness business with DXFactor's AI-powered microagents. Generate $2B+ in outcomes with our Concierge, Click2Save, and Learning & Development agents. 120% net revenue retention guaranteed."
+        keywords="fitness AI, wellness technology, gym management software, member retention, fitness analytics, AI microagents, fitness business solutions, DXFactor, revenue retention, fitness automation"
+        url="/"
+        type="website"
+      />
+      
+      <LocalBusinessStructuredData />
+      
+      <ServiceStructuredData
+        name="AI Concierge Agent"
+        description="24/7 automated member support and appointment booking system that saves 30% on man hours while improving member satisfaction."
+        serviceType="AI Customer Service"
+        url="/solutions"
+      />
+      
+      <ServiceStructuredData
+        name="Click2Save Agent"
+        description="Automated cancellation prevention system that achieves 12% higher save rates and retains $2000+ monthly revenue per location."
+        serviceType="AI Retention Technology"
+        url="/solutions"
+      />
+      
       {/* Inject scroll animation styles */}
       <style dangerouslySetInnerHTML={{ __html: scrollAnimationStyles }} />
       

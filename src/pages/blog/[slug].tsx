@@ -8,6 +8,8 @@ import FeaturedSuccessStories from '../../components/FeaturedSuccessStories';
 import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import '../../styles/blog.css';
+import SEOHead from '../../components/SEO/SEOHead';
+import { ArticleStructuredData } from '../../components/SEO/StructuredData';
 
 // Import the extracted blog content
 interface BlogContentItem {
@@ -150,6 +152,23 @@ const BlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-white">
+      <SEOHead
+        title={`${post.title} | DXFactor Blog`}
+        description={post.description}
+        keywords={`${post.title}, fitness AI, wellness technology, gym management, member retention, DXFactor insights`}
+        url={`/blog/${slug}`}
+        type="article"
+        author="DXFactor Team"
+        image={post.image}
+      />
+      
+      <ArticleStructuredData
+        headline={post.title}
+        description={post.description}
+        image={post.image}
+        url={`https://dx-web2.vercel.app/blog/${slug}`}
+      />
+      
       <Navbar />
       
       {/* Hero Section */}
@@ -339,4 +358,4 @@ const BlogPostPage = () => {
   );
 };
 
-export default BlogPostPage; 
+export default BlogPostPage;  
